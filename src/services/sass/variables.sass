@@ -1,0 +1,55 @@
+
+// fonts    
+=font-face($family, $path, $svg: 0, $weight: normal, $style: normal)
+    @font-face
+        font-family: $family
+        src: url('#{$path}.eot')
+        src: url('#{$path}.eot?#iefix') format('embedded-opentype')
+        src: url('#{$path}.woff') format('woff')
+        src: url('#{$path}.ttf') format('truetype')
+        src: url('#{$path}.svg##{$svg}') format('svg')
+        font-weight: $weight
+        font-style: $style
+    
+// sizes
+$size_containerWidth: 1440px
+$width_mainContent: 1440px
+
+// icons
+$features_icon_comfort: 'mood'
+$features_icon_facilities: 'location_city'
+$features_icon_comfort: 'mood'
+$icon_list-element: '\e3a6'
+$icon_dropdown-button: '\e5cf'
+$icon_dropdown-button_reverse: '\e5ce'
+$form-dropdown_button: '\e5cf'
+$form-checkbox_button: '\e5ca'
+$form-input_button: '\e5c8'
+$form-button_button: '\e5c8'
+$form-pagination_button_prev: '\e5c4'
+$form-pagination_button_next: '\e5c8'
+$form-radio_button: '\e3a6'
+$form-toggle_button: '\e3a6'
+$form-like_button: '\e87e'
+$form-like_button_checked: '\e87d'
+$form-rate_button: '\e83a'
+$form-rate_button_checked: '\e838'
+
+// responsive sizes
+
+// colors
+@function tint($color, $percentage) 
+    @return mix(white, $color, $percentage)
+
+
+$color_dark: #1F2041
+$color_dark75: tint($color_dark, 25%)
+$color_dark50: tint($color_dark, 50%)
+$color_dark25: tint($color_dark, 75%)
+$color_dark5: tint($color_dark, 95%)
+$color_green: #6FCF97
+$color_green2: #66D2EA
+$color_green_gradient: linear-gradient(0deg, $color_green2 0%, $color_green 100%)
+$color_purple: #BC9CFF
+$color_purple2: #8BA4F9
+$color_purple_gradient: linear-gradient(0deg, $color_purple2 0%, $color_purple 100%)

@@ -1,133 +1,54 @@
 const webpack = require('webpack');
-const path = require('path'); // Абсолютные пути
-const fs = require('fs'); // Работа с файловой системой
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // Управляет html файлами
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // Вырезает css из js в отдельный файл
 const CopyWebpackPlugin = require('copy-webpack-plugin'); // Копирует файлов
 
-// Пути к основным директориям
-class ProjectPaths {
-	constructor() {
-		let srcPath = path.join(__dirname, '../src');
-		let distPath = path.join(__dirname, '../dist');
-
-		this.src = {
-			root: srcPath,
-			entires: {
-				root: `${srcPath}`,
-			},
-			pages: {
-				root: `${srcPath}`,
-			},
-			blocks: {
-				root: `${srcPath}/_blocks`,
-			},
-			js: {
-				root: `${srcPath}/_js`,
-			},
-			sass: {
-				root: `${srcPath}/_sass`,
-			},
-			img: {
-				root: `${srcPath}/_img`,
-			},
-			fonts: {
-				root: `${srcPath}/_fonts`,
-			},
-			special: {
-				root: `${srcPath}/_special`,
-			},
-		};
-		this.dist = {
-			root: distPath,
-			fonts: {
-				root: `${distPath}/_fonts`,
-			},
-		};
-
-		this.load();
-	}
-	load() {
-		this.loadEntiresList();
-		this.src.js.list = this.findFiles('js', this.src.blocks.root);
-		this.src.img.list = [
-			...this.findFiles('png', this.src.blocks.root),
-			...this.findFiles('png, svg', this.src.img.root),
-		];
-		this.src.fonts.list = this.findFolders('js', this.src.fonts.root, false);
-		this.src.pages.list = this.findFiles('pug', this.src.pages.root);
-	}
-	find(type, patterns, path, nested) {
-		let founded = [];
-		let items = fs.readdirSync(path);
-		let folders = items.filter(name => !name.match(/\./));
-		let files = items.filter(name => name.match(/\./));
-		let matchingItems = type == 'file' && files.length > 0 ? items : folders;
-
-		if (matchingItems) {
-			matchingItems.forEach(name => {
-				if (name.charAt(0) === '_') return; // Escape files and folders starts with _
-
-				let itemPath = `${path}/${name}`;
-				let patternsArray = patterns.split(',');
-
-				if (type == 'file') name = name.split('.')[1]; // получаем расширение файла
-
-				patternsArray.forEach(pattern => {
-					pattern = pattern.replace(/\s+/g, '');
-
-					if (
-						(!pattern && (type != 'file' || name)) ||
-						(pattern && name == pattern)
-					) {
-						founded.push(itemPath);
-					} else if ((type == 'folder' || !name) && nested)
-						founded = founded.concat(this.find(type, pattern, itemPath));
-				});
-			});
-		}
-
-		return founded;
-	}
-	findFolders(patterns, path, nested = true) {
-		return this.find('folder', patterns, path, nested);
-	}
-	findFiles(patterns, path, nested = true) {
-		return this.find('file', patterns, path, nested);
-	}
-	loadEntiresList() {
-		this.src.entires.list = {};
-		this.findFiles('sass, js', this.src.entires.root).forEach(path => {
-			path = './' + path.split('\\')[path.split('\\').length - 1]; // Относительный путь
-			let [filename, extension] = path
-				.split('/')
-				[path.split('/').length - 1].split('.');
-			this.src.entires.list[filename] = path;
-		});
-	}
+function getEntires(pages) {
+	return Object.assign(
+		{},
+		...pages.map(({ name, path }) => {
+			return { [name]: path };
+		})
+	);
 }
+const pages = [
+	{
+		name: 'index',
+		path: './src/pages/index.js',
+		HtmlWebpackPlugin: new HtmlWebpackPlugin({
+			template: './src/pages/templates/index.pug',
+			chunks: ['vendors', 'index'],
+			filename: 'index.html',
+		}),
+	},
+	{
+		name: 'search',
+		path: './src/pages/search.js',
+		HtmlWebpackPlugin: new HtmlWebpackPlugin({
+			template: './src/pages/templates/index.pug',
+			chunks: ['vendors', 'search'],
+			filename: 'search.html',
+		}),
+	},
+	{
+		name: 'room',
+		path: './src/pages/room.js',
+		HtmlWebpackPlugin: new HtmlWebpackPlugin({
+			template: './src/pages/templates/index.pug',
+			chunks: ['vendors', 'room'],
+			filename: 'room.html',
+		}),
+	},
+];
 
-const paths = new ProjectPaths();
+const entires = getEntires(pages);
 
-console.log('Entires files: ');
-console.log(paths.src.entires.list);
-console.log('Pages files: ');
-console.log(paths.src.pages.list);
-console.log('JS files: ');
-console.log(paths.src.js.list);
-console.log('IMG folders: ');
-console.log(paths.src.img.list);
-console.log('FONTS folders: ');
-console.log(paths.src.fonts.list);
+console.log('Entires:', entires);
 
 module.exports = {
-	externals: {
-		paths: paths, // Подключение внешних объектов,
-	},
-	entry: paths.src.entires.list,
+	entry: entires,
 	output: {
 		filename: 'js/[name].js', // Точка выхода
-		// path: paths.dist.root, // Путь сохранения файла при сборке
 	},
 	optimization: {
 		// Выносит подключенные модули в отдельный файл
@@ -206,25 +127,11 @@ module.exports = {
 		],
 	},
 	plugins: [
-		...paths.src.pages.list.map(
-			path =>
-				new HtmlWebpackPlugin({
-					template: path, // Файл шаблона
-					filename: path
-						.split('/')
-						[path.split('/').length - 1].replace('pug', 'html'),
-					// inject: false
-				})
-		),
+		...pages.map(({ HtmlWebpackPlugin }) => HtmlWebpackPlugin),
 		new MiniCssExtractPlugin({
 			filename: `css/[name].css`, // [hash] для добавления хеша к имени файла
 		}),
-		new CopyWebpackPlugin([
-			{ from: paths.src.special.root },
-			{ from: paths.src.js.root, to: 'js' },
-			...paths.src.js.list.map(path => ({ from: path, to: `js` })),
-			...paths.src.img.list.map(path => ({ from: path, to: `img` })),
-		]),
+		new CopyWebpackPlugin([{ from: './src/assets' }]),
 		new webpack.ProvidePlugin({
 			$: 'jquery',
 			jQuery: 'jquery',

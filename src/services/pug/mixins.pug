@@ -1,0 +1,47 @@
+mixin css(href)
+    link(rel="stylesheet", href=href)
+
+mixin js(src)
+    script(type="text/javascript" src=src)
+
+mixin mergeData(data1, data2)
+    -
+        data1 = mergeData(data1, data2)
+        
+        function mergeData(data1, data2) {
+            if(!data1) data1 = data2
+            else {
+                for(var key in data2) {            
+                    if(typeof data2[key] === 'object') {
+                        data1[key] = data1[key] || {}
+                        data1[key] = mergeData(data1[key], data2[key])
+                    } else {     
+                        data1[key] = data1[key] || ''       
+                        switch(key) {
+                            case 'parent':
+                                //- if(data1['parent']) data1['parent'] = getParent(data1['parent'], data2['parent'])
+
+                                //- if(data1['root']) {
+                                //-     data1['class'] = getParent(data1['root'], data2['parent'])
+                                //-     delete data1['parent']
+                                //-     delete data1['root']
+                                //- }
+                                break
+                            case 'class':
+                                data1[key] = data1[key] + ' ' + data2[key]
+                                break
+                            default: 
+                                data1[key] = data2[key]
+                        }                            
+                    }
+                }
+            }
+
+            return data1
+        }     
+        function getParent(mainClass, parentClasses) {
+            return mainClass + ' ' + parentClasses.split(' ').map((parentClass) => {
+                return parentClass + '_' + mainClass
+            }).join(' ')
+        }
+        
