@@ -1,0 +1,11 @@
+#folders
+node_modules
+dist
+.vscode
+
+#files
+vscode.code-workspace
+bash.exe.stackdump
+.prettierrc
+package-lock.json
+.eslintrc.json
