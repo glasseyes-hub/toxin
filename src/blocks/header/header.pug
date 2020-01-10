@@ -1,0 +1,22 @@
+//- mixin header(extData = {})
+//-     - var data = {attr: {class: 'header'}}
+
+//-     if extData
+//-         +mergeData(data, extData)
+
+//-     section&attributes(data.attr)
+//-         +logo
+//-         +container({attr:{class:'header_controls'}})
+//-             +container({attr:{class:'header_authorization'}})
+//-                 +button({
+//-                     attr:{class:'button_bordered header_authorization_button header_authorization_button_bordered'},
+//-                     content: 'LOGIN'
+//-                 })
+//-                 +button({
+//-                     attr:{class:'button_filled header_authorization_button'},
+//-                     content: 'REGISTER'
+//-                 })
+//-             +container({attr:{class:'header_user header_hidden'}})
+//-                 | Cosmin Negoita
+
+section.header&attributes(attr)

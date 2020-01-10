@@ -1,0 +1,19 @@
+=form-quantity_button_clear($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.form-quantity_button_clear#{$mixinClass}
+        width: auto
+        padding: 0
+        margin-left: 8px
+        border: none
+        border-radius: 0
+        self-align: right
+        &:before
+            content: 'Очистить'
+            font-size: 12px    
+            line-height: 15px
+            font-weight: bold
+            text-transform: uppercase
+            color: $color_dark50
+        @content

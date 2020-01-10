@@ -1,0 +1,19 @@
+@import 'form-pagination_button_current'
+@import 'form-pagination_button_arrow'
+@import 'form-pagination_button_hidden'
+    
+=form-pagination_button($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .form-pagination_button#{$mixinClass}
+        width: 40px
+        height: 40px
+        border-radius: 22px
+        color: $color_dark50
+        font-size: 12px
+        text-transform: uppercase
+        +form-pagination_button_current
+        +form-pagination_button_arrow
+        +form-pagination_button_hidden
+        @content

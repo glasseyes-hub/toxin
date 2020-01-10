@@ -1,0 +1,20 @@
+@import feature_icon_comfort
+@import feature_icon_facilities
+    
+=feature_icon($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .feature_icon#{$mixinClass}
+        &::before            
+            width: 48px
+            height: 48px
+            line-height: 48px
+            font-size: 48px
+            background: linear-gradient(0deg, #8BA4F9 0%, $color_purple 100%)
+            -webkit-background-clip: text
+            -webkit-text-fill-color: transparent
+            color: $color_purple
+        +feature_icon_comfort
+        +feature_icon_facilities
+        @content

@@ -1,0 +1,21 @@
+mixin comment(extData = {})
+    -
+        var data = {
+            attr: {class: 'comment'},
+            title: {attr: {class: 'comment_title'}},
+            form: {attr: {class: 'comment_form'}},
+            formLike: {attr: {class: 'comment_form-like'}},
+            image: {attr: {class: 'comment_image'}},
+            container_content: {attr: {class: 'comment_container_content'}}
+        }
+
+
+    if extData
+        +mergeData(data, extData)
+
+    section&attributes(data.attr)
+        +image(data.image)
+        +title(data.title)
+        +form(data.form)
+            +form-like(data.formLike)
+        +container(data.container_content)

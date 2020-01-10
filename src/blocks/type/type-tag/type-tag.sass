@@ -1,0 +1,9 @@
+=type-tag($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .type-tag#{$mixinClass}
+        color: $color_dark25
+        font-weight: normal
+        text-align: right
+        @content

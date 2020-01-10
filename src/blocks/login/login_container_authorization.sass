@@ -1,0 +1,11 @@
+=login_container_authorization($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .login_container_authorization#{$mixinClass}
+        display: grid
+        grid-gap: 10px
+        & > *
+            &:last-child
+                margin-top: -2px
+        @content

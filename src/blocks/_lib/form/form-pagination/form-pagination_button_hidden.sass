@@ -1,0 +1,7 @@
+=form-pagination_button_hidden($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.form-pagination_button_hidden#{$mixinClass}
+        display: none
+        @content

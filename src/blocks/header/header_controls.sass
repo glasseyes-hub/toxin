@@ -1,0 +1,9 @@
+=header_controls($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .header_controls#{$mixinClass}
+        display: grid
+        grid-auto-flow: column
+        grid-gap: 30px
+        @content

@@ -1,0 +1,24 @@
+@import 'input/input'
+@import 'label/label'
+    
+@import 'form-input/form-input'
+@import 'form-dropdown/form-dropdown'
+@import 'form-selectDate/form-selectDate'
+@import 'form-checkbox/form-checkbox'
+@import 'form-radio/form-radio'
+@import 'form-toggle/form-toggle'
+@import 'form-like/form-like'
+@import 'form-rate/form-rate'
+@import 'form-slider/form-slider'
+@import 'form-button/form-button'
+@import 'form-pagination/form-pagination'
+@import 'form-quantity/form-quantity'
+    
+=form($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .form#{$mixinClass}
+        +input
+        +label
+        @content

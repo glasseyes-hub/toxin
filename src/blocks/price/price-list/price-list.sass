@@ -1,0 +1,8 @@
+=price-list($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .price-list#{$mixinClass}
+        display: grid
+        grid-gap: 10px
+        @content

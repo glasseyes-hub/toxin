@@ -1,0 +1,12 @@
+@import price-title_title
+    
+=price-title($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .price-title#{$mixinClass}
+        display: grid
+        grid-gap: 5px
+        grid-template-columns: 1fr 1fr
+        +price-title_title
+        @content

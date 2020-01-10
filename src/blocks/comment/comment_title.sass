@@ -1,0 +1,9 @@
+=comment_title($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .comment_title#{$mixinClass}
+        display: grid
+        & .title-text
+            font-weight: bold
+        @content

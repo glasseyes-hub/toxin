@@ -1,0 +1,10 @@
+=room_price-title($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .room_price-title#{$mixinClass}
+        padding-bottom: 5px
+        border-bottom: 1px solid rgba(31, 32, 65, 0.1)
+        & > .price-title_title_room > .title-text
+            font-size: 20px !important
+        @content

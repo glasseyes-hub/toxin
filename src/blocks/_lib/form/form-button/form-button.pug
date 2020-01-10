@@ -1,0 +1,8 @@
+mixin form-button(extData = {})
+    - var data = {attr:{class:'form-button'}}
+
+    if extData
+        +mergeData(data, extData)
+
+    +button(data)
+        

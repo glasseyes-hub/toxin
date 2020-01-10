@@ -1,0 +1,16 @@
+=list-element($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .list-element#{$mixinClass}
+        position: relative
+        padding-left: 20px
+        list-style-type: none
+        &::before
+            position: absolute
+            left: 0
+            font-family: 'Material Icons'
+            content: $icon_list-element
+            color: $color_dark25
+            font-size: 12px
+        @content

@@ -1,0 +1,56 @@
+mixin form-pagination(extData = {})
+    - var data = {attr:{class:'js_form-pagination'}}
+
+    if extData
+        +mergeData(data, extData)
+
+    div.form-pagination&attributes(data.attr)    
+        +container({attr:{class:'form-pagination_container'}})
+            +button({
+                attr: {class:'form-pagination_button form-pagination_button_arrow form-pagination_button_arrow_prev'}
+            })
+            +button({
+                attr: {class:'form-pagination_button form-pagination_button_first'},
+                content: '1'
+            })
+            +button({
+                attr: {class:'form-pagination_button form-pagination_button_dots'},
+                content: '...'
+            })
+            +button({
+                attr: {class:'form-pagination_button'},
+                content: '5'
+            })
+            +button({
+                attr: {class:'form-pagination_button'},
+                content: '6'
+            })
+            +button({
+                attr: {class:'form-pagination_button form-pagination_button_current'},
+                content: '7'
+            })
+            +button({
+                attr: {class:'form-pagination_button'},
+                content: '8'
+            })
+            +button({
+                attr: {class:'form-pagination_button'},
+                content: '9'
+            })
+            +button({
+                attr: {class:'form-pagination_button form-pagination_button_dots'},
+                content: '...'
+            })
+            +button({
+                attr: {class:'form-pagination_button form-pagination_button_last'},
+                content: '15'
+            })
+            +button({
+                attr: {class:'form-pagination_button form-pagination_button_arrow form-pagination_button_arrow_next'}
+            })
+        +title({
+            attr: {class:'form-pagination_title'},
+            text: {
+                content: '1 – 12 из 100+ вариантов аренды'
+            }
+        })

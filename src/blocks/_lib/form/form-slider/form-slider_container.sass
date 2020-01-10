@@ -1,0 +1,18 @@
+=form-slider_container($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .form-slider_container#{$mixinClass}
+        position: relative
+        width: 100%
+        height: 14px
+        cursor: pointer
+        &::before
+            content: ''
+            position: absolute
+            width: 100%
+            height: 4px
+            top: 4px
+            border: 1px solid $color_dark25
+            border-radius: 5px
+            z-index: -1

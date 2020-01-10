@@ -1,0 +1,9 @@
+mixin column(extData = {})
+    - var data = {}
+
+    if extData
+        +mergeData(data, extData)
+
+    section.column&attributes(data.attr)
+        | #{data.content}
+        block

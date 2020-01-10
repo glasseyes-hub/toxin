@@ -1,0 +1,8 @@
+=reservation_form($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .reservation_form#{$mixinClass}
+        display: grid
+        grid-gap: 20px
+        @content

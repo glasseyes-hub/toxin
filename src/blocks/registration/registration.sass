@@ -1,0 +1,22 @@
+@import registration_container_person
+@import registration_container_form-radio
+@import registration_container_birthday
+@import registration_container_service
+@import registration_container_login
+@import registration_form
+    
+=registration($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .registration#{$mixinClass}
+        display: grid
+        grid-gap: 20px
+        padding: 40px 30px 30px 30px
+        +registration_container_person
+        +registration_container_form-radio
+        +registration_container_birthday
+        +registration_container_service
+        +registration_container_login
+        +registration_form
+        @content

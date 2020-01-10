@@ -1,0 +1,38 @@
+mixin login(extData = {})
+    - var data = {attr: {class: 'login'}}
+
+    if extData
+        +mergeData(data, extData)
+
+    section&attributes(data.attr)
+        +title({
+            attr: {class: 'login_title'},
+            text: {tag: 'h1', content: 'Войти'}
+        })
+        +form({
+            attr: {class: 'login_form'}
+        })
+            +container({attr:{class: 'login_container_authorization'}})
+                +form-input({
+                    
+                    attr: {class: 'login_form-input'},
+                    input: {attr: {placeholder: 'Имя'}}
+                })
+                +form-input({
+                    attr: {class: 'login_form-input'},
+                    input: {attr: {placeholder: 'Фамилия'}}
+                })
+            +form-button({
+                attr: {class: 'login_form-button form-button_big'},
+                content: 'Войти'
+            })
+            +container({attr: {class: 'login_container_registration'}})
+                +title({
+                    text: {content: 'Нет аккаунта на Toxin?'}
+                })
+                +form-button({
+                    attr:{
+                        class:'form-button_bordered'
+                    },
+                    content: 'Создать'
+                })

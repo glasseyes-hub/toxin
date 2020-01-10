@@ -1,0 +1,28 @@
+@import '../../../services/sass/variables'
+
+.dropdown
+    position: relative
+
+    & .dropdown_container
+        width: 100%
+
+        &.dropdown_container_hidden
+            display: none
+
+    & .dropdown_button
+        position: absolute
+        right: 0
+        top: 0
+        padding: 0 10px
+        height: 16px
+        cursor: pointer
+
+        &::before
+            content: $icon_dropdown-button
+            font-size: 24px
+            line-height: 16px
+            color: $color_dark75
+
+        &.dropdown_button_reverse
+            &::before
+                content: $icon_dropdown-button_reverse

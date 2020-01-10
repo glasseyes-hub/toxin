@@ -1,0 +1,14 @@
+=form-quantity_input($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .form-quantity_input#{$mixinClass}
+        width: 30px
+        height: 30px
+        line-height: 22px
+        text-align: center
+        padding-left: 0px
+        padding-right: 0px
+        border: none
+        font-weight: bold
+        @content

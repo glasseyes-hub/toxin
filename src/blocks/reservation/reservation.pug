@@ -1,0 +1,92 @@
+mixin reservation(extData = {})
+    - var data = {attr: {class: 'reservation'}}
+
+    if extData
+        +mergeData(data, extData)
+
+    section&attributes(data.attr)
+        +price-title({
+            title_room: {
+                text: {content: '№ 888'},
+                subtext: {content: 'Люкс'}
+            },
+            title_price: {
+                text: {content: '9 999₽'},
+                subtext: {content: 'В сутки'}
+            }
+        })
+        +form({attr: {class: 'reservation_form'}})
+            +form-selectDate({
+                attr: {class: 'findRoom_form-selectDate'},
+                arrival: {
+                    title: {text: {tag:'h3', content:'Прибытие'}},
+                    input: {
+                        attr: {
+                            class: 'js_form-input_maskDate',
+                            placeholder:'ДД.ММ.ГГГГ',
+                            value: '19.09.2019'
+                        }
+                    }
+                },
+                leave: {
+                    title: {text: {tag:'h3', content:'Выезд'}},
+                    input: {
+                        attr: {
+                            class:'js_form-input_maskDate',
+                            placeholder:'ДД.ММ.ГГГГ',
+                            value: '23.08.2019'
+                        }
+                    }
+                }
+            })
+            +form-dropdown({
+                attr: {class: 'reservation_form-dropdown'},
+                title: {
+                    text: {
+                        tag:'h3', 
+                        content:'Гости'
+                    }
+                },
+                input: {
+                    attr: {
+                        class: 'form-dropdown_input_solid',
+                        value:'Сколько гостей',
+                        readonly:'true'
+                    }
+                },
+                body: {attr: {class: 'form-dropdown_body_solid'}}
+            })
+                +form-quantity({
+                    attr: {class: 'findRoom_form-quantity'},
+                    elements: [
+                        {content: 'Взрослые'},
+                        {content: 'Дети'},
+                        {content: 'Младенцы'}
+                    ],
+                    enableControls: true
+                })
+            +price-list({
+                elements: [
+                    {
+                        name: {content: '9 990₽ х 4 суток'},
+                        cost: {content: '39 960₽'}
+                    },
+                    {
+                        name: {content: 'Сбор за услуги: скидка 2 179₽'},
+                        cost: {content: '0₽'},
+                        button: {show: true}
+                    },
+                    {
+                        name: {content: 'Сбор за дополнительные услуги'},
+                        cost: {content: '300₽'},
+                        button: {show: true}
+                    },
+                ]
+            })
+            +price-total({
+                price: {content: '38 081₽'}
+            })
+            +form-button({
+                attr: {class: 'form-button_big'},
+                content: 'Забронировать'
+            })

@@ -1,0 +1,7 @@
+=footer_container_description($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .footer_container_description#{$mixinClass}
+        width: 260px
+        @content

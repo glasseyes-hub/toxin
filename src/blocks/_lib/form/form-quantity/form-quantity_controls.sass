@@ -1,0 +1,9 @@
+=form-quantity_controls($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .form-quantity_controls#{$mixinClass}
+        display: flex
+        justify-content: space-between
+        margin-top: 3px
+        @content

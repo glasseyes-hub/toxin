@@ -1,0 +1,10 @@
+mixin list(extData = {})
+    - var data = {tag: 'ul', attr: {class: 'list'}}
+
+    if extData
+        +mergeData(data, extData)
+
+    #{data.tag}&attributes(data.attr)
+        each element in data.list 
+            li.list-element #{element}
+        block

@@ -1,0 +1,7 @@
+=page-content($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .page-content#{$mixinClass}
+        width: $size_containerWidth
+        @content

@@ -1,0 +1,10 @@
+=socialNetworks($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .socialNetworks#{$mixinClass}
+        display: grid
+        grid-auto-flow: column
+        grid-template-columns: repeat(3, 24px)
+        grid-gap: 20px
+        @content

@@ -1,0 +1,13 @@
+@import card_room
+    
+=card($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .card#{$mixinClass}
+        border: 1px solid rgba(0, 0, 0, 0.12)
+        box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2)
+        border-radius: 4px
+        background-color: #fff
+        +card_room
+        @content

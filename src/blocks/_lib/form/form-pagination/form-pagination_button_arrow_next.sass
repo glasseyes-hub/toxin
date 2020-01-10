@@ -1,0 +1,8 @@
+=form-pagination_button_arrow_next($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.form-pagination_button_arrow_next#{$mixinClass}
+        &:before
+            content: $form-pagination_button_next
+        @content

@@ -1,0 +1,9 @@
+@import form-dropdown_input_solid
+
+=form-dropdown_input($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .form-dropdown_input#{$mixinClass}
+        +form-dropdown_input_solid
+        @content

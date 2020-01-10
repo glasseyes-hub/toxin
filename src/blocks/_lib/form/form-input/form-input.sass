@@ -1,0 +1,14 @@
+   
+@import 'form-input_label'
+@import 'form-input_title'
+@import 'form-input_button'
+    
+=form-input($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .form-input#{$mixinClass}
+        +form-input_label
+        +form-input_title
+        +form-input_button
+        @content

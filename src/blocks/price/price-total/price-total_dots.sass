@@ -1,0 +1,9 @@
+=price-total_dots($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .price-total_dots#{$mixinClass}
+        flex-grow: 1
+        border-bottom: 1px dotted $color_dark25
+        height: 20px
+        @content

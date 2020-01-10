@@ -1,0 +1,8 @@
+=icon_social_instagram($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.icon_social_instagram#{$mixinClass}
+        &::before
+            content: '\f16d'
+        @content

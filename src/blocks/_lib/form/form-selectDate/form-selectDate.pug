@@ -1,0 +1,22 @@
+//- mixin form-selectDate()
+//-     - var params = {}
+
+//-     if attributes.params
+//-         +mergeObj(params, attributes.params)   
+
+//-     div(class=params.mod) 
+//-         +form-dropdown(params=params.arrival)  
+//-         +form-dropdown(params=params.leave)
+//-         block
+
+mixin form-selectDate(extData = {})
+    - var data = {}
+    - data.arrival = {attr:{class:'form-selectDate_arrival'}}
+    - data.leave = {attr:{class:'form-selectDate_leave'}}
+
+    if extData
+        +mergeData(data, extData)
+
+    div.form-selectDate&attributes(data.attr)
+        +form-dropdown(data.arrival)  
+        +form-dropdown(data.leave)

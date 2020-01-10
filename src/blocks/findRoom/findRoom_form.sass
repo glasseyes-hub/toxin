@@ -1,0 +1,8 @@
+=findRoom_form($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .findRoom_form#{$mixinClass}
+        display: grid
+        grid-gap: 20px
+        @content

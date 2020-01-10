@@ -1,0 +1,14 @@
+=room_title($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .room_title#{$mixinClass}
+        display: flex
+        justify-content: flex-end
+        & > .title-text
+            font-weight: bold
+            color: $color_dark50
+        & > .title-subtext
+            margin-top: 1px
+            margin-left: 6px
+        @content

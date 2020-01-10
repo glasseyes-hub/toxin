@@ -1,0 +1,8 @@
+=feature_icon_facilities($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.feature_icon_facilities#{$mixinClass}
+        &::before
+            content: $features_icon_facilities
+        @content

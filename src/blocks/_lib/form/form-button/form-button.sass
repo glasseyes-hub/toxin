@@ -1,0 +1,17 @@
+@import 'form-button_disabled'
+@import 'form-button_simple'
+@import 'form-button_big'
+@import 'form-button_rounded'
+    
+=form-button($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .form-button#{$mixinClass}        
+        width: 99px
+        height: 44px
+        +form-button_disabled
+        +form-button_simple
+        +form-button_big
+        +form-button_rounded
+        @content

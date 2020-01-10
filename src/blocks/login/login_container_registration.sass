@@ -1,0 +1,10 @@
+=login_container_registration($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .login_container_registration#{$mixinClass}
+        display: grid
+        grid-template-columns: 1fr 99px
+        margin-top: 15px
+        line-height: 44px
+        @content

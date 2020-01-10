@@ -1,0 +1,13 @@
+=form-radio_button_checked($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    & + .form-radio_title > .form-radio_button#{$mixinClass}
+        &::before
+            content: $form-radio_button
+            background: linear-gradient(45deg, #8BA4F9 0%, $color_purple 100%)
+            -webkit-background-clip: text
+            -webkit-text-fill-color: transparent
+            color: $color_purple
+            margin-left: 1px
+        border-color: $color_purple

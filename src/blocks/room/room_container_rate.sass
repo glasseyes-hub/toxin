@@ -1,0 +1,8 @@
+=room_container_rate($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .room_container_rate#{$mixinClass}
+        display: flex
+        justify-content: space-between
+        @content

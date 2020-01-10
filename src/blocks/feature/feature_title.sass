@@ -1,0 +1,11 @@
+=feature_title($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .feature_title#{$mixinClass}
+        display: grid
+        padding-left: 10px
+
+        & .title-text
+            font-weight: bold
+        @content

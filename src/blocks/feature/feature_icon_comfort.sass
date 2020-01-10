@@ -1,0 +1,8 @@
+=feature_icon_comfort($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.feature_icon_comfort#{$mixinClass}
+        &::before
+            content: $features_icon_comfort
+        @content

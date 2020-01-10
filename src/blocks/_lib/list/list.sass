@@ -1,0 +1,11 @@
+@import list-element
+    
+=list($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .list#{$mixinClass}
+        display: grid
+        grid-gap: 10px
+        +list-element
+        @content

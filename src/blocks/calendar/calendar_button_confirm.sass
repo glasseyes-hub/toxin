@@ -1,0 +1,7 @@
+=calendar_button_confirm($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.calendar_button_confirm#{$mixinClass}
+        color: $color_purple
+        @content

@@ -1,0 +1,7 @@
+=header_hidden($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .header_hidden#{$mixinClass}
+        display: none
+        @content

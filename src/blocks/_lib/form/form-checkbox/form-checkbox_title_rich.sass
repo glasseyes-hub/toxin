@@ -1,0 +1,12 @@
+=form-checkbox_title_rich($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.form-checkbox_title_rich#{$mixinClass}
+        & .title-text
+            font-weight: bold
+        & .title-subtext
+            margin-top: 7px
+            font-size: 12px
+            line-height: 14px
+        @content

@@ -1,0 +1,26 @@
+@import form-quantity_button_remove
+@import form-quantity_button_add
+@import form-quantity_button_confirm
+@import form-quantity_button_clear
+@import form-quantity_button_hidden
+    
+=form-quantity_button($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .form-quantity_button#{$mixinClass}
+        width: 30px
+        height: 30px
+        border: 1px solid $color_dark25
+        border-radius: 15px
+        &:before
+            font-family: 'Montserrat'
+            font-size: 18px
+            line-height: 22px
+            color: $color_dark50
+        +form-quantity_button_remove
+        +form-quantity_button_add
+        +form-quantity_button_confirm
+        +form-quantity_button_clear
+        +form-quantity_button_hidden
+        @content

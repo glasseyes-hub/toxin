@@ -1,0 +1,90 @@
+mixin registration(extData = {})
+    - var data = {attr: {class: 'registration'}}
+
+    if extData
+        +mergeData(data, extData)
+
+    section&attributes(data.attr)
+        +title({
+            attr: {class: 'registration_title'},
+            text: {tag: 'h1', content: 'Регистрация аккаунта'}
+        })
+        +form({
+            attr: {class: 'registration_form'}
+        })
+            +container({attr:{class: 'registration_container_person'}})
+                +form-input({
+                    
+                    attr: {class: 'registration_form-input'},
+                    input: {attr: {placeholder: 'Имя'}}
+                })
+                +form-input({
+                    attr: {class: 'registration_form-input'},
+                    input: {attr: {placeholder: 'Фамилия'}}
+                })
+                +container({attr:{class: 'registration_container_form-radio'}})
+                    +form-radio({
+                        title:{
+                            text:{content:'Мужчина'}
+                        },
+                        input:{
+                            attr:{
+                                name:'registration_gender', 
+                                checked:'checked'
+                            }
+                        } 
+                    })
+                    +form-radio({
+                        title:{
+                            text:{content:'Женщина'}
+                        },
+                        input:{
+                            attr:{name:'registration_gender'}
+                        } 
+                    })
+            +container({attr: {class: 'registration_container_birthday'}})
+                +title({
+                    text:{tag: 'h3', content:'Дата рождения'}
+                })
+                +form-input({
+                    attr: {class: 'registration_form-input'},
+                    input: {attr: {placeholder: 'ДД.ММ.ГГГГ'}}
+                })
+            +container({attr: {class: 'registration_container_service'}})
+                +title({
+                    text:{tag: 'h3', content:'Данные для входа в сервис'}
+                })
+                +form-input({
+                    attr: {class: 'registration_form-input'},
+                    input: {attr: {placeholder: 'Email'}}
+                })
+                +form-input({
+                    attr: {class: 'registration_form-input'},
+                    input: {attr: {placeholder: 'Пароль'}}
+                })
+                +form-toggle({
+                    title:{
+                        text:{
+                            content:'Получать спецпредложения'
+                        }
+                    },
+                    input:{
+                        attr:{
+                            name:'registration_subscribe'
+                        }
+                    } 
+                })
+            +form-button({
+                attr: {class: 'form-button_big'},
+                content: 'Перейти к оплате'
+            })
+            +container({attr: {class: 'registration_container_login'}})
+                +title({
+                    text: {content: 'Уже есть аккаунт на Toxin'}
+                })
+                +form-button({
+                    attr:{
+                        class:'form-button_bordered'
+                    },
+                    content: 'Войти'
+                })

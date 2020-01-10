@@ -1,0 +1,16 @@
+@import 'form-pagination_container'
+@import 'form-pagination_button'
+@import 'form-pagination_title'
+    
+=form-pagination($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .form-pagination#{$mixinClass}
+        display: grid
+        grid-template-columns: 1fr
+        grid-gap: 10px
+        +form-pagination_container
+        +form-pagination_button
+        +form-pagination_title
+        @content

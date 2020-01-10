@@ -1,0 +1,7 @@
+=slider_button_selected($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.slider_button_selected#{$mixinClass}
+        background-color: #fff
+        @content

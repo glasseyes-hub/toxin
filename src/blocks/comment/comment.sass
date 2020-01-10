@@ -1,0 +1,18 @@
+@import comment_title
+@import comment_form
+@import comment_image
+@import comment_container_content
+    
+=comment($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .comment#{$mixinClass}
+        display: grid
+        grid-gap: 12px
+        grid-template-columns: 48px 1fr
+        +comment_title
+        +comment_form
+        +comment_image
+        +comment_container_content
+        @content

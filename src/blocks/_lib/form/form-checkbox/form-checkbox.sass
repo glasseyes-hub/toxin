@@ -1,0 +1,13 @@
+@import 'form-checkbox_title'
+@import 'form-checkbox_input'
+@import 'form-checkbox_button'
+    
+=form-checkbox($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .form-checkbox#{$mixinClass}
+        +form-checkbox_title 
+        +form-checkbox_input   
+        +form-checkbox_button
+        @content

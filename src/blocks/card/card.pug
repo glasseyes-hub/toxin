@@ -1,0 +1,9 @@
+mixin card(extData = {})
+    - var data = {attr: {class: 'card'}}
+
+    if extData
+        +mergeData(data, extData)
+
+    section&attributes(data.attr)
+        | #{data.content}
+        block

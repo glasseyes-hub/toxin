@@ -1,0 +1,13 @@
+@import 'form-toggle_title'
+@import 'form-toggle_input'
+@import 'form-toggle_button'
+    
+=form-toggle($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .form-toggle#{$mixinClass}
+        +form-toggle_title
+        +form-toggle_input
+        +form-toggle_button
+        @content

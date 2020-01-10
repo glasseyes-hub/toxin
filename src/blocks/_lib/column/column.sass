@@ -1,0 +1,6 @@
+=column($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .column#{$mixinClass}
+        @content

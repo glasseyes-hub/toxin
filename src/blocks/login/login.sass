@@ -1,0 +1,18 @@
+@import login_form
+@import login_container_authorization
+@import login_container_registration
+@import login_form-button
+    
+=login($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .login#{$mixinClass}
+        display: grid
+        grid-gap: 20px
+        padding: 40px 30px 30px 30px
+        +login_form
+        +login_container_authorization
+        +login_container_registration
+        +login_form-button
+        @content

@@ -1,0 +1,7 @@
+mixin image(extData = {})
+    - var data = {attr: {class: 'image'}}
+
+    if extData
+        +mergeData(data, extData)
+
+    img&attributes(data.attr)

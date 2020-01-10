@@ -1,0 +1,7 @@
+=color-example_dark5($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.color-example_dark5#{$mixinClass}
+        background-color: $color_dark5
+        @content

@@ -1,0 +1,22 @@
+mixin price-title(extData = {})
+    -
+        var data = {
+            attr: {class: 'price-title'},
+            title_room: {
+                attr: {class: 'price-title_title  price-title_title_room'},
+                text: {content: '№ 000'},
+                subtext: {content: ''}
+            },
+            title_price: {
+                attr: {class: 'price-title_title price-title_title_price'},
+                text: {content: '0₽'},
+                subtext: {content: 'В сутки'}
+            }
+        }
+
+    if extData
+        +mergeData(data, extData)
+
+    div&attributes(data.attr)
+        +title(data.title_room)
+        +title(data.title_price)

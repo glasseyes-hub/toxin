@@ -1,0 +1,11 @@
+=registration_container_person($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .registration_container_person#{$mixinClass}
+        display: grid
+        grid-gap: 10px
+        & > *
+            &:last-child
+                margin-top: -2px
+        @content

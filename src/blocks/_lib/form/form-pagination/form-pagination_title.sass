@@ -1,0 +1,7 @@
+=form-pagination_title($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .form-pagination_title#{$mixinClass}
+        margin-left: 5px
+        @content

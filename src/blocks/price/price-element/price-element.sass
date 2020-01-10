@@ -1,0 +1,16 @@
+@import price-element_button
+@import price-element_name
+@import price-element_cost
+    
+=price-element($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .price-element#{$mixinClass}
+        display: grid
+        grid-template-areas: 'name button cost'
+        grid-template-columns: 1fr 20px 79px
+        +price-element_button
+        +price-element_name
+        +price-element_cost
+        @content

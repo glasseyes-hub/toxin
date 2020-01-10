@@ -1,0 +1,13 @@
+=form-radio_title($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .form-radio_title#{$mixinClass}
+        position: relative
+        display: grid
+        grid-template-columns: 1fr
+        padding-top: 3px
+        padding-left: 30px
+        line-height: 18px
+        cursor: pointer
+        @content

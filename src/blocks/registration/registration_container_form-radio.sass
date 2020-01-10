@@ -1,0 +1,10 @@
+=registration_container_form-radio($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .registration_container_form-radio#{$mixinClass}
+        width: 100%
+        display: flex
+        & > *
+            margin-right: 20px
+        @content

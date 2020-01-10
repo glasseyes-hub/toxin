@@ -1,0 +1,25 @@
+include label/label
+include input/input
+
+include form-input/form-input
+include form-dropdown/form-dropdown
+include form-selectDate/form-selectDate
+include form-checkbox/form-checkbox
+include form-radio/form-radio
+include form-toggle/form-toggle
+include form-like/form-like
+include form-rate/form-rate
+include form-slider/form-slider
+include form-button/form-button
+include form-pagination/form-pagination
+include form-quantity/form-quantity
+
+mixin form(extData = {})
+    - var data = {}
+
+    if extData
+        +mergeData(data, extData)
+
+    form.form&attributes(data.attr)
+        | #{data.content}
+        block

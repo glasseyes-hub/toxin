@@ -1,0 +1,18 @@
+@import 'form-checkbox_button_checked'
+
+=form-checkbox_button($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .form-checkbox_button#{$mixinClass}
+        position: absolute
+        z-index: -1
+        width: 20px
+        height: 20px
+        line-height: 19px
+        margin-top: 2px
+        border: 1px solid $color_dark25
+        border-radius: 4px
+        text-align: center
+        font-weight: bold
+        @content

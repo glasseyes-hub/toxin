@@ -1,0 +1,9 @@
+=room_container_body($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .room_container_body#{$mixinClass}
+        display: grid
+        grid-gap: 10px
+        padding: 18px 20px 16px
+        @content

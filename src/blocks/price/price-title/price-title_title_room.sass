@@ -1,0 +1,23 @@
+=price-title_title_room($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.price-title_title_room#{$mixinClass}
+        display: flex
+        justify-content: flex-start
+        margin-top: 1px
+        & > .title-text
+            font-family: 'Quiсksand'
+            font-weight: bold
+            font-size: 24px
+            color: $color_dark
+            &:first-letter
+                font-size: 12px
+        & > .title-subtext
+            font-weight: bold
+            font-size: 12px
+            text-transform: uppercase
+            margin-top: 4px
+            margin-left: 6px
+            color: $color_purple
+        @content

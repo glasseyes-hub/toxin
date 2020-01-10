@@ -1,0 +1,9 @@
+mixin label(extData = {})
+    - var data = {}
+
+    if extData
+        +mergeData(data, extData)
+
+    label.label&attributes(data.attr)
+        | #{data.content}
+        block

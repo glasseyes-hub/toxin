@@ -1,0 +1,10 @@
+mixin slider(extData = {})
+    - var data = {attr: {class: 'slider'}}
+
+    if extData
+        +mergeData(data, extData)
+
+    section&attributes(data.attr)
+        +container({attr:{class:'slider_container slider_container_buttons'}})
+        +container({attr:{class:'slider_container slider_container_elements'}})
+            block

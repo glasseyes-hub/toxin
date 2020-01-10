@@ -16,7 +16,7 @@ const pages = [
 		name: 'index',
 		path: './src/pages/index.js',
 		HtmlWebpackPlugin: new HtmlWebpackPlugin({
-			template: './src/pages/templates/index.pug',
+			template: './src/templates/main.pug',
 			chunks: ['vendors', 'index'],
 			filename: 'index.html',
 		}),
@@ -25,7 +25,7 @@ const pages = [
 		name: 'search',
 		path: './src/pages/search.js',
 		HtmlWebpackPlugin: new HtmlWebpackPlugin({
-			template: './src/pages/templates/index.pug',
+			template: './src/templates/main.pug',
 			chunks: ['vendors', 'search'],
 			filename: 'search.html',
 		}),
@@ -34,7 +34,7 @@ const pages = [
 		name: 'room',
 		path: './src/pages/room.js',
 		HtmlWebpackPlugin: new HtmlWebpackPlugin({
-			template: './src/pages/templates/index.pug',
+			template: './src/templates/main.pug',
 			chunks: ['vendors', 'room'],
 			filename: 'room.html',
 		}),

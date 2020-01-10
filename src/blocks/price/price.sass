@@ -1,0 +1,13 @@
+@import price-title/price-title
+@import price-list/price-list
+@import price-element/price-element
+@import price-total/price-total
+
+=price($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    +price-title
+    +price-list
+    +price-element
+    +price-total

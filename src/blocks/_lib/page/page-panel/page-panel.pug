@@ -1,0 +1,9 @@
+mixin page-panel(extData = {})
+    - var data = {}
+
+    if extData
+        +mergeData(data, extData)
+
+    section.page-panel&attributes(data.attr)
+        | #{data.content}
+        block

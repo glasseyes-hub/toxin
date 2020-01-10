@@ -1,0 +1,25 @@
+@import footer_container_description
+@import footer_container_menu
+@import footer_container_subscribe
+@import footer_text
+@import footer_menu
+@import footer_title
+
+=footer($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .footer#{$mixinClass}
+        width: 100%
+        background-color: #fff
+        display: grid
+        grid-auto-flow: column
+        grid-gap: 20px
+        padding: 100px 0 90px
+        +footer_container_description
+        +footer_container_menu
+        +footer_container_subscribe
+        +footer_text
+        +footer_menu
+        +footer_title
+        @content

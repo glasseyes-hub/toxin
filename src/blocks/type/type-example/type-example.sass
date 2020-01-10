@@ -1,0 +1,6 @@
+=type-example($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .type-example#{$mixinClass}
+        @content

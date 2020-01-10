@@ -1,0 +1,9 @@
+=form-pagination_button_current($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.form-pagination_button_current#{$mixinClass}
+        background: $color_purple_gradient
+        color: #fff
+        font-weight: bold
+        @content

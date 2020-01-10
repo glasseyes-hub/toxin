@@ -1,0 +1,19 @@
+@import form-quantity_input
+@import form-quantity_button
+@import form-quantity_element
+@import form-quantity_controls
+    
+=form-quantity($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .form-quantity#{$mixinClass}        
+        display: grid
+        grid-template-columns: 1fr
+        grid-gap: 7px
+        padding: 7px
+        +form-quantity_input
+        +form-quantity_button
+        +form-quantity_element
+        +form-quantity_controls
+        @content

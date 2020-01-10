@@ -1,0 +1,15 @@
+=form-slider_button($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .form-slider_button#{$mixinClass}
+        position: absolute
+        background: linear-gradient(45deg, #66D2EA 0%, $color_green 100%)
+        width: 14px
+        height: 14px
+        border: 2px solid #ffffff
+        border-radius: 10px
+        cursor: pointer
+
+        &.form-slider_button_lowerPosition
+            z-index: -1

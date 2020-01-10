@@ -1,0 +1,10 @@
+=form-button_simple($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.form-button_simple#{$mixinClass}
+        background: none
+        color: $color_purple
+        width: auto
+        height: auto
+        @content

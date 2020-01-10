@@ -1,0 +1,8 @@
+=form-button_rounded($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.form-button_rounded#{$mixinClass}
+        width: 40px
+        height: 40px
+        @content

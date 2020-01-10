@@ -1,0 +1,18 @@
+=form-button_disabled($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.form-button_disabled#{$mixinClass}
+        opacity: 0.5
+        cursor: auto
+
+    &.form-button_bordered + .form-button_disabled#{$mixinClass}
+        opacity: 1
+        &:before
+            opacity: 0.5
+        @content
+    
+    &.form-button_simple + .form-button_disabled#{$mixinClass}
+        opacity: 1
+        color: $color_dark50
+        @content

@@ -1,0 +1,10 @@
+@import footer_text_subscribe
+    
+=footer_text($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .footer_text#{$mixinClass}
+        margin-top: 10px
+        +footer_text_subscribe
+        @content

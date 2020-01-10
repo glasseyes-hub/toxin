@@ -1,0 +1,8 @@
+=comment_form($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .comment_form#{$mixinClass}
+        display: flex
+        justify-content: center
+        @content

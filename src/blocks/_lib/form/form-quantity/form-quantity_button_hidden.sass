@@ -1,0 +1,7 @@
+=form-quantity_button_hidden($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.form-quantity_button_hidden#{$mixinClass}
+        visibility: hidden
+        @content

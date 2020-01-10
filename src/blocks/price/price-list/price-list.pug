@@ -1,0 +1,9 @@
+mixin price-list(extData = {})
+    - var data = {attr: {class: 'price-list'}}
+
+    if extData
+        +mergeData(data, extData)
+
+    div&attributes(data.attr)
+        each element in data.elements
+            +price-element(element)

@@ -1,0 +1,14 @@
+@import 'type-example/type-example'
+@import 'type-tag/type-tag'
+    
+=type($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .type#{$mixinClass}
+        display: grid
+        grid-template-columns: 40px 1fr
+        grid-column-gap: 30px
+        width: 445px
+        margin-bottom: 50px
+        @content

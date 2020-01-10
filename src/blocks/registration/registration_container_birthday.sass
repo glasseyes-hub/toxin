@@ -1,0 +1,10 @@
+=registration_container_birthday($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .registration_container_birthday#{$mixinClass}
+        margin-top: 10px
+        & > *
+            &:first-child
+                margin-bottom: 5px
+        @content

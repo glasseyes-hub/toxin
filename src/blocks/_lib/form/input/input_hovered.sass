@@ -1,0 +1,7 @@
+=input_hovered($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.input_hovered#{$mixinClass}
+        border: 1px solid $color_dark50
+        @content

@@ -1,0 +1,9 @@
+=form-like_button_checked($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    + .form-like_title > .form-like_button#{$mixinClass}
+        border-color: $color_purple
+        color: $color_purple
+        &::before
+            content: $form-like_button_checked

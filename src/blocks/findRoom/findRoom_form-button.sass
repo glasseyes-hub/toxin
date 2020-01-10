@@ -1,0 +1,7 @@
+=findRoom_form-button($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .findRoom_form-button#{$mixinClass}
+        margin-top: 10px
+        @content

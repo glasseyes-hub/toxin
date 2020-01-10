@@ -1,0 +1,14 @@
+@import slider_container_elements
+@import slider_container_buttons
+@import slider_button
+    
+=slider($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .slider#{$mixinClass}
+        position: relative
+        +slider_container_elements
+        +slider_container_buttons
+        +slider_button
+        @content

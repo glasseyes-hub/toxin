@@ -1,0 +1,12 @@
+=header_user($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .header_user#{$mixinClass}
+        height: 40px
+        padding-left: 30px
+        border-left: 1px solid rgba(31, 32, 65, 0.1)
+        line-height: 40px
+        font-size: 14px
+        color: $color_dark50
+        @content

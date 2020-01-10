@@ -1,0 +1,11 @@
+@import price-title_title_room
+@import price-title_title_price
+    
+=price-title_title($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .price-title_title#{$mixinClass}
+        +price-title_title_room
+        +price-title_title_price
+        @content

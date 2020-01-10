@@ -1,0 +1,14 @@
+@import findRoom_form
+@import findRoom_form-button
+    
+=findRoom($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .findRoom#{$mixinClass}
+        display: grid
+        grid-gap: 20px
+        padding: 40px 30px 30px 30px
+        +findRoom_form
+        +findRoom_form-button
+        @content

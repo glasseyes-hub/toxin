@@ -1,0 +1,7 @@
+=form-slider_input($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .form-slider_input#{$mixinClass}    
+        display: none
+        @content

@@ -1,0 +1,14 @@
+@import slider_button_selected
+    
+=slider_button($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .slider_button#{$mixinClass}
+        width: 7px
+        height: 7px
+        border: 1px solid #fff
+        border-radius: 5px
+        box-shadow: 0px 5px 5px rgba(31, 32, 65, 0.3)
+        +slider_button_selected
+        @content

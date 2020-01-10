@@ -1,0 +1,9 @@
+=header_authorization_button_bordered($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.header_authorization_button_bordered#{$mixinClass}
+        padding: 0 2px
+        & > .helper_button_border
+            padding: 8px 18px
+        @content

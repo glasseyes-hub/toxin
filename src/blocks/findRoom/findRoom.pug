@@ -1,0 +1,67 @@
+mixin findRoom(extData = {})
+    -
+        const data = {attr: {class: 'findRoom'}}
+
+    if extData
+        +mergeData(data, extData)
+
+    section&attributes(data.attr)
+        +title({
+            attr: {class: 'findRoom_title'},
+            text: {
+                tag: 'h1', 
+                content: 'Найдем номера под ваши пожелания'
+            }
+        })
+        +form({attr: {class: 'findRoom_form'}})
+            +form-selectDate({
+                attr: {class: 'findRoom_form-selectDate'},
+                arrival: {
+                    title: {text: {tag:'h3', content:'Прибытие'}},
+                    input: {
+                        attr: {
+                            class: 'js_form-input_maskDate',
+                            placeholder:'ДД.ММ.ГГГГ'
+                        }
+                    }
+                },
+                leave: {
+                    title: {text: {tag:'h3', content:'Выезд'}},
+                    input: {
+                        attr: {
+                            class:'js_form-input_maskDate',
+                            placeholder:'ДД.ММ.ГГГГ'
+                        }
+                    }
+                }
+            })
+            +form-dropdown({
+                attr: {class: 'findRoom_form-dropdown'},
+                title: {
+                    text: {
+                        tag:'h3', 
+                        content:'Гости'
+                    }
+                },
+                input: {
+                    attr: {
+                        class: 'form-dropdown_input_solid',
+                        value:'Сколько гостей',
+                        readonly:'true'
+                    }
+                },
+                body: {attr: {class: 'form-dropdown_body_solid'}}
+            })
+                +form-quantity({
+                    attr: {class: 'findRoom_form-quantity'},
+                    elements: [
+                        {content: 'Взрослые'},
+                        {content: 'Дети'},
+                        {content: 'Младенцы'}
+                    ],
+                    enableControls: true
+                })
+            +form-button({
+                attr: {class: 'findRoom_form-button form-button_big'},
+                content: 'Подобрать номер'
+            })

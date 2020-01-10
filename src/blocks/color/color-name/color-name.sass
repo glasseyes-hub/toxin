@@ -1,0 +1,8 @@
+=color-name($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .color-name#{$mixinClass}
+        align-self: end
+        margin-bottom: 2px
+        @content

@@ -1,0 +1,15 @@
+=form-checkbox_button_checked($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    & + .form-checkbox_title > .form-checkbox_button#{$mixinClass}
+        &::before
+            background-color: red
+            width: 20px
+            height: 20px
+            content: $form-checkbox_button
+            background: linear-gradient(45deg, #8BA4F9 0%, $color_purple 100%)
+            -webkit-background-clip: text
+            -webkit-text-fill-color: transparent
+            color: $color_purple
+        border-color: $color_purple

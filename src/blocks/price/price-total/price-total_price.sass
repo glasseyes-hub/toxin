@@ -1,0 +1,7 @@
+=price-total_price($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .price-total_price#{$mixinClass}        
+        font-family: 'Quiсksand'
+        @content

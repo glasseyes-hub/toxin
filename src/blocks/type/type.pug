@@ -1,0 +1,11 @@
+mixin type(extData = {})
+    - let data = {tag:{},example:{}}
+
+    if extData
+        +mergeData(data, extData)
+
+    div.type&attributes(data.attr)
+        #{data.tag.name}.type-tag&attributes(data.tag.attr)
+            | #{data.tag.content}
+        #{data.tag.name}.type-example&attributes(data.example.attr)
+            | #{data.example.content}

@@ -1,0 +1,9 @@
+=form-like_title($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .form-like_title#{$mixinClass}
+        width: 40px
+        height: 20px
+        cursor: pointer
+        @content

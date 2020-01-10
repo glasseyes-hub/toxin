@@ -1,0 +1,7 @@
+=price-element_button_hidden($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.price-element_button_hidden#{$mixinClass}
+        visibility: hidden
+        @content

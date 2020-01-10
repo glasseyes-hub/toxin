@@ -1,0 +1,28 @@
+mixin form-quantity(extData = {})
+    - var data = {attr:{class: 'js_form-quantity'}}
+    - data.element = {attr: {class: 'form-quantity_element'}}
+    - data.button_remove = {attr: {class: 'form-quantity_button form-quantity_button_remove'}}
+    - data.button_add = {attr: {class: 'form-quantity_button form-quantity_button_add'}}
+    - data.controls = {attr: {class: 'form-quantity_controls'}}
+    - data.button_clear = {attr: {class: 'form-quantity_button form-quantity_button_clear'}}
+    - data.button_confirm = {attr: {class: 'form-quantity_button form-quantity_button_confirm'}}    
+    - data.input = {attr: {class: 'form-quantity_input'}}
+
+    if extData
+        +mergeData(data, extData)
+
+    .form-quantity&attributes(data.attr)
+        if data.elements
+            each element in data.elements
+                +mergeData(element, data.element)
+                - element.input = element.input ? element.input : {attr:{value:0}} // Default value
+                +mergeData(element.input, data.input)
+                
+                +container(element)
+                    +button(data.button_remove)
+                    +input(element.input)
+                    +button(data.button_add)
+        if data.enableControls
+            +container(data.controls)
+                +button(data.button_clear)
+                +button(data.button_confirm)

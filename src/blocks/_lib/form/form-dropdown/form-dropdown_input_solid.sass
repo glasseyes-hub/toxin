@@ -1,0 +1,8 @@
+=form-dropdown_input_solid($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.form-dropdown_input_solid#{$mixinClass}
+        border-bottom-left-radius: 0px
+        border-bottom-right-radius: 0px
+        @content

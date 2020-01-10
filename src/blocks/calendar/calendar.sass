@@ -1,0 +1,13 @@
+@import calendar_container_datepicker
+@import calendar_container_controls
+@import calendar_button
+    
+=calendar($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .calendar#{$mixinClass}
+        +calendar_container_datepicker
+        +calendar_container_controls
+        +calendar_button
+        @content

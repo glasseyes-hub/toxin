@@ -1,0 +1,19 @@
+@import price-element_button_hidden
+    
+=price-element_button($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .price-element_button#{$mixinClass}
+        grid-area: 'button'
+        content: 'i'
+        width: 20px
+        height: 20px
+        border: 1px solid $color_dark25
+        border-radius: 10px
+        color: $color_dark25
+        & > div // fix
+            &::before
+                content: 'i'
+        +price-element_button_hidden
+        @content

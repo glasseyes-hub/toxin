@@ -1,0 +1,9 @@
+mixin page-content(extData = {})
+    - var data = {}
+
+    if extData
+        +mergeData(data, extData)
+
+    section.page-content&attributes(data.attr)
+        | #{data.content}
+        block

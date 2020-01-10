@@ -1,0 +1,18 @@
+@import price-total_dots
+@import price-total_price
+    
+=price-total($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .price-total#{$mixinClass}
+        display: flex
+        flex-direction: row
+        font-weight: bold
+        font-size: 19px
+        line-height: 24px
+        color: $color_dark
+        margin-top: 10px
+        +price-total_dots
+        +price-total_price
+        @content

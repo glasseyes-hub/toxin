@@ -1,0 +1,15 @@
+mixin form-toggle(extData = {})
+    - var data = {}
+    - data.label = {attr:{class: 'form-toggle_label'}}
+    - data.title = {attr:{class: 'form-toggle_title'}}
+    - data.input = {attr:{class: 'form-toggle_input', type:'checkbox'}}
+    - data.button = {attr:{class: 'form-toggle_button'}}
+
+    if extData
+        +mergeData(data, extData)
+
+    div.form-toggle&attributes(data.attr)
+        +label(data.label)
+            +input(data.input)
+            +title(data.title)
+                +button(data.button)

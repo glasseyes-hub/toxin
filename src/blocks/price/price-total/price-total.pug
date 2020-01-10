@@ -1,0 +1,11 @@
+mixin price-total(extData = {})
+    - var data = {attr: {class: 'price-total'}}
+
+    if extData
+        +mergeData(data, extData)
+
+    div&attributes(data.attr)
+        span.price-total_title Итого
+        .price-total_dots
+        span.price-total_price&attributes(data.price.attr)
+            | #{data.price.content}

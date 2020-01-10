@@ -1,0 +1,7 @@
+=card_room($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.card_room#{$mixinClass}
+        width: 270px
+        @content

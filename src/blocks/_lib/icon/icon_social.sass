@@ -1,0 +1,20 @@
+@import icon_social_twitter
+@import icon_social_facebook
+@import icon_social_instagram
+    
+=icon_social($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.icon_social#{$mixinClass}
+        font-family: 'Font Awesome'
+        &::before
+            background: $color_purple_gradient
+            -webkit-background-clip: text
+            -webkit-text-fill-color: transparent
+            font-size: 24px
+            line-height: 23px
+        +icon_social_twitter
+        +icon_social_facebook
+        +icon_social_instagram
+        @content

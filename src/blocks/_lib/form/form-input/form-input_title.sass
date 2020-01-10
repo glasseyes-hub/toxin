@@ -1,0 +1,6 @@
+=form-input_title($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .form-input_title#{$mixinClass}
+        @content

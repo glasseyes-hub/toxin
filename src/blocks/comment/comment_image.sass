@@ -1,0 +1,11 @@
+=comment_image($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .comment_image#{$mixinClass}
+        width: 48px
+        height: 48px
+        border-radius: 30px
+
+        background-color: red
+        @content

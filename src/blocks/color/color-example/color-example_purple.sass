@@ -1,0 +1,7 @@
+=color-example_purple($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.color-example_purple#{$mixinClass}
+        background-color: $color_purple
+        @content

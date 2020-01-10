@@ -1,0 +1,11 @@
+mixin simpleFooter(extData = {})
+    - var data = {attr: {class: 'simpleFooter'}}
+
+    if extData
+        +mergeData(data, extData)
+
+    section&attributes(data.attr)
+        +logo
+        .simpleFooter-description
+            | Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam eget nullam pellentesque aliquam curabitur cociis.
+        +socialNetworks

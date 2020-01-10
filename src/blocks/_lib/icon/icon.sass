@@ -1,0 +1,10 @@
+@import icon_social
+    
+=icon($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .icon#{$mixinClass}
+        font-family: 'Material Icons'
+        +icon_social
+        @content

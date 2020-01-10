@@ -1,0 +1,13 @@
+=slider_container_buttons($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .slider_container_buttons#{$mixinClass}
+        position: absolute
+        display: flex
+        flex-direction: row
+        bottom: 16px
+        right: 11px
+        & > *            
+            margin-right: 4px
+        @content

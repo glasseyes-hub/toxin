@@ -1,0 +1,15 @@
+mixin form-checkbox(extData = {})
+    - var data = {}
+    - data.label = {attr:{class:'form-checkbox_label'}}
+    - data.title = {attr:{class:'form-checkbox_title'}}
+    - data.input = {attr:{class:'form-checkbox_input', type:'checkbox'}}
+    - data.button = {attr:{class:'form-checkbox_button'}}
+
+    if extData
+        +mergeData(data, extData)
+
+    div.form-checkbox&attributes(data.attr)
+        +label(data.label)
+            +input(data.input)
+            +title(data.title)
+                +button(data.button)

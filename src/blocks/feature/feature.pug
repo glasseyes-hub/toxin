@@ -1,0 +1,15 @@
+mixin feature(extData = {})
+    -
+        var data = {
+            attr: {class: 'feature'},
+            icon: {attr: {class: 'feature_icon'}},
+            title: {attr: {class: 'feature_title'}}
+        }
+
+
+    if extData
+        +mergeData(data, extData)
+
+    section&attributes(data.attr)
+        +icon(data.icon)
+        +title(data.title)

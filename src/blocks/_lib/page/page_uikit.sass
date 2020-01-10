@@ -1,0 +1,9 @@
+=page_uikit($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.page_uikit#{$mixinClass}
+        display: grid
+        grid-template-columns: 1fr
+        grid-gap: 20px
+        @content

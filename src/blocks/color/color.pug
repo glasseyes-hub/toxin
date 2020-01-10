@@ -1,0 +1,13 @@
+mixin color(extData = {})
+    - let data = {example:{},name:{},hex:{}}
+
+    if extData
+        +mergeData(data, extData)
+    
+    div.color&attributes(data.attr)
+        div.color-example&attributes(data.example.attr)
+            | #{data.example.content}
+        h2.color-name&attributes(data.name.attr) 
+            | #{data.name.content}
+        div.color-hex&attributes(data.hex.attr) 
+            | #{data.hex.content}

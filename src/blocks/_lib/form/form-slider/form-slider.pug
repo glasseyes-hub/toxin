@@ -1,0 +1,28 @@
+mixin form-slider(extData = {})
+    - var data = {attr:{class:'js_form-slider'}}
+    - data.defaultPoints = [0]
+    - data.label = {attr: {class:'form-slider_label'}}
+    - data.title = {attr: {class:'form-slider_title'}}
+    - data.input = {attr: {class:'form-slider_input', type:'range'}}
+    - data.container = {attr: {class:'form-slider_container'}}
+    - data.element = {attr: {class:'form-slider_element form-slider_element_trace'}}
+    - data.button = {attr: {class:'form-slider_button'}}
+
+    if extData
+        +mergeData(data, extData)
+
+    div.form-slider&attributes(data.attr)
+        +title(data.title)
+        +label(data.label)
+            - for (let i = 1; i <= data.defaultPoints.length; i++) {
+                - data.input.attr.name = 'formSlider_' + i
+                - data.input.attr.value = data.defaultPoints[i - 1]
+                +input(data.input)
+            - }
+            +container(data.container)
+                div.form-slider_trace
+                - for (let i = 1; i <= data.defaultPoints.length; i++) {
+                    - data.button.attr = data.button.attr?data.button.attr:{}
+                    - data.button.attr.name = 'formSlider_' + i
+                    +button(data.button)
+                - }

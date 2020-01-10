@@ -1,0 +1,15 @@
+mixin form-radio(extData = {})
+    - var data = {}
+    - data.label = {attr:{class: 'form-radio_label'}}
+    - data.title = {attr:{class: 'form-radio_title'}}
+    - data.input = {attr:{class: 'form-radio_input', type:'radio'}}
+    - data.button = {attr:{class: 'form-radio_button'}}
+
+    if extData
+        +mergeData(data, extData)
+
+    div.form-radio&attributes(data.attr)
+        +label(data.label)
+            +input(data.input)  
+            +title(data.title)
+                +button(data.button)

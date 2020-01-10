@@ -1,0 +1,26 @@
+@import 'color-example_dark'
+@import 'color-example_dark5'
+@import 'color-example_dark25'
+@import 'color-example_dark50'
+@import 'color-example_dark75'
+@import 'color-example_green'
+@import 'color-example_purple'
+    
+=color-example($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .color-example#{$mixinClass}
+        grid-row: 1/3 
+        width: 70px
+        height: 70px
+        border-radius: 6px
+
+        +color-example_dark
+        +color-example_dark25
+        +color-example_dark50
+        +color-example_dark75
+        +color-example_green
+        +color-example_purple
+        +color-example_dark5
+        @content

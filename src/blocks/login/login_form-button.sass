@@ -1,0 +1,7 @@
+=login_form-button($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .login_form-button#{$mixinClass}
+        margin-top: 6px
+        @content

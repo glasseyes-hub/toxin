@@ -1,0 +1,9 @@
+=footer_container_menu($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .footer_container_menu#{$mixinClass}
+        width: 600px
+        display: grid
+        grid-template-columns: repeat(3, 1fr)
+        @content

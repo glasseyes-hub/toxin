@@ -1,0 +1,16 @@
+mixin form-input(extData = {})
+    - let data = {}
+    - data.label = {attr: {class: 'form-input_label'}}
+    - data.input = {attr: {class: 'form-input_input'}}
+    - data.title = {attr: {class: 'form-input_title'}}
+    - data.button = {attr: {class: 'form-input_button'}, enable:false}
+
+    if extData
+        +mergeData(data, extData)
+
+    div.form-input&attributes(data.attr)
+        +label(data.label)
+            +title(data.title)
+            +input(data.input)
+            - if(data.button.enable)
+                +button(data.button)

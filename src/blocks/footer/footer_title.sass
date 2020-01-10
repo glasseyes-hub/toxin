@@ -1,0 +1,8 @@
+=footer_title($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .footer_title#{$mixinClass}
+        margin-top: 4px
+        margin-bottom: 12px
+        @content

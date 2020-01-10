@@ -1,0 +1,17 @@
+=price-title_title_price($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.price-title_title_price#{$mixinClass}
+        display: flex
+        justify-content: flex-end
+        margin-top: 5px
+        & > .title-text
+            font-weight: bold
+            color: $color_dark50
+        & > .title-subtext
+            font-size: 12px
+            text-transform: lowercase
+            margin-top: 1px
+            margin-left: 6px
+        @content

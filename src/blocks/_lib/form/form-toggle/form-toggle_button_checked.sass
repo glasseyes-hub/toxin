@@ -1,0 +1,18 @@
+=form-toggle_button_checked($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    & + .form-toggle_title > .form-toggle_button#{$mixinClass}
+        flex-direction: row-reverse
+        border-color: $color_purple
+
+        &::before
+            font-family: 'Material Icons'
+            content: $form-toggle_button
+            background: linear-gradient(180deg, $color_purple 0%, #8BA4F9 100%)
+            -webkit-background-clip: text
+            -webkit-text-fill-color: transparent
+            font-size: 14px
+            color: $color_purple
+            line-height: 19px   
+        @content

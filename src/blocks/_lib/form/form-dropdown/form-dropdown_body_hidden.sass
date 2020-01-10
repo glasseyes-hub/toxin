@@ -1,0 +1,7 @@
+=form-dropdown_body_hidden($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.form-dropdown_body_hidden#{$mixinClass}
+        display: none
+        @content

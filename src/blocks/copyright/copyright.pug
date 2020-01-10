@@ -1,0 +1,10 @@
+mixin copyright(extData = {})
+    - var data = {attr: {class: 'copyright'}}
+
+    if extData
+        +mergeData(data, extData)
+
+    section&attributes(data.attr)
+        .copyright_text
+            | Copyright © 2018 Toxin UI Kit. All rights reserved.
+        +socialNetworks

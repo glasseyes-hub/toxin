@@ -1,0 +1,24 @@
+@import 'form-pagination_button_arrow_prev'    
+@import 'form-pagination_button_arrow_next'
+    
+=form-pagination_button_arrow($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    &.form-pagination_button_arrow#{$mixinClass}
+        background: $color_green_gradient
+        color: #fff
+        font-weight: bold
+        position: relative
+        &:before
+            width: 40px
+            height: 40px
+            position: absolute
+            top: 0
+            right: 0
+            font-weight: normal
+            font-size: 24px
+            line-height: 40px
+        +form-pagination_button_arrow_prev
+        +form-pagination_button_arrow_next
+        @content

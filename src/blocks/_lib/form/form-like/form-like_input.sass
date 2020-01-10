@@ -1,0 +1,9 @@
+=form-like_input($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .form-like_input#{$mixinClass}
+        display: none
+        &:checked 
+             +form-like_button_checked
+        @content

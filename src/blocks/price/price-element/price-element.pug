@@ -1,0 +1,21 @@
+mixin price-element(extData = {})
+    -
+        var data = {
+            attr: {class: 'price-element'},
+            button: {
+                attr: {class: 'price-element_button'},
+                show: false
+            }
+        }
+
+
+    if extData
+        +mergeData(data, extData)
+
+    div&attributes(data.attr)
+        span.price-element_name&attributes(data.name.attr)
+            | #{data.name.content}
+        - if(!data.button.show)  data.button.attr.class += ' price-element_button_hidden'
+        +button(data.button)
+        span.price-element_cost&attributes(data.cost.attr)
+            | #{data.cost.content}

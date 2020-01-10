@@ -1,0 +1,13 @@
+=registration_container_service($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .registration_container_service#{$mixinClass}
+        margin-top: 5px
+        & > * 
+            margin-bottom: 10px
+            &:first-child
+                margin-bottom: 5px
+            &:last-child
+                margin-top: -2px
+        @content

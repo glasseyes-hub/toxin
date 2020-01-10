@@ -1,0 +1,18 @@
+@import form-dropdown_body_hidden
+@import form-dropdown_body_solid
+
+=form-dropdown_body($mixinClass:'')
+    @if $mixinClass != ''
+        $mixinClass: '.#{$mixinClass}'
+
+    .form-dropdown_body#{$mixinClass}
+        position: absolute
+        background-color: white
+        min-width: 100%
+        margin-top: 5px
+        border: 1px solid $color_dark25
+        border-radius: 4px
+        z-index: 1
+        +form-dropdown_body_hidden
+        +form-dropdown_body_solid
+        @content
