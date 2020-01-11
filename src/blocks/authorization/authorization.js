@@ -12,15 +12,18 @@ export class Authorization extends Block {
 
 		const content = [
 			new Container({
-				attr: { class: 'header_authorization' },
+				attr: { class: 'authorization' },
 				content: [
 					new Button({
-						attr: { class: 'button_bordered hader_authorization_button' },
-						content: 'LOGIN',
+						attr: {
+							class:
+								'button_bordered authorization_button authorization_button_bordered',
+						},
+						content: 'ВОЙТИ',
 					}),
 					new Button({
-						attr: { class: 'button_bordered hader_authorization_button' },
-						content: 'REGISTER',
+						attr: { class: 'button_filled authorization_button' },
+						content: 'ЗАРЕГИСТРИРОВАТЬСЯ',
 					}),
 				],
 			}),

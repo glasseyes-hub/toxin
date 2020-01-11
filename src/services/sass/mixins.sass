@@ -1,0 +1,11 @@
+=font-face($family, $path, $svg: false, $weight: normal, $style: normal)
+    @font-face
+        font-family: $family
+        src: url('#{$path}.eot')
+        src: url('#{$path}.eot?#iefix') format('embedded-opentype')
+        src: url('#{$path}.woff') format('woff')
+        src: url('#{$path}.ttf') format('truetype')
+        @if $svg 
+            src: url('#{$path}.svg##{$svg}') format('svg')
+        font-weight: $weight
+        font-style: $style

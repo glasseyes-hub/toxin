@@ -2,18 +2,16 @@ export const fakeData = {
 	menuList: [
 		{ content: 'О нас' },
 		{
-			content: 'Услуги',
 			submenu: {
-				title: 'title1',
+				title: 'Услуги',
 				content: [{ content: 'Трансфер' }, { content: 'Экскурсии' }],
 			},
 		},
 		{ content: 'Вакансии' },
 		{ content: 'Новости' },
 		{
-			content: 'Соглашеня',
 			submenu: {
-				title: 'title2',
+				title: 'Соглашения',
 				content: [{ content: 'Договор' }],
 			},
 		},

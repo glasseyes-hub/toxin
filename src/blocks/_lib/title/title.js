@@ -38,6 +38,7 @@ export class Title extends Block {
 					tag: 'span',
 					...subtext,
 				}),
+			...options.content,
 		];
 
 		this.addContent(content);

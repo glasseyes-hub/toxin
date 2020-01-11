@@ -1,3 +1,4 @@
+import '../templates/main.sass';
 import { fakeData } from '../services/js/fakeData';
 import { Header } from '../blocks/header/header';
 import { Menu } from '../blocks/menu/menu';
@@ -17,7 +18,6 @@ const page = {
 };
 const header = new Header();
 const menu = new Menu({
-	attr: { class: 'hello' },
 	content: fakeData.menuList,
 });
 
@@ -28,4 +28,3 @@ header.controls.addContent([menu, authorization]);
 page.header.node.appendChild(header.node);
 
 console.log(header);
-console.log(header.node);

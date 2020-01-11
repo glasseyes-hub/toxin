@@ -1,11 +1,12 @@
 @import header_user
-@import header_controls
 @import header_hidden
-@import header_authorization
     
-
 .header
     width: 100%
-    padding: 15px 0
     display: flex
     justify-content: space-between
+
+    .header_controls
+        display: grid
+        grid-auto-flow: column
+        grid-gap: 20px

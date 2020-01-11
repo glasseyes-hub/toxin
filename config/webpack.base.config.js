@@ -39,6 +39,10 @@ const pages = [
 			filename: 'room.html',
 		}),
 	},
+	{
+		name: 'sass',
+		path: './src/templates/main.sass',
+	},
 ];
 
 const entires = getEntires(pages);
@@ -127,7 +131,9 @@ module.exports = {
 		],
 	},
 	plugins: [
-		...pages.map(({ HtmlWebpackPlugin }) => HtmlWebpackPlugin),
+		...pages
+			.filter(({ HtmlWebpackPlugin }) => HtmlWebpackPlugin)
+			.map(({ HtmlWebpackPlugin }) => HtmlWebpackPlugin),
 		new MiniCssExtractPlugin({
 			filename: `css/[name].css`, // [hash] для добавления хеша к имени файла
 		}),

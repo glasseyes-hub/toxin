@@ -3,34 +3,23 @@
 .menu
     display: grid
     grid-auto-flow: column
-    grid-gap: 30px
-    height: 100%
+    grid-gap: 20px
 
-    & .menu_dropdown
+    .menu_dropdown
         font-family: 'Montserrat'
         font-size: 14px
         line-height: 17px
-        height: 17px
         color: $color_dark50
         margin-top: 12px
-        margin-right: 12px
 
-        & .dropdown_button
-            padding: 0
-            right: -24px
-            
-            &::before                
-                color: $color_dark50
-
-        & .dropdown_container
+        .dropdown_container
             position: absolute
             border: 1px solid $color_dark5
             width: 200px
-            margin-top: 26px
-            left: -70px
+            margin-top: 20px
             z-index: 1
 
-            & > *
+            > *
                 width: 100%
                 padding: 10px 0
                 background-color: #fff
@@ -39,7 +28,7 @@
                 &:last-child
                     border-bottom: none
 
-    & .menu_button
+    .menu_button
         font-family: 'Montserrat'
         font-size: 14px
         line-height: 17px
