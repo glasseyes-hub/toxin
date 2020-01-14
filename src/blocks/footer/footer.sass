@@ -1,25 +1,30 @@
-@import footer_container_description
-@import footer_container_menu
-@import footer_container_subscribe
-@import footer_text
-@import footer_menu
-@import footer_title
+.footer
+    width: 100%
+    background-color: #fff
+    display: grid
+    grid-template-columns: 260px 600px 260px  
+    grid-gap: 20px
+    padding: 100px 0 87px
 
-=footer($mixinClass:'')
-    @if $mixinClass != ''
-        $mixinClass: '.#{$mixinClass}'
+    .footer_about
+        .footer_description
+            margin-top: 10px
 
-    .footer#{$mixinClass}
-        width: 100%
-        background-color: #fff
+    .footer_menu
         display: grid
-        grid-auto-flow: column
-        grid-gap: 20px
-        padding: 100px 0 90px
-        +footer_container_description
-        +footer_container_menu
-        +footer_container_subscribe
-        +footer_text
-        +footer_menu
-        +footer_title
-        @content
+        grid-template-columns: repeat(3, 1fr)
+
+    .footer_subscribe
+        .footer_title
+            margin: 5px 0 12px
+            font-weight: bold
+            font-size: 12px
+            line-height: 15px
+            text-transform: uppercase
+
+        .footer_description
+            margin-top: 17px
+
+        .footer_form
+            margin-top: 23px
+

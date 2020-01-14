@@ -11,21 +11,16 @@ export class Authorization extends Block {
 		super({ template, attr });
 
 		const content = [
-			new Container({
-				attr: { class: 'authorization' },
-				content: [
-					new Button({
-						attr: {
-							class:
-								'button_bordered authorization_button authorization_button_bordered',
-						},
-						content: 'ВОЙТИ',
-					}),
-					new Button({
-						attr: { class: 'button_filled authorization_button' },
-						content: 'ЗАРЕГИСТРИРОВАТЬСЯ',
-					}),
-				],
+			new Button({
+				attr: {
+					class:
+						'button_bordered authorization_button authorization_button_bordered',
+				},
+				content: 'ВОЙТИ',
+			}),
+			new Button({
+				attr: { class: 'button_filled authorization_button' },
+				content: 'ЗАРЕГИСТРИРОВАТЬСЯ',
 			}),
 		];
 

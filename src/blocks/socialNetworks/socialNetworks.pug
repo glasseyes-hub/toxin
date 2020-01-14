@@ -1,13 +1,1 @@
-mixin socialNetworks(extData = {})
-    - var data = {attr: {class: 'socialNetworks'}}
-
-    if extData
-        +mergeData(data, extData)
-
-    section&attributes(data.attr)
-        a(href='https://twitter.com' target="_blank" alt='twitter')
-            +icon({attr:{class:'icon_social icon_social_twitter'}})
-        a(href='https://facebook.com' target="_blank" alt='facebook')
-            +icon({attr:{class:'icon_social icon_social_facebook'}})
-        a(href='https://instagram.com' target="_blank" alt='instagram')
-            +icon({attr:{class:'icon_social icon_social_instagram'}})
+section.socialNetworks&attributes(attr)

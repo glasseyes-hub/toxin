@@ -1,7 +1,1 @@
-mixin input(extData = {})
-    - var data = {}
-
-    if extData
-        +mergeData(data, extData)
-
-    input.input(type='text')&attributes(data.attr)
+input.input(type='text')&attributes(attr)

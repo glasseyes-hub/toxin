@@ -1,14 +1,9 @@
-@import copyright_container_wrap
-@import copyright_container_social
-    
-=copyright($mixinClass:'')
-    @if $mixinClass != ''
-        $mixinClass: '.#{$mixinClass}'
-    
-    +copyright_container_wrap
-    .copyright#{$mixinClass}
-        display: flex
-        justify-content: space-between
-        padding: 23px 0 18px
-        +copyright_container_social
-        @content
+.copyright
+    display: flex
+    justify-content: space-between
+    padding: 25px 0
+
+    .copyright_container_social        
+        display: grid
+        grid-auto-flow: column
+        grid-gap: 23px

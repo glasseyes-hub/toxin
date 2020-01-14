@@ -1,14 +1,16 @@
-   
-@import 'form-input_label'
-@import 'form-input_title'
-@import 'form-input_button'
-    
-=form-input($mixinClass:'')
-    @if $mixinClass != ''
-        $mixinClass: '.#{$mixinClass}'
+@import '../../../../services/sass/variables'
 
-    .form-input#{$mixinClass}
-        +form-input_label
-        +form-input_title
-        +form-input_button
-        @content
+.form-input
+    .form-input_label
+        position: relative
+
+    .form-input_button
+        position: absolute
+        right: 0
+        padding: 0 10px
+        height: 44px
+        cursor: pointer
+        &::before
+            content: $form-input_button
+            font-size: 24px
+            color: $color_purple

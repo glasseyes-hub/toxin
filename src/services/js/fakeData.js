@@ -1,19 +1,54 @@
 export const fakeData = {
-	menuList: [
-		{ content: 'О нас' },
-		{
-			submenu: {
-				title: 'Услуги',
-				content: [{ content: 'Трансфер' }, { content: 'Экскурсии' }],
+	// user: {
+	// 	name: 'Cosmin Negoita',
+	// },
+	header: {
+		menu: [
+			{ button: 'О нас' },
+			{
+				dropdown: {
+					title: 'Услуги',
+					content: [{ button: 'Трансфер' }, { button: 'Экскурсии' }],
+				},
 			},
-		},
-		{ content: 'Вакансии' },
-		{ content: 'Новости' },
-		{
-			submenu: {
-				title: 'Соглашения',
-				content: [{ content: 'Договор' }],
+			{ button: 'Вакансии' },
+			{ button: 'Новости' },
+			{
+				dropdown: {
+					title: 'Соглашения',
+					content: [{ button: 'Договор' }],
+				},
 			},
-		},
-	],
+		],
+	},
+	footer: {
+		menu: [
+			{
+				content: [
+					{ title: 'Навигация' },
+					{ button: 'О нас' },
+					{ button: 'Новости' },
+					{ button: 'Служба поддержки' },
+					{ button: 'Услуги' },
+				],
+			},
+			{
+				content: [
+					{ title: 'О нас' },
+					{ button: 'О сервисе' },
+					{ button: 'Наша команда' },
+					{ button: 'Вакансии' },
+					{ button: 'Инвесторы' },
+				],
+			},
+			{
+				content: [
+					{ title: 'Служба поддержки' },
+					{ button: 'Соглашения' },
+					{ button: 'Сообщества' },
+					{ button: 'Связь с нами' },
+				],
+			},
+		],
+	},
 };
