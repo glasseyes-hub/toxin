@@ -12,11 +12,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 			errors: true,
 		},
 		contentBase: './dist',
+		hot: true,
 	},
 	plugins: [
 		new webpack.SourceMapDevToolPlugin({
 			filename: '[file].map',
 		}),
+		new webpack.HotModuleReplacementPlugin(),
 	],
 });
 

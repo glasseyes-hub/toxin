@@ -2,7 +2,7 @@ import { Block } from '../../../services/js/block';
 import { Container } from '../container/container';
 
 export class Button extends Block {
-	constructor(options) {
+	constructor(options = {}) {
 		const { attr } = options;
 		const template = require('./button.pug');
 		require('./button.sass');
@@ -16,6 +16,6 @@ export class Button extends Block {
 			}),
 		];
 
-		this.addContent(content);
+		this.setContent(content);
 	}
 }

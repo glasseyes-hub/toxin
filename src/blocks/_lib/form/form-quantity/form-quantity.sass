@@ -1,19 +1,72 @@
-@import form-quantity_input
-@import form-quantity_button
-@import form-quantity_element
-@import form-quantity_controls
-    
-=form-quantity($mixinClass:'')
-    @if $mixinClass != ''
-        $mixinClass: '.#{$mixinClass}'
+@import '../../../../services/sass/variables'
 
-    .form-quantity#{$mixinClass}        
+.form-quantity   
+    display: grid
+    grid-template-columns: 1fr
+    grid-gap: 7px
+    padding: 7px
+
+    .form-quantity_element
         display: grid
-        grid-template-columns: 1fr
-        grid-gap: 7px
-        padding: 7px
-        +form-quantity_input
-        +form-quantity_button
-        +form-quantity_element
-        +form-quantity_controls
-        @content
+        grid-template-columns: 1fr 30px 30px 30px
+        width: 100%
+        padding-left: 8px
+        font-weight: bold
+        line-height: 30px
+        color: $color_dark
+
+    .form-quantity_input
+        width: 30px
+        height: 30px
+        line-height: 22px
+        text-align: center
+        padding-left: 0px
+        padding-right: 0px
+        border: none
+        font-weight: bold
+
+    .form-quantity_button
+        width: 30px
+        height: 30px
+        border: 1px solid $color_dark25
+        border-radius: 15px
+        &:before
+            font-family: 'Montserrat'
+            font-size: 18px
+            line-height: 22px
+            color: $color_dark50
+        
+        &_add
+            &:before
+                content: '+'
+        &_remove
+            &:before
+                content: '-' 
+        &_hidden
+            visibility: hidden
+
+        &_clear,
+        &_confirm
+            width: auto
+            padding: 0
+            margin-left: 8px
+            border: none
+            border-radius: 0
+            self-align: right
+            &:before
+                content: 'Очистить'
+                font-size: 12px    
+                line-height: 15px
+                font-weight: bold
+                text-transform: uppercase
+                color: $color_dark50
+
+        &_confirm
+            &:before
+                content: 'Применить'
+                color: $color_purple
+
+    .form-quantity_controls
+        display: flex
+        justify-content: space-between
+        margin-top: 3px

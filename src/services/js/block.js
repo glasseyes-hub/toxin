@@ -1,34 +1,43 @@
 export class Block {
 	constructor({ template, ...options }) {
-		this.template = template;
-		this.node = this.createNode(options);
-		this.content = options.content ? this.contentHandler(options.content) : [];
-		this.hidden = this.node.classList.contains('-hidden-') ? true : false;
+		this.node = this.createNode(template, options);
+
+		this.content = {
+			node: this.node,
+			set list(list = []) {
+				this._list = Array.isArray(list) ? list : [list];
+			},
+			get list() {
+				return this._list;
+			},
+		};
+
+		this.isHidden = this.node.classList.contains('-hidden-') ? true : false;
+
+		options.content && this.setContent(options.content);
 	}
-	createNode(options) {
+	createNode(template = require('../pug/block.pug'), options) {
 		const div = document.createElement('div');
-		div.innerHTML = this.template(options);
+		div.innerHTML = template(options);
 		return div.firstChild;
 	}
 	contentHandler(list) {
-		list = Array.isArray(list) ? list : [list];
-
-		return list.map(elem => {
-			typeof elem === 'object'
-				? this.node.appendChild(elem.node)
-				: (this.node.innerHTML = elem);
-
-			return elem;
-		});
+		return Array.isArray(list) ? list : [list];
 	}
 	appendContent(content) {
-		this.content.push(...this.contentHandler(content));
+		this.setContent([...this.content.list, ...this.contentHandler(content)]);
 	}
 	prependContent(content) {
-		this.content.unshift(...this.contentHandler(content));
+		this.setContent([...this.contentHandler(content), ...this.content.list]);
 	}
-	setContent(content) {
-		this.content = this.contentHandler(content);
+	setContent(content, contentNode = this.content.node) {
+		this.content.list = content;
+
+		this.content.list.forEach(content => {
+			typeof content === 'object'
+				? contentNode.appendChild(content.node)
+				: (contentNode.innerHTML = content);
+		});
 	}
 	addContent(content) {
 		this.setContent(content);
@@ -40,12 +49,12 @@ export class Block {
 		return element;
 	}
 	hide() {
-		this.hidden = true;
-		this.node.classList.add('-hidden-');
+		this.isHidden = true;
+		this.setStatus('hidden');
 	}
 	show() {
-		this.hidden = false;
-		this.node.classList.remove('-hidden-');
+		this.isHidden = false;
+		this.removeStatus('hidden');
 	}
 	setListener({ type, callbackfn }) {
 		if (callbackfn) {
@@ -61,5 +70,14 @@ export class Block {
 	onChange(callbackfn) {
 		const type = 'change';
 		this.setListener({ type, callbackfn });
+	}
+	on(type, callbackfn) {
+		this.setListener({ type, callbackfn });
+	}
+	setStatus(status) {
+		this.node.classList.add(`-${status}-`);
+	}
+	removeStatus(status) {
+		this.node.classList.remove(`-${status}-`);
 	}
 }

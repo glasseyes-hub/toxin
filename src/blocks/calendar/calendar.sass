@@ -1,13 +1,103 @@
-@import calendar_container_datepicker
-@import calendar_container_controls
-@import calendar_button
-    
-=calendar($mixinClass:'')
-    @if $mixinClass != ''
-        $mixinClass: '.#{$mixinClass}'
+@import '../../services/sass/variables'
 
-    .calendar#{$mixinClass}
-        +calendar_container_datepicker
-        +calendar_container_controls
-        +calendar_button
-        @content
+.calendar
+    position: absolute
+    background-color: #fff
+    z-index: 1
+    border: 1px solid rgba(31, 32, 65, 0.25)
+    box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05)
+    border-radius: 4px
+    margin-top: 5px
+    left: 0
+
+    .calendar_container_datepicker
+        & .datepicker
+            width: 100%
+            border: none
+            & .datepicker--nav
+                padding: 18px 15px
+                border: none
+                & .datepicker--nav-title
+                    font-size: 19px
+                    line-height: 24px
+                    font-weight: bold
+                    color: $color_dark
+                    & > *
+                        color: $color_dark
+                & .datepicker--nav-action
+                    & > svg
+                        display: none
+                    &::before
+                        font-family: 'Material Icons'
+                        font-size: 26px
+                        color: $color_purple
+                    &:first-child
+                        &::before                        
+                            content: '\e5c4'
+                    &:last-child
+                        &::before                        
+                            content: '\e5c8'
+
+            & .datepicker--content
+                padding: 12px 18px 15px
+                & .datepicker--day-name
+                    font-weight: bold
+                    color: $color_purple
+                    text-transform: none
+                & .datepicker--cells 
+                    margin-top: 7px
+                    & .datepicker--cell
+                        width: 40px
+                        height: 40px
+                        font-size: 12px
+                        line-height: 15px
+                        color: $color_dark50
+                        border-radius: 50%
+                        border: none
+
+                        &.-other-month- 
+                            color: $color_dark25
+                        &.-current-
+                            background: $color_green_gradient
+                            color: #ffffff
+                            font-weight: bold
+                        &.-selected-,
+                        &.-focus-,
+                        &.-range-from-,
+                        &.-range-to-
+                            background: $color_purple_gradient
+                            color: #ffffff
+                            font-weight: bold
+                        &.-range-from-,
+                        &.-range-to-
+                            &::after
+                                position: absolute
+                                right: 0
+                                content: ' '
+                                background: linear-gradient(180deg, rgba(188,156,255, .25) 0%, rgba(139,164,249, .25) 100%)
+                                width: 50%
+                                height: 100%
+                        &.-in-range-
+                            background: linear-gradient(180deg, rgba(188,156,255, .25) 0%, rgba(139,164,249, .25) 100%)
+                            border-radius: 0
+                        &.-range-to-
+                            &::after
+                                left: 0
+
+    .calendar_container_controls
+        width: 100%
+        display: flex
+        justify-content: space-between
+        padding: 8px 18px 18px
+
+    .calendar_button
+        font-weight: bold
+        font-size: 12px
+        line-height: 15px
+        text-transform: uppercase
+
+        &.calendar_button_confirm
+            color: $color_purple
+
+        &.calendar_button_clear
+            color: $color_dark50

@@ -12,12 +12,14 @@ export class Input extends Block {
 		const content = [];
 
 		this.addContent(content);
+		options.mask && this.setMask(options.mask);
 	}
 
-	setValue(newValue) {
-		this.node.value = newValue;
+	set value(value) {
+		this.node.value = value;
+		this.node.setAttribute('value', value);
 	}
-	getValue() {
+	get value() {
 		return this.node.value;
 	}
 	check() {

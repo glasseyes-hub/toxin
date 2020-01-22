@@ -6,15 +6,14 @@ const CopyWebpackPlugin = require('copy-webpack-plugin'); // Копирует ф
 function getEntires(pages) {
 	return Object.assign(
 		{},
-		...pages.map(({ name, path }) => {
-			return { [name]: path };
+		...pages.map(({ name }) => {
+			return { [name]: `./src/pages/${name}.js` };
 		})
 	);
 }
 const pages = [
 	{
 		name: 'index',
-		path: './src/pages/index.js',
 		HtmlWebpackPlugin: new HtmlWebpackPlugin({
 			template: './src/templates/main.pug',
 			chunks: ['vendors', 'index'],
@@ -23,7 +22,6 @@ const pages = [
 	},
 	{
 		name: 'search',
-		path: './src/pages/search.js',
 		HtmlWebpackPlugin: new HtmlWebpackPlugin({
 			template: './src/templates/main.pug',
 			chunks: ['vendors', 'search'],
@@ -32,27 +30,18 @@ const pages = [
 	},
 	{
 		name: 'room',
-		path: './src/pages/room.js',
 		HtmlWebpackPlugin: new HtmlWebpackPlugin({
 			template: './src/templates/main.pug',
 			chunks: ['vendors', 'room'],
 			filename: 'room.html',
 		}),
 	},
-	{
-		name: 'sass',
-		path: './src/templates/main.sass',
-	},
 ];
 
-const entires = getEntires(pages);
-
-console.log('Entires:', entires);
-
 module.exports = {
-	entry: entires,
+	entry: getEntires(pages),
 	output: {
-		filename: 'js/[name].js', // Точка выхода
+		filename: 'js/[name].[hash].js', // Точка выхода
 	},
 	optimization: {
 		// Выносит подключенные модули в отдельный файл
@@ -86,8 +75,13 @@ module.exports = {
 			{
 				test: /\.(css|scss|sass)$/,
 				use: [
-					'style-loader',
-					MiniCssExtractPlugin.loader,
+					{
+						loader: MiniCssExtractPlugin.loader,
+						options: {
+							hmr: true,
+							reloadAll: true,
+						},
+					},
 					{
 						loader: 'css-loader',
 						options: {
@@ -116,7 +110,7 @@ module.exports = {
 				loader: 'url-loader',
 				options: {
 					limit: false,
-					name: 'img/[name].[ext]', // Путь, куда копировать файлы
+					name: '../img/[name].[ext]', // Путь, куда копировать файлы
 				},
 			},
 			{

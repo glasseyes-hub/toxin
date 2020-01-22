@@ -5,7 +5,7 @@
     border: none
     cursor: pointer
     outline-width: 0        
-    &:before
+    &::before
         font-family: 'Material Icons'
 
     &.button_bordered,
@@ -28,18 +28,46 @@
 
     &.button_big
         background: $color_purple_gradient
-        width: 99px
+        width: 100%
         height: 44px
         border-radius: 22px
         color: #fff
         font-size: 12px
         font-weight: bold
         text-transform: uppercase
-        padding: 2px
-        & > .button_container
-            background-color: #ffffff
-            width: 100%
+
+    &.button_icon
+        position: relative
+        &::before
+            display: flex
+            align-items: center
             height: 100%
-            line-height: 40px
-            border-radius: 22px
-            color: $color_purple
+            position: absolute
+            font-family: 'Material Icons'
+            right: 10px
+            top: 0
+
+        &_arrowRight
+             &::before
+                content: $icon_arrowRight
+                font-weight: normal
+                font-size: 24px
+
+    // &.button_big
+    //     background: $color_purple_gradient
+    //     width: 100%
+    //     height: 44px
+    //     border-radius: 22px
+    //     color: #fff
+    //     font-size: 12px
+    //     font-weight: bold
+    //     text-transform: uppercase
+    //     padding: 2px
+
+    //     & > .button_container
+    //         background-color: #ffffff
+    //         width: 100%
+    //         height: 100%
+    //         line-height: 40px
+    //         border-radius: 22px
+    //         color: $color_purple

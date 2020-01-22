@@ -1,14 +1,23 @@
-@import findRoom_form
-@import findRoom_form-button
+@import '../../services/sass/variables'
     
-=findRoom($mixinClass:'')
-    @if $mixinClass != ''
-        $mixinClass: '.#{$mixinClass}'
+.findRoom
+    width: 380px
+    background-color: #fff
+    display: grid
+    grid-gap: 15px
+    padding: 40px 30px 30px 30px
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2)
+    border-radius: 4px
 
-    .findRoom#{$mixinClass}
+    .form
         display: grid
-        grid-gap: 20px
-        padding: 40px 30px 30px 30px
-        +findRoom_form
-        +findRoom_form-button
-        @content
+        grid-gap: 18px
+
+        .title
+            .title-text
+                font-weight: bold
+                text-transform: uppercase
+                font-size: 12px
+        
+        > .button
+            margin-top: 13px

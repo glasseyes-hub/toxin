@@ -1,21 +1,24 @@
-mixin form-dropdown(extData = {})
-    -
-        var data = {
-            attr: {class: 'form-dropdown'},
-            label: {attr: {class: 'form-dropdown_label'}},
-            title: {attr: {class: 'form-dropdown_title'}},
-            input: {attr: {class: 'form-dropdown_input'}},
-            button: {attr: {class: 'form-dropdown_button'}},
-            body: {attr: {class: 'form-dropdown_body form-dropdown_body_hidden'}},
-        }
+//- mixin form-dropdown(extData = {})
+//-     -
+//-         var data = {
+//-             attr: {class: 'form-dropdown'},
+//-             label: {attr: {class: 'form-dropdown_label'}},
+//-             title: {attr: {class: 'form-dropdown_title'}},
+//-             input: {attr: {class: 'form-dropdown_input'}},
+//-             button: {attr: {class: 'form-dropdown_button'}},
+//-             body: {attr: {class: 'form-dropdown_body form-dropdown_body_hidden'}},
+//-         }
 
-    if extData
-        +mergeData(data, extData)
+//-     if extData
+//-         +mergeData(data, extData)
 
-    div&attributes(data.attr)
-        +label(data.label)      
-            +title(data.title)
-            +input(data.input)    
-            +button(data.button)
-            +container(data.body)
-                block
+//-     div&attributes(data.attr)
+//-         +label(data.label)      
+//-             +title(data.title)
+//-             +input(data.input)    
+//-             +button(data.button)
+//-             +container(data.body)
+//-                 block
+
+
+div.form-dropdown&attributes(attr)

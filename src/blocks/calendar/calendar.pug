@@ -1,17 +1,1 @@
-mixin calendar(extData = {})
-    - var data = {attr: {class: 'calendar'}}
-
-    if extData
-        +mergeData(data, extData)
-
-    section&attributes(data.attr)
-        +container({attr: {class: 'calendar_container calendar_container_datepicker'}})
-        +container({attr: {class: 'calendar_container calendar_container_controls'}})
-            +button({
-                attr: {class: 'calendar_button calendar_button_clear'},
-                content: 'Очистить'
-            })
-            +button({
-                attr: {class: 'calendar_button calendar_button_confirm'},
-                content: 'Применить'
-            })
+section.calendar&attributes(attr)

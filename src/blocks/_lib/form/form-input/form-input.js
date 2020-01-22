@@ -12,6 +12,11 @@ export class FormInput extends Block {
 
 		super({ template, attr });
 
+		this.input = new Input({
+			attr: { class: 'form-input_input' },
+			...input,
+		});
+
 		const content = [
 			new FormLabel({
 				attr: { class: 'form-input_label' },
@@ -20,10 +25,7 @@ export class FormInput extends Block {
 						attr: { class: 'form-input_title' },
 						...title,
 					}),
-					new Input({
-						attr: { class: 'form-input_input' },
-						...input,
-					}),
+					this.input,
 					new Button({
 						attr: { class: 'form-input_button' },
 						...button,

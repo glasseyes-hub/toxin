@@ -11,28 +11,25 @@ export class Dropdown extends Block {
 
 		super({ template, attr });
 
-		this.opened = false;
 		this.button = new Button({ attr: { class: 'dropdown_button' } });
+		this.title = new Title({
+			attr: { class: 'dropdown_title' },
+			...options.title,
+			content: [this.button],
+		});
 		this.container = new Container({
 			attr: { class: 'dropdown_container -hidden-' },
 			content: options.content,
 		});
 
-		const content = [
-			new Title({
-				attr: { class: 'dropdown_title' },
-				...options.title,
-				content: [this.button],
-			}),
-			this.container,
-		];
+		const content = [this.title, this.container];
 
-		this.addContent(content);
-		this.addEvents();
+		this.setContent(content);
+		this.setEvents();
 	}
-	addEvents() {
-		this.button.onClick(() => {
-			this.container.hidden ? this.open() : this.close();
+	setEvents() {
+		this.title.onClick(() => {
+			this.container.isHidden ? this.open() : this.close();
 		});
 	}
 	open() {
