@@ -34,9 +34,10 @@ export class Block {
 		this.content.list = content;
 
 		this.content.list.forEach(content => {
-			typeof content === 'object'
-				? contentNode.appendChild(content.node)
-				: (contentNode.innerHTML = content);
+			if (typeof content === 'object') {
+				contentNode.appendChild(content.node);
+				content.parent = this;
+			} else contentNode.innerHTML = content;
 		});
 	}
 	addContent(content) {

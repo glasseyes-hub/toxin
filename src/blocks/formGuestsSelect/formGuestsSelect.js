@@ -4,7 +4,7 @@ import { FormQuantity } from '../_lib/form/form-quantity/form-quantity';
 
 export class FormGuestsSelect extends Block {
 	constructor(options = {}) {
-		const { attr } = options;
+		const { attr, guests = {} } = options;
 		const template = require('./formGuestsSelect.pug');
 		require('./formGuestsSelect.sass');
 
@@ -19,17 +19,26 @@ export class FormGuestsSelect extends Block {
 				},
 			},
 		});
-		this.formQuantity = new FormQuantity({
-			elements: [
-				{ content: 'Взрослые', name: 'adult' },
-				{ content: 'Дети', name: 'children' },
-				{ content: 'Младенцы', name: 'baby' },
-			],
-			title: {
-				node: this.formDropdown.formInput.input.node,
-				type: 'summury',
+
+		const elements = [
+			{
+				group: [
+					{ content: 'Взрослые', name: 'adult', value: guests.adult },
+					{ content: 'Дети', name: 'children', value: guests.children },
+				],
 				declensions: ['гость', 'гостя', 'гостей'],
 			},
+			{
+				content: 'Младенцы',
+				name: 'baby',
+				value: guests.baby,
+				declensions: ['младенец', 'младенца', 'младенцев'],
+			},
+		];
+
+		this.formQuantity = new FormQuantity({
+			elements,
+			titleNode: this.formDropdown.formInput.input.node,
 			parent: this.formDropdown,
 		});
 

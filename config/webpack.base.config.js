@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // Управляет html файлами
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // Вырезает css из js в отдельный файл
 const CopyWebpackPlugin = require('copy-webpack-plugin'); // Копирует файлов
@@ -7,7 +8,7 @@ function getEntires(pages) {
 	return Object.assign(
 		{},
 		...pages.map(({ name }) => {
-			return { [name]: `./src/pages/${name}.js` };
+			return { [name]: ['@babel/polyfill', `./src/pages/${name}.js`] };
 		})
 	);
 }
@@ -38,10 +39,21 @@ const pages = [
 	},
 ];
 
+console.log(path.resolve(__dirname, 'src/blocks'));
+
 module.exports = {
 	entry: getEntires(pages),
 	output: {
 		filename: 'js/[name].[hash].js', // Точка выхода
+	},
+	resolve: {
+		extensions: ['.js'],
+		alias: {
+			nodeModules: path.resolve(__dirname, 'node_modules'),
+			'@': path.resolve(__dirname, 'src'),
+			'@blocks': path.resolve(__dirname, 'src/blocks'),
+			'@services': path.resolve(__dirname, 'src/services'),
+		},
 	},
 	optimization: {
 		// Выносит подключенные модули в отдельный файл
@@ -59,12 +71,37 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.m?js$/,
+				test: /\.js$/,
+				exclude: /(node_modules|bower_components)/,
+				use: [
+					{
+						loader: 'babel-loader',
+						options: {
+							presets: ['@babel/preset-env'],
+							plugins: ['@babel/plugin-proposal-class-properties'],
+						},
+					},
+				],
+			},
+			{
+				test: /\.ts$/,
 				exclude: /(node_modules|bower_components)/,
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: ['@babel/preset-env'],
+						presets: ['@babel/preset-env', '@babel/preset-typescript'],
+						plugins: ['@babel/plugin-proposal-class-properties'],
+					},
+				},
+			},
+			{
+				test: /\.jsx$/,
+				exclude: /(node_modules|bower_components)/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: ['@babel/preset-env', '@babel/preset-react'],
+						plugins: ['@babel/plugin-proposal-class-properties'],
 					},
 				},
 			},
@@ -135,6 +172,8 @@ module.exports = {
 		new webpack.ProvidePlugin({
 			$: 'jquery',
 			jQuery: 'jquery',
+			'window.jQuery': "jquery'",
+			'window.$': 'jquery',
 		}),
 	],
 };

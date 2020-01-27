@@ -13,3 +13,26 @@
         text-align: right
         color: $color_dark75
         
+
+    &.content_search
+        display: grid
+        grid-template-areas: 'filters results' 'pagination pagination'
+        grid-template-columns: 266px auto
+        grid-gap: 60px
+
+        .content_search_filters
+            grid-area: filters
+            display: flex
+            flex-direction: column
+            & > *
+                margin-bottom: 20px
+        
+        .content_search_results
+            grid-area: results
+            height: 700px
+            background-color: blue
+
+        .content_search_pagination
+            grid-area: pagination
+            height: 50px
+            background-color: yellow

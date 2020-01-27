@@ -12,8 +12,6 @@ const footname = new Container({
 	content: 'Лучшие номера для вашей работы, отдыха и просто вдохновения',
 });
 
-console.log(findRoom, findRoom.node);
-
 content.setContent([findRoom, footname]);
 
 page.content.node.appendChild(content.node);

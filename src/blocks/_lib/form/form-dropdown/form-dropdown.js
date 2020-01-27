@@ -54,7 +54,6 @@ export class FormDropdown extends Block {
 		super({ template, attr });
 
 		this.formInput = new FormInput({
-			attr: { class: 'form-dropdown_input' },
 			...formInput,
 		});
 		this.container =
