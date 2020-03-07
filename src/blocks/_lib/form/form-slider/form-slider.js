@@ -4,7 +4,7 @@ import { Title } from '../../title/title';
 
 export class FormSlider extends Block {
 	constructor(options = {}) {
-		const { attr, min = 0, max } = options;
+		const { attr, values, min = 0, max, onValuesChange } = options;
 		const template = require('./form-slider.pug');
 		require('./form-slider.sass');
 		require('webpack-jquery-ui');
@@ -12,7 +12,8 @@ export class FormSlider extends Block {
 
 		super({ template, attr });
 
-		const { values = [min, max] } = options;
+		values.startPrice = values.startPrice ? values.startPrice : min;
+		values.endPrice = values.endPrice ? values.endPrice : max;
 
 		this.title = new Title({
 			text: {
@@ -20,11 +21,9 @@ export class FormSlider extends Block {
 				content: 'Диапазон цены',
 			},
 			subtext: {
-				content: `${values[0]}₽ - ${values[1]}₽`,
+				content: `${values.startPrice}₽ - ${values.endPrice}₽`,
 			},
 		});
-
-		console.log(this.title);
 
 		this.container = new Container({
 			attr: { class: 'form-slider_container' },
@@ -43,14 +42,27 @@ export class FormSlider extends Block {
 			range: true,
 			min,
 			max,
-			values,
+			values: Object.values(values),
 			slide: (event, obj) => {
-				const [start, end] = obj.values;
-				this.title.subtext.node.innerHTML = `${start}₽ - ${end}₽`;
-				// $(this.title.subtext.node).val(
-				// 	'$' + ui.values[0] + ' - $' + ui.values[1]
-				// );
+				this.updateTitle(obj.values);
+			},
+			stop: (event, obj) => {
+				this.values = { startPrice: obj.values[0], endPrice: obj.values[1] };
 			},
 		});
+
+		this.onValuesChange = () => {
+			onValuesChange && onValuesChange(this.values);
+		};
+	}
+	set values(values) {
+		this._values = values;
+		this.hasOwnProperty('onValuesChange') && this.onValuesChange();
+	}
+	get values() {
+		return this._values;
+	}
+	updateTitle([startPrice, endPrice]) {
+		this.title.subtext.node.innerHTML = `${startPrice}₽ - ${endPrice}₽`;
 	}
 }

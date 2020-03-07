@@ -1,0 +1,51 @@
+@import '../../services/sass/variables'
+    
+.paginator
+    margin: 0 auto
+
+    .paginator-buttons,
+        display: flex
+        justify-content: center
+        margin-bottom: 10px
+
+        .paginator-button
+            background: none
+            border: none
+            outline: none
+            width: 40px
+            height: 40px
+            border-radius: 22px
+            color: $color_dark50
+            cursor: pointer
+
+            &:hover
+                background-color: $color_dark5
+
+            &.dots
+                cursor: auto
+
+            &.previuos,
+            &.next,
+            &.current
+                color: #fff
+
+            &.previuos,
+            &.next
+                background: $color_green_gradient
+                &::before
+                    font-family: 'Material Icons'
+                    font-size: 24px
+                    line-height: 40px
+
+            &.previuos::before
+                content: $paginator-button_previous
+            &.next::before
+                content: $paginator-button_next
+
+            &.current
+                font-weight: bold
+                background: $color_purple_gradient
+
+    .paginator-info
+        text-align: center
+

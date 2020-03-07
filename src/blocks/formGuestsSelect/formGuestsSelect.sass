@@ -1,2 +1,27 @@
-.formGuestsSelect
+@import '../../services/sass/variables'
     
+.formGuestsSelect
+    display: grid
+    grid-template-columns: 1fr
+    grid-gap: 5px
+
+    .dropdown_body
+        z-index: 9
+
+    .formGuestsSelect_controls
+        width: 100%
+        display: flex
+        justify-content: space-between
+        padding: 16px 18px 11px
+
+        .button
+            font-weight: bold
+            font-size: 12px
+            line-height: 15px
+            text-transform: uppercase
+
+            &.button_confirm
+                color: $color_purple
+
+            &.button_clear
+                color: $color_dark50

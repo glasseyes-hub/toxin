@@ -17,6 +17,13 @@ export class FormInput extends Block {
 			...input,
 		});
 
+		this.button = button
+			? new Button({
+					attr: { class: 'form-input_button' },
+					...button,
+			  })
+			: '';
+
 		const content = [
 			new FormLabel({
 				attr: { class: 'form-input_label' },
@@ -26,14 +33,11 @@ export class FormInput extends Block {
 						...title,
 					}),
 					this.input,
-					new Button({
-						attr: { class: 'form-input_button' },
-						...button,
-					}),
+					this.button,
 				],
 			}),
 		];
 
-		this.addContent(content);
+		this.setContent(content);
 	}
 }

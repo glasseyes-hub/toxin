@@ -1,13 +1,56 @@
-@import 'form-checkbox_title'
-@import 'form-checkbox_input'
-@import 'form-checkbox_button'
-    
-=form-checkbox($mixinClass:'')
-    @if $mixinClass != ''
-        $mixinClass: '.#{$mixinClass}'
+@import '../../../../services/sass/variables'
 
-    .form-checkbox#{$mixinClass}
-        +form-checkbox_title 
-        +form-checkbox_input   
-        +form-checkbox_button
-        @content
+.form-checkbox
+    display: grid
+    grid-gap: 15px
+    margin-top: 8px
+
+    .form-checkbox_elements
+        display: grid
+        grid-gap: 8px
+
+        .element_container
+            display: grid
+            grid-template-columns: 20px 1fr
+            cursor: pointer
+
+            .button
+                width: 20px
+                height: 20px
+                line-height: 19px
+                margin-top: 2px
+                border: 1px solid $color_dark25
+                border-radius: 4px
+                text-align: center
+                font-weight: bold
+
+                &.button_checked
+                    border-color: $color_purple
+
+                    &::before
+                        background-color: red
+                        width: 20px
+                        height: 20px
+                        content: $form-checkbox_button
+                        background: linear-gradient(45deg, #8BA4F9 0%, $color_purple 100%)
+                        -webkit-background-clip: text
+                        -webkit-text-fill-color: transparent
+                        color: $color_purple
+
+            .title
+                position: relative
+                display: grid
+                grid-template-columns: 1fr
+                margin-top: 3px
+                margin-left: 10px
+                line-height: 18px
+
+            &_withSubtext
+                .title-text
+                    font-weight: bold
+
+                .title-subtext
+                    margin-top: 7px
+                    font-size: 12px
+                    line-height: 14px
+                    text-align: left

@@ -3,9 +3,7 @@ import { header } from './header';
 import { footer } from './footer';
 import { Copyright } from '../blocks/copyright/copyright';
 
-export { page };
-
-const page = {
+export const template = {
 	node: document.querySelector('.page'),
 	header: {
 		node: document.querySelector('.page-header'),
@@ -23,6 +21,6 @@ const page = {
 
 const copyright = new Copyright();
 
-page.header.node.appendChild(header.node);
-page.footer.node.appendChild(footer.node);
-page.copyright.node.appendChild(copyright.node);
+template.header.node.appendChild(header.node);
+template.footer.node.appendChild(footer.node);
+template.copyright.node.appendChild(copyright.node);

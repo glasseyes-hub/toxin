@@ -1,4 +1,5 @@
 import { Block } from '../../../services/js/block';
+import { state } from '../../../services/js/state';
 
 export class Container extends Block {
 	constructor(options = {}) {

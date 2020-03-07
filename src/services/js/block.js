@@ -37,7 +37,7 @@ export class Block {
 			if (typeof content === 'object') {
 				contentNode.appendChild(content.node);
 				content.parent = this;
-			} else contentNode.innerHTML = content;
+			} else contentNode.innerHTML += content;
 		});
 	}
 	addContent(content) {
@@ -52,10 +52,12 @@ export class Block {
 	hide() {
 		this.isHidden = true;
 		this.setStatus('hidden');
+		return this;
 	}
 	show() {
 		this.isHidden = false;
 		this.removeStatus('hidden');
+		return this;
 	}
 	setListener({ type, callbackfn }) {
 		if (callbackfn) {
@@ -71,6 +73,14 @@ export class Block {
 	onChange(callbackfn) {
 		const type = 'change';
 		this.setListener({ type, callbackfn });
+	}
+	addClass(className) {
+		this.node.classList.add(...className.split(' '));
+		return this;
+	}
+	removeClass(className) {
+		this.node.classList.remove(className);
+		return this;
 	}
 	on(type, callbackfn) {
 		this.setListener({ type, callbackfn });

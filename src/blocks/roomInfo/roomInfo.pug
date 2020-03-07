@@ -1,0 +1,8 @@
+section.roomInfo
+    h2.title #{title}
+    ul.list
+        each element in list
+            li.element
+                img.icon(src=element.src, alt=element.alt)
+                h3.name #{element.name}
+                p.info #{element.info}

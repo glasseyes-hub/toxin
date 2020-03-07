@@ -5,39 +5,53 @@ import { Container } from '../container/container';
 
 export class Dropdown extends Block {
 	constructor(options = {}) {
-		const { attr } = options;
+		const { attr, header, title, body } = options;
 		const template = require('./dropdown.pug');
 		require('./dropdown.sass');
 
 		super({ template, attr });
 
-		this.button = new Button({ attr: { class: 'dropdown_button' } });
-		this.title = new Title({
-			attr: { class: 'dropdown_title' },
-			...options.title,
-			content: [this.button],
-		});
-		this.container = new Container({
-			attr: { class: 'dropdown_container -hidden-' },
-			content: options.content,
+		this.header =
+			header ||
+			new Title({
+				...title,
+			});
+
+		this.headerContainer = new Container({
+			attr: { class: 'dropdown_header' },
 		});
 
-		const content = [this.title, this.container];
+		this.button = new Button({ attr: { class: 'dropdown_button' } });
+
+		this.headerContainer.setContent([this.header, this.button]);
+
+		this.body =
+			body ||
+			new Container({
+				attr: { class: '-hidden-' },
+				content: options.content,
+			});
+
+		this.body.addClass('dropdown_body');
+
+		const content = [this.headerContainer, this.body];
 
 		this.setContent(content);
 		this.setEvents();
 	}
 	setEvents() {
-		this.title.onClick(() => {
-			this.container.isHidden ? this.open() : this.close();
+		this.headerContainer.onClick(() => {
+			this.body.isHidden ? this.open() : this.close();
 		});
 	}
 	open() {
 		this.button.node.classList.add('dropdown_button_reverse');
-		this.container.show();
+		this.setStatus('open');
+		this.body.show();
 	}
 	close() {
 		this.button.node.classList.remove('dropdown_button_reverse');
-		this.container.hide();
+		this.removeStatus('open');
+		this.body.hide();
 	}
 }

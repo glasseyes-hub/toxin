@@ -1,54 +1,78 @@
 import { Block } from '../../services/js/block';
-import { FormDropdown } from '../_lib/form/form-dropdown/form-dropdown';
 import { FormQuantity } from '../_lib/form/form-quantity/form-quantity';
+import { Title } from '../_lib/title/title';
+import { Dropdown } from '../_lib/dropdown/dropdown';
+import { Container } from '../_lib/container/container';
+import { Button } from '../_lib/button/button';
+import { Input } from '../_lib/form/input/input';
 
 export class FormGuestsSelect extends Block {
 	constructor(options = {}) {
-		const { attr, guests = {} } = options;
+		const { attr, title, placeholder, elements, onValuesChange } = options;
 		const template = require('./formGuestsSelect.pug');
 		require('./formGuestsSelect.sass');
 
 		super({ template, attr });
 
-		this.formDropdown = new FormDropdown({
-			attr: { class: 'form-dropdown_solid' },
-			formInput: {
-				input: { attr: { placeholder: 'Сколько гостей', readonly: true } },
-				title: {
-					text: { content: 'Гости' },
-				},
-			},
+		this.title = new Title({
+			text: { tag: 'h3', content: title },
 		});
-
-		const elements = [
-			{
-				group: [
-					{ content: 'Взрослые', name: 'adult', value: guests.adult },
-					{ content: 'Дети', name: 'children', value: guests.children },
-				],
-				declensions: ['гость', 'гостя', 'гостей'],
-			},
-			{
-				content: 'Младенцы',
-				name: 'baby',
-				value: guests.baby,
-				declensions: ['младенец', 'младенца', 'младенцев'],
-			},
-		];
 
 		this.formQuantity = new FormQuantity({
 			elements,
-			titleNode: this.formDropdown.formInput.input.node,
-			parent: this.formDropdown,
 		});
 
-		this.formDropdown.setContent(
-			this.formQuantity,
-			this.formDropdown.container.node
-		);
+		this.controls = new Container({
+			attr: { class: 'formGuestsSelect_controls' },
+		});
+		this.controls.clear = new Button({
+			attr: { class: 'button_clear' },
+			content: 'Очистить',
+		});
+		this.controls.confirm = new Button({
+			attr: { class: 'button_confirm' },
+			content: 'Применить',
+		});
+		this.controls.setContent([this.controls.clear, this.controls.confirm]);
 
-		const content = [this.formDropdown];
+		this.formDropdown = new Dropdown({
+			attr: { class: 'dropdown_solid' },
+			header: new Input({
+				attr: { placeholder: placeholder, readonly: '' },
+			}),
+			content: [this.formQuantity, this.controls],
+		});
+		this.formDropdown.header.value = this.formQuantity.title;
+
+		const content = [this.title, this.formDropdown];
 
 		this.addContent(content);
+		this.setEvents();
+
+		this.onValuesChange = () => {
+			onValuesChange && onValuesChange(this.values);
+		};
+	}
+	setEvents() {
+		this.controls.clear.on('click', () => {
+			this.formQuantity.clear();
+			this.values = this.formQuantity.values;
+
+			this.formDropdown.header.value = this.formQuantity.title;
+			this.formDropdown.close();
+		});
+		this.controls.confirm.on('click', () => {
+			this.values = this.formQuantity.values;
+
+			this.formDropdown.header.value = this.formQuantity.title;
+			this.formDropdown.close();
+		});
+	}
+	set values(values) {
+		this._values = values;
+		this.onValuesChange();
+	}
+	get values() {
+		return this._values;
 	}
 }

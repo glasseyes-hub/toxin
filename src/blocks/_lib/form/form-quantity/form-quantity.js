@@ -6,32 +6,23 @@ import { Container } from '../../container/container';
 
 export class FormQuantity extends Block {
 	constructor(options = {}) {
-		const { attr, elements, titleNode, parent = {} } = options;
+		const { attr, elements } = options;
+
 		const template = require('./form-quantity.pug');
 		require('./form-quantity.sass');
 
 		super({ template, attr });
 
+		this.title = '';
+		this.values = [];
+
 		this.elements = this.createElements(elements);
-		this.titleNode = titleNode;
-		this.parent = parent;
+		this.elementsBlocks = this.getElementsBlocks();
 
-		this.clear = new Button({
-			attr: { class: 'form-quantity_button form-quantity_button_clear' },
-		});
-		this.confirm = new Button({
-			attr: { class: 'form-quantity_button form-quantity_button_confirm' },
-		});
-		this.controls = new Container({
-			attr: { class: 'form-quantity_controls' },
-			content: [this.clear, this.confirm],
-		});
-
-		this.setContent([...this.getElementsBlocks(), this.controls]);
-		this.setEvents();
-
-		this.titleNode.value = this.getTitle();
+		this.setContent(this.elementsBlocks);
+		this.title = this.getTitle();
 	}
+
 	getElementsBlocks(elements = this.elements) {
 		const blocks = elements.map(element => {
 			if (element.group) return this.getElementsBlocks(element.group);
@@ -42,52 +33,37 @@ export class FormQuantity extends Block {
 		return [].concat(...blocks);
 	}
 	createElements(elements) {
-		return elements.map(element => {
-			if (element.group) {
-				return {
-					...element,
-					group: this.createElements(element.group),
-				};
-			}
+		return elements.map(({ group, declensions, ...element }) => {
+			if (group)
+				return Object.assign(
+					{},
+					{
+						group: this.createElements(group),
+						declensions,
+					}
+				);
 
-			element = new Element(element);
+			const elementBlock = new Element({ declensions, ...element });
 
-			element.removeButton.on('click', () => {
-				element.input.value -= element.input.value > 0 ? 1 : 0;
-
-				this.titleNode.value = this.getTitle();
+			elementBlock.addButton.on('click', () => {
+				this.title = this.getTitle();
+				this.values = this.getValues();
+			});
+			elementBlock.removeButton.on('click', () => {
+				this.title = this.getTitle();
+				this.values = this.getValues();
 			});
 
-			element.addButton.on('click', () => {
-				element.input.value -= -1;
-
-				this.titleNode.value = this.getTitle();
-			});
-
-			element.input.on('change', () => {
-				this.titleNode.value = this.getTitle();
-			});
-
-			return element;
+			return elementBlock;
 		});
 	}
-	setEvents() {
-		this.clear.on('click', () => {
-			this.elements.forEach(element => {
-				element.input.value = 0;
-			});
-			this.updateTitle();
-		});
-		this.confirm.on('click', () => {
-			this.parent.container.hide();
-			this.parent.removeStatus('open');
-		});
-	}
-	updateTitle() {
-		this.titleNode.value = this.getTitle();
+	clear() {
+		this.elementsBlocks.forEach(elementBlock => (elementBlock.input.value = 0));
+		this.title = this.getTitle();
+		this.values = this.getValues();
 	}
 	getTitle(elements = this.elements) {
-		return elements
+		const title = elements
 			.map(element => {
 				if (element.declensions) {
 					const summury = element.group
@@ -109,6 +85,27 @@ export class FormQuantity extends Block {
 			})
 			.filter(title => title)
 			.join(', ');
+
+		return this.prepareTitleByLength(title);
+	}
+	getValues() {
+		return this.elementsBlocks.reduce((acc, elem) => {
+			const { name, value } = elem.input.node;
+			acc[name] = value;
+			return acc;
+		}, {});
+	}
+	prepareTitleByLength(title) {
+		const maxLength = 30;
+
+		return title.split(', ').reduce((acc, element) => {
+			if (!acc) return element;
+
+			if ((acc + ', ' + element).length <= maxLength)
+				return acc + ', ' + element;
+
+			return acc + '...';
+		});
 	}
 	getDeclension(num, expressions) {
 		let result;
@@ -130,11 +127,11 @@ export class FormQuantity extends Block {
 }
 
 export class Element extends Block {
-	constructor({ content, name, value = 0, declensions }) {
+	constructor({ content, name, value, declensions }) {
 		super({ attr: { class: 'form-quantity_element' } });
 
 		this.isGroup = false;
-		this.declensions = declensions;
+		if (declensions) this.declensions = declensions;
 
 		this.title = new Title({
 			text: { content },
@@ -146,7 +143,7 @@ export class Element extends Block {
 			attr: { class: 'form-quantity_button form-quantity_button_add' },
 		});
 		this.input = new Input({
-			attr: { class: 'form-quantity_input', name, value },
+			attr: { class: 'form-quantity_input', name, value: value || 0 },
 		});
 
 		this.setContent([
@@ -155,5 +152,15 @@ export class Element extends Block {
 			this.input,
 			this.addButton,
 		]);
+		this.setEvents();
+	}
+	setEvents() {
+		this.removeButton.on('click', () => {
+			this.input.value -= this.input.value > 0 ? 1 : 0;
+		});
+
+		this.addButton.on('click', () => {
+			this.input.value -= -1;
+		});
 	}
 }

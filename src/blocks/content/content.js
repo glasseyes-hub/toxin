@@ -1,5 +1,4 @@
 import { Block } from '../../services/js/block';
-
 export class Content extends Block {
 	constructor(options = {}) {
 		const { attr } = options;
