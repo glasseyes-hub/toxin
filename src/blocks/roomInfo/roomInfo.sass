@@ -1,0 +1,57 @@
+@import '../../services/sass/variables'
+    
+.roomInfo
+
+    >.title
+        margin-bottom: 20px
+
+    >.list
+        list-style-type: none
+        display: grid
+        grid-gap: 20px
+    
+        >.element
+            display: grid
+            grid-template-areas: 'icon name' 'icon info'
+            grid-auto-columns: 48px 1fr
+            grid-column-gap: 10px
+
+            width: 280px
+            padding: 5px 0px 14px
+            border-bottom: 1px solid $color_dark10
+
+            &:last-child
+                border-bottom: none
+
+            >.icon
+                grid-area: icon
+                color: $color_green_gradient
+
+
+                &::before
+                    font-family: Material Icons
+                    background: $color_purple_gradient
+                    -webkit-background-clip: text
+                    -webkit-text-fill-color: transparent
+                    font-size: 48px
+                    line-height: 37px
+                
+                &_comfort
+                    &::before
+                        content: '\e7f2'
+
+                &_convenience
+                    &::before
+                        content: '\e7f1'
+
+                &_cosiness
+                    &::before
+                        content: '\e80e'
+
+            >.name
+                grid-area: name
+                text-transform: none
+                font-size: 14px
+
+            >.info
+                grid-area: info

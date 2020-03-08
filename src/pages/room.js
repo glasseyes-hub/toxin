@@ -21,20 +21,17 @@ const roomInfo = new RoomInfo({
 	title: 'Сведения о номере',
 	list: [
 		{
-			src: './img/comfort.png',
-			alt: 'alt',
+			iconClass: 'icon_comfort',
 			name: 'Комфорт',
 			info: 'Шумопоглощающие стены',
 		},
 		{
-			src: './img/convenience.png',
-			alt: 'alt',
+			iconClass: 'icon_convenience',
 			name: 'Удобство',
 			info: 'Окно в каждой из спален',
 		},
 		{
-			src: './img/cosiness.png',
-			alt: 'alt',
+			iconClass: 'icon_cosiness',
 			name: 'Уют',
 			info: 'Номер оснащён камином',
 		},

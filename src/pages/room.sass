@@ -1,28 +1,30 @@
+@import '../services/sass/variables'
+    
 .room
     display: grid
     grid-template-areas: 'about sidebar' 'reviewes sidebar' 'additional sidebar'
     grid-template-columns: 1fr 380px
-    grid-gap: 40px
+    grid-gap: 20px
+    padding-top: 70px
 
     .about
        grid-area: about
-       height: 200px
-
-       background-color: grey
+       display: grid
+       grid-template-columns: 1fr 1fr
 
     .reviewes
         grid-area: reviewes
         height: 200px
 
-        background-color: grey
+        background-color: $color_dark25
     
     .additional
         grid-area: additional
         height: 200px
 
-        background-color: grey
+        background-color: $color_dark25
 
     .sidebar
         grid-area: sidebar
 
-        background-color: grey
+        background-color: $color_dark25
