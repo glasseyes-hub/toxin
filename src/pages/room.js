@@ -3,6 +3,7 @@ import './room.sass';
 import { template } from '../templates/main';
 import { cmd } from '../services/js/pageTools';
 import { RoomInfo } from '../blocks/roomInfo/roomInfo';
+import { Reviewes } from '../blocks/reviewes/reviewes';
 
 let room = cmd.createBlock({
 	template: require('./room.pug'),
@@ -38,4 +39,29 @@ const roomInfo = new RoomInfo({
 	],
 });
 
+const reviewes = new Reviewes({
+	title: 'Отзывы посетителей номера',
+	list: [
+		{
+			name: 'Мурад Сарафанов',
+			icon: './img/foto1.png',
+			date: '5 дней назад',
+			likes: 12,
+			text:
+				'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',
+		},
+		{
+			name: 'Патрисия Стёклышкова',
+			icon: './img/foto2.png',
+			date: 'Неделю назад',
+			likes: 2,
+			text:
+				'Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент',
+		},
+	],
+});
+
+console.log(reviewes);
+
 room.about.appendChild(roomInfo.node);
+room.reviewes.replaceWith(reviewes.node);

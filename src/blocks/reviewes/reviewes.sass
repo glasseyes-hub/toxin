@@ -1,0 +1,36 @@
+.reviewes
+    >.title
+        margin-bottom: 20px
+    >.list
+        display: grid
+        grid-gap: 20px
+        
+        >.element
+            display: grid
+            grid-template-areas: 'icon name' 'icon date' 'likes text'
+            grid-template-columns: 48px 1fr
+            grid-gap: 10px
+            background-color: red
+
+            >.icon
+                grid-area: icon
+                width: 48px
+                height: 48px
+
+                background-color: blue
+
+            >.name
+                grid-area: name
+                background-color: yellow
+
+            >.date
+                grid-area: date
+                background-color: black
+
+            >.likes
+                grid-area: likes
+                background-color: yellow
+
+            >.text
+                grid-area: text
+                background-color: blue
