@@ -1,10 +1,11 @@
 section.reviewes
     h2.title #{title}
+    p.amount #{list.length} отзыва
     ul.list
         each element in list
             li.element
                 img.icon(src=element.icon)
-                .likes #{element.likes}
+                .sidebar
                 h3.name #{element.name}
                 p.date #{element.date}
                 p.text #{element.text}

@@ -1,36 +1,48 @@
 .reviewes
+    display: grid
+    grid-template-areas: 'title amount' 'list list'
+    grid-template-columns: 1fr 1fr
+    width: 710px
+
     >.title
+        grid-area: title
         margin-bottom: 20px
+    >.amount
+        grid-area: amount
+        text-align: right
+
     >.list
+        grid-area: list
         display: grid
         grid-gap: 20px
-        
+
         >.element
             display: grid
-            grid-template-areas: 'icon name' 'icon date' 'likes text'
+            grid-template-areas: 'icon name' 'icon date' 'sidebar text'
             grid-template-columns: 48px 1fr
             grid-gap: 10px
-            background-color: red
 
             >.icon
                 grid-area: icon
                 width: 48px
                 height: 48px
+                border-radius: 24px
 
-                background-color: blue
+                background-color: yellow
 
             >.name
                 grid-area: name
-                background-color: yellow
+                margin-top: 3px
+                margin-bottom: -3px
 
             >.date
                 grid-area: date
-                background-color: black
 
-            >.likes
-                grid-area: likes
-                background-color: yellow
+            >.sidebar
+                grid-area: sidebar
+                display: flex
+                flex-direction: column
+                align-items: center
 
             >.text
                 grid-area: text
-                background-color: blue

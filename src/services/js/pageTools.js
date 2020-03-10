@@ -1,10 +1,11 @@
 export { cmd, CMD };
 
 class CMD {
-	createBlock = state => {
+	createBlock = ({ template, state }) => {
 		return {
-			node: this.createNode(state),
+			node: this.createNode({ template, state }),
 			state: this.createState(state),
+			template,
 		};
 	};
 	createNode = ({ template, state }) => {

@@ -47,6 +47,7 @@ const reviewes = new Reviewes({
 			icon: './img/foto1.png',
 			date: '5 дней назад',
 			likes: 12,
+			isLiked: true,
 			text:
 				'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',
 		},
@@ -61,7 +62,8 @@ const reviewes = new Reviewes({
 	],
 });
 
-console.log(reviewes);
-
+reviewes.likes[0].watcher(_this => {
+	console.log(_this);
+});
 room.about.appendChild(roomInfo.node);
 room.reviewes.replaceWith(reviewes.node);
