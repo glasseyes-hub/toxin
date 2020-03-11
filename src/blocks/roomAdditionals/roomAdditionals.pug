@@ -1,0 +1,11 @@
+section.roomAdditionals
+    .rools
+        h2.title Правила
+        ul.list
+            each rool in roolsList
+                li.element #{rool}
+    if isCancelable
+        .cancel
+            h2.title Отмена
+            p.text
+                | Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.

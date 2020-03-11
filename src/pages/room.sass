@@ -3,9 +3,11 @@
 .room
     display: grid
     grid-template-areas: 'about sidebar' 'reviewes sidebar' 'additional sidebar'
-    grid-template-columns: 1fr 380px
-    grid-gap: 15px
-    padding-top: 70px
+    grid-template-columns: 710px 380px
+    grid-g
+    grid-column-gap: 70px
+    grid-row-gap: 15px
+    padding: 70px 0 67px
 
     >.about
        grid-area: about
@@ -17,9 +19,6 @@
     
     >.additional
         grid-area: additional
-        height: 200px
-
-        background-color: $color_dark25
 
     >.sidebar
         grid-area: sidebar

@@ -4,6 +4,7 @@ import { template } from '../templates/main';
 import { cmd } from '../services/js/pageTools';
 import { RoomInfo } from '../blocks/roomInfo/roomInfo';
 import { Reviewes } from '../blocks/reviewes/reviewes';
+import { RoomAdditionals } from '../blocks/roomAdditionals/roomAdditionals';
 
 let room = cmd.createBlock({
 	template: require('./room.pug'),
@@ -62,8 +63,20 @@ const reviewes = new Reviewes({
 	],
 });
 
+const roomAdditionals = new RoomAdditionals({
+	roolsList: [
+		'Нельзя с питомцами',
+		'Без вечеринок и мероприятий',
+		'Время прибытия — после 13:00, а выезд до 12:00',
+	],
+	isCancelable: true,
+});
+
+console.log(roomAdditionals);
+
 reviewes.likes[0].watcher(_this => {
 	console.log(_this);
 });
 room.about.appendChild(roomInfo.node);
 room.reviewes.replaceWith(reviewes.node);
+room.additional.appendChild(roomAdditionals.node);
