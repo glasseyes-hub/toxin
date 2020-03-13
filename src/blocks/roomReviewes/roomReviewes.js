@@ -1,12 +1,12 @@
 import { cmd } from '../../services/js/pageTools';
 import { Like } from '../like/like';
 
-export class Reviewes {
+export class RoomReviewes {
 	constructor(state) {
-		require('./reviewes.sass');
+		require('./roomReviewes.sass');
 
 		const block = cmd.createBlock({
-			template: require('./reviewes.pug'),
+			template: require('./roomReviewes.pug'),
 			state,
 		});
 

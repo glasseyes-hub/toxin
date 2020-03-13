@@ -1,10 +1,12 @@
 import './room.sass';
 
 import { template } from '../templates/main';
+import { urlSearchTools, state } from '../services/js/Page';
 import { cmd } from '../services/js/pageTools';
 import { RoomInfo } from '../blocks/roomInfo/roomInfo';
-import { Reviewes } from '../blocks/reviewes/reviewes';
+import { RoomReviewes } from '../blocks/roomReviewes/roomReviewes';
 import { RoomAdditionals } from '../blocks/roomAdditionals/roomAdditionals';
+import { RoomSummury } from '../blocks/roomSummury/roomSummury';
 
 let room = cmd.createBlock({
 	template: require('./room.pug'),
@@ -40,7 +42,7 @@ const roomInfo = new RoomInfo({
 	],
 });
 
-const reviewes = new Reviewes({
+const roomReviewes = new RoomReviewes({
 	title: 'Отзывы посетителей номера',
 	list: [
 		{
@@ -72,11 +74,30 @@ const roomAdditionals = new RoomAdditionals({
 	isCancelable: true,
 });
 
-console.log(roomAdditionals);
-
-reviewes.likes[0].watcher(_this => {
-	console.log(_this);
+const roomSummury = new RoomSummury({
+	number: 888,
+	isLuxury: true,
+	price: 9900,
+	isServiceFeeFree: true,
+	dates: {
+		arrival: state.urlSearch.arrival,
+		leave: state.urlSearch.leave,
+	},
+	guests: {
+		adult: state.urlSearch.adult,
+		children: state.urlSearch.children,
+		baby: state.urlSearch.baby,
+	},
 });
+
+roomSummury.watcher(_this => {
+	const { arrival, leave } = _this.state.dates;
+	const { adult, children, baby } = _this.state.guests;
+
+	urlSearchTools.update({ arrival, leave, adult, children, baby });
+});
+
 room.about.appendChild(roomInfo.node);
-room.reviewes.replaceWith(reviewes.node);
+room.reviewes.replaceWith(roomReviewes.node);
 room.additional.appendChild(roomAdditionals.node);
+room.sidebar.appendChild(roomSummury.node);

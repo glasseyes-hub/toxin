@@ -16,7 +16,7 @@ export const urlSearchTools = (() => {
 
 		state = _filter(state);
 		Object.entries(state).forEach(([key, value]) => {
-			urlSearchParams.set(key, value);
+			value && urlSearchParams.set(key, value);
 		});
 
 		const { origin, pathname } = window.location;

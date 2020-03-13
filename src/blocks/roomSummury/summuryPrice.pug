@@ -1,0 +1,25 @@
+-
+    const summuryPrice = price * days
+    const additionalFee = additionalFeePerPerson * persons    
+
+section.summuryPrice
+    .row
+        p.name #{price}₽ x #{days} суток
+        p.value #{summuryPrice}₽
+    .row
+        p.name 
+            | Сбор за услуги
+            if isServiceFeeFree
+                |: скидка #{serviceFee}₽
+                - serviceFee = 0
+        .info
+        p.value #{serviceFee}₽
+    .row
+        p.name Сбор за дополнительные услуги
+        .info
+        p.value #{additionalFee}₽
+    .summury
+        p Итого
+        p #{days ? summuryPrice + serviceFee + additionalFee : 0}₽
+    
+    

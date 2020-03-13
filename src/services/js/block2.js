@@ -8,7 +8,7 @@ export class Block2 {
 		this._state = { ...this._state, ...state };
 
 		this.render();
-		this.handles();
+		this.handlers();
 
 		this._watcher && this._watcher(this);
 	}
@@ -30,7 +30,7 @@ export class Block2 {
 
 		oldNode && oldNode.replaceWith(this.node);
 	}
-	handles() {}
+	handlers() {}
 	watcher(watcher) {
 		this._watcher = watcher;
 	}

@@ -1,0 +1,75 @@
+@import '../../services/sass/variables'
+    
+section.roomSummury
+    display: grid
+    grid-template-columns: 1fr
+    grid-gap: 18px
+    padding: 44px 30px 29px
+    
+    background-color: #fff
+    border: 1px solid rgba(0, 0, 0, 0.12)
+    box-sizing: border-box
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2)
+    border-radius: 4px
+
+    .header
+        display: grid
+        grid-template-columns: 1fr 1fr
+        
+        .number
+            font-weight: bold
+            font-size: 22px
+
+            &::first-letter
+                font-size: 12px
+
+            .luxury
+                display: inline-block
+                font-size: 12px
+                color: $color_purple
+                margin-left: 6px
+                text-transform: uppercase
+
+        .price
+            font-weight: bold
+            text-align: right
+            margin-top: 2px
+
+            .pricePeriod
+                display: inline-block
+                font-size: 12px
+                font-weight: normal
+                text-transform: lowercase
+                margin-left: 5px
+
+    .body
+        display: grid
+        grid-template-columns: 1fr
+        grid-gap: 19px
+
+    .footer
+        margin-top: 7px
+        .button
+            border: none
+
+            position: relative
+            background: $color_purple_gradient
+            width: 100%
+            height: 44px
+            background-color: red
+            border-radius: 22px
+            font-weight: bold
+            text-transform: uppercase
+            color: #fff
+            font-size: 12px
+
+            &::before
+                position: absolute
+                top: 10px
+                right: 10px
+                font-family: Material Icons
+                content: '\e5c8'
+                font-size: 24px
+                line-height: 24px
+                font-weight: normal
+        

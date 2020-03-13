@@ -81,7 +81,7 @@ export class FormDateSelect extends Block {
 			onValuesChange && onValuesChange(this.values);
 		};
 
-		this.values = this.calendar.api.selectedDates;
+		// this.values = this.calendar.api.selectedDates;
 	}
 	set values([arrivalDate, leaveDate]) {
 		this._values = {
@@ -134,11 +134,12 @@ export class FormDateSelect extends Block {
 			if (leaveDropdown) {
 				arrivalDropdown.header.value = arrivalDate.toLocaleDateString();
 				leaveDropdown.header.value = leaveDate.toLocaleDateString();
+			} else {
+				arrivalDropdown.header.value = this.getSingleDateString([
+					arrivalDate,
+					leaveDate,
+				]);
 			}
-			arrivalDropdown.header.value = this.getSingleDateString([
-				arrivalDate,
-				leaveDate,
-			]);
 		} else {
 			this.dropdowns.forEach(dropdown => {
 				dropdown.header.value = '';
