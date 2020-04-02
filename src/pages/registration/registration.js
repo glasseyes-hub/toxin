@@ -32,7 +32,7 @@ class Registration extends Component {
 		});
 		const gender = new Radio({
 			name: 'gender',
-			list: ['Мужчина', 'Женщина'],
+			list: { male: 'Мужчина', female: 'Женщина' },
 			check: 0,
 		});
 		const birthday = new Input({
