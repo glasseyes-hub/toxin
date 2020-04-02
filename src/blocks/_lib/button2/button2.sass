@@ -1,0 +1,27 @@
+@import '../../../services/sass/variables'
+
+button.button2
+    background: none
+    border: none   
+    outline: none
+    cursor: pointer
+    color: $color_purple
+
+    .button-border            
+        font-weight: bold
+        text-transform: uppercase
+        text-align: center
+        font-size: 12px
+
+    &_bordered
+        background: $color_purple_gradient
+        
+        .button-border
+            background-color: #fff
+            
+    &_filled
+        background: $color_purple_gradient
+        color: #fff    
+
+    &_grey
+        color: $color_dark50

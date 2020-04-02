@@ -1,0 +1,41 @@
+@import '../../services/sass/variables'
+    
+section.registration
+    background-image: url('../../assets/img/registration_login__bg.png')
+    background-position: center bottom
+    width: $width_content
+    height: 702px
+    background-color: red
+    margin: 0 auto
+    display: flex
+    align-items: center
+    justify-content: center
+
+    .registration-container
+        display: grid
+        grid-auto-flow: row
+        grid-gap: 18px
+        width: 380px
+        padding: 40px 29px 25px
+        background-color: #fff
+        box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2)
+        border: 1px solid rgba(0, 0, 0, 0.12)
+        border-radius: 4px
+
+        .registration-form
+            display: grid
+            grid-auto-flow: row
+            grid-gap: 10px
+
+            .registration-birthday,
+            .registration-authorization
+                margin-top: 12px
+
+        .registration-payment
+            margin-top: 13px
+
+        .registration-footer
+            display: flex
+            justify-content: space-between
+            align-items: center
+            margin-top: 12px

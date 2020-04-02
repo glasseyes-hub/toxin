@@ -8,7 +8,7 @@ function getEntires(pages) {
 	return Object.assign(
 		{},
 		...pages.map(({ name }) => {
-			return { [name]: ['@babel/polyfill', `./src/pages/${name}.js`] };
+			return { [name]: ['@babel/polyfill', `./src/pages/${name}/${name}.js`] };
 		})
 	);
 }
@@ -35,6 +35,22 @@ const pages = [
 			template: './src/templates/main.pug',
 			chunks: ['vendors', 'room'],
 			filename: 'room.html',
+		}),
+	},
+	{
+		name: 'registration',
+		HtmlWebpackPlugin: new HtmlWebpackPlugin({
+			template: './src/templates/main.pug',
+			chunks: ['vendors', 'registration'],
+			filename: 'registration.html',
+		}),
+	},
+	{
+		name: 'login',
+		HtmlWebpackPlugin: new HtmlWebpackPlugin({
+			template: './src/templates/main.pug',
+			chunks: ['vendors', 'login'],
+			filename: 'login.html',
 		}),
 	},
 ];

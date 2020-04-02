@@ -1,0 +1,52 @@
+@import '../../../services/sass/variables'
+    
+section.button
+    height: 44px
+    border-radius: 50px
+
+    button
+        border: none
+        outline: none
+
+        position: relative
+        background-color: transparent
+        width: calc( 100% -  4px)
+        height: calc( 100% -  4px)
+        line-height: calc( 100% -  4px)
+        margin: 2px
+        padding: 0 26px
+        border-radius: 50px
+        cursor: pointer    
+        
+        text-transform: uppercase
+        font-size: 12px
+        text-align: center
+        font-weight: bold
+
+        &::before
+            font-family: Material Icons
+            position: absolute
+            right: 10px
+            font-weight: normal
+
+    &_bordered
+        background: $color_purple_gradient
+        button
+            background-color: #fff
+            color: $color_purple
+
+
+    &_filled
+        background: $color_purple_gradient
+        button
+            color: #fff
+
+    &_big
+        width: 100%
+
+    &_arrow
+        button
+            &::before
+                content: $icon_arrowRight
+                height: 100%
+                font-size: 24px

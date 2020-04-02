@@ -51,6 +51,9 @@
   "description": "My first project",
   "dependencies": {
     "@babel/polyfill": "^7.8.3",
+    "anychart": "^8.7.1",
+    "apexcharts": "^3.17.0",
+    "chart.js": "^2.9.3",
     "fs": "0.0.1-security",
     "jquery": "^3.4.1",
     "jquery-mask-plugin": "^1.14.16",

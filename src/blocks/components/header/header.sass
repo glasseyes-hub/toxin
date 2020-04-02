@@ -1,0 +1,21 @@
+@import '../../../services/sass/variables'
+
+@import header-logo
+@import header-navigation
+@import header-authorization
+
+section.header
+    width: $width_content
+    margin: 0 auto
+
+    display: grid
+    grid-template-areas: 'logo navigation authorization'
+    grid-template-columns: 120px 1fr 303px
+    grid-template-rows: 40px
+    grid-gap: 10px
+    padding: 15px 140px
+
+    @include header-logo
+    @include header-navigation  
+    @include header-authorization
+      

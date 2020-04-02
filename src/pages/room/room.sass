@@ -1,0 +1,33 @@
+@import '../../services/sass/variables'
+    
+section.room
+
+    .room-header
+        width: $width_content
+        margin: 0 auto
+        height: 485px
+
+    .room-body
+        width: $width_content
+        margin: 0 auto
+        
+        display: grid
+        grid-template-areas: 'about sidebar' 'reviewes sidebar' 'additional sidebar'
+        grid-template-columns: 710px 380px
+        grid-column-gap: 70px
+        grid-row-gap: 15px
+        padding: 70px 140px 67px
+
+        .room-about
+            grid-area: about
+            display: grid
+            grid-template-columns: 1fr 1fr
+
+        .room-reviewes
+            grid-area: reviewes
+        
+        .room-additional
+            grid-area: additional
+
+        .room-sidebar
+            grid-area: sidebar
