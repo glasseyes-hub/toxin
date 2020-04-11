@@ -1,2 +1,3 @@
 section.button(class=className)
-    button #{text}
+    - const buttonDisabled = disabled ? {'disabled':''}: ''
+    button(formaction=src, type=type, form=formID)&attributes(buttonDisabled) #{text}

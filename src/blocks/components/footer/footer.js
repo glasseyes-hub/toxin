@@ -20,8 +20,9 @@ export class Footer extends Component {
 	renderInput() {
 		this.input = new Input({
 			value: '12312321',
-			button: 'send',
-			attr: { class: 'footer-input', placeholder: 'Email' },
+			button: {
+				className: 'input-button_send',
+			},
 		});
 
 		this.node.querySelector('.footer-input').replaceWith(this.input.node);

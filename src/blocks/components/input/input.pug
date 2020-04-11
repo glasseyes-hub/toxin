@@ -1,7 +1,8 @@
 section.input(class=className)
     if title
         h3.input-title #{title}
-    input.input-node(type=type, name=name, value=value, placeholder=placeholder)
+    - const inputDisabled = disabled ? {'disabled':''}: ''
+    input(type=type, name=name, value=value, placeholder=placeholder)&attributes(inputDisabled)
     if button
         section.input-button
 

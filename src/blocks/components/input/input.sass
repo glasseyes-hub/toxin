@@ -1,12 +1,18 @@
 @import '../../../services/sass/variables'
     
-section.input,
+section.input
+    position: relative
+
     .input-title
         margin-bottom: 4px
+
+    &:hover,
+    &:focus,
+    &.input_hovered
+        input
+            border-color: $color_dark50
         
-    .input-node
-        font-family: 'Montserrat'
-        box-sizing: border-box
+    input
         width: 100%
         height: 44px
         padding: 0 15px
@@ -17,10 +23,32 @@ section.input,
         &::placeholder
             color: $color_dark25
 
-        &:hover,
-        &:focus,
-        &.input_hovered
-            border-color: $color_dark50
+        &:disabled
+            background-color: transparent
+
+    .input-button
+        position: absolute
+        right: 0
+        bottom: 0
+        padding: 0 10px
+        height: 44px
+        width: 44px
+        border-radius: 0
+        display: flex
+        align-items: center
+        justify-content: center
+
+        button
+            &::before                
+                font-size: 24px
+                line-height: 44px
+
+        &_send
+            button
+                &::before
+                    content: $icon_arrowRight
+                    color: $color_purple
+
 
 
 section.input
@@ -29,14 +57,4 @@ section.input
     height: auto
     padding: 0
 
-    position: relative
-
-    .input-button
-        position: absolute
-        right: 0
-        padding: 0 10px
-        height: 100%
-        &::before
-            content: $icon_arrowRight
-            font-size: 24px
-            color: $color_purple
+    

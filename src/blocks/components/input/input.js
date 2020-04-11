@@ -15,10 +15,16 @@ export class Input extends Component {
 
 		super(state);
 	}
+	set value(value) {
+		this.inputNode.value = value;
+	}
+	get value() {
+		return this.inputNode.value;
+	}
 	render() {
 		super.render();
 
-		this.inputNode = this.node.querySelector('.input-node');
+		this.inputNode = this.node.querySelector('input');
 
 		this.inputNode.value = this.state.value;
 
@@ -26,15 +32,16 @@ export class Input extends Component {
 		this.state.button && this.renderButton();
 	}
 	handlers() {
-		this.inputNode.addEventListener('change', event => {
+		this.inputNode.addEventListener('change', (event) => {
 			this.state = { value: event.target.value };
 		});
 	}
 	renderButton() {
-		const button = new Button({
-			type: this.state.button,
-			attr: { class: 'input-button' },
-		});
+		this.state.button.className =
+			'input-button' +
+			(this.state.button.className ? ' ' + this.state.button.className : '');
+
+		const button = new Button(this.state.button);
 
 		this.node.querySelector('.input-button').replaceWith(button.node);
 	}

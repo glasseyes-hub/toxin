@@ -1,0 +1,7 @@
+section.counter(class=className)
+    each element in list
+        .counter-element
+            p.counter-text #{element.text}
+            button.counter-button.counter-button_minus -
+            input.counter-input(type='text' name=element.name value=element.value)
+            button.counter-button.counter-button_plus +

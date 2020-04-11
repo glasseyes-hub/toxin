@@ -4,13 +4,15 @@ import { Input } from '../../blocks/components/input/input';
 import { Button } from '../../blocks/components/button/button';
 import { Radio } from '../../blocks/components/radio/radio';
 import { Toggle } from '../../blocks/components/toggle/toggle';
+import { urlSearchTools } from '../../services/js/Page';
 
 class Registration extends Component {
-	constructor() {
+	constructor(state = {}) {
 		require('./registration.sass');
 
-		const state = {
+		state = {
 			template: require('./registration.pug'),
+			...state,
 		};
 
 		super(state);
@@ -47,6 +49,7 @@ class Registration extends Component {
 			title: 'Данные для входа в сервис',
 			name: 'email',
 			placeholder: 'Email',
+			value: urlSearchTools.get('email'),
 		});
 		const password = new Input({
 			name: 'password',

@@ -1,7 +1,7 @@
 export const urlSearchTools = (() => {
 	const urlSearchParams = new URLSearchParams(window.location.search);
 
-	const _filter = state => {
+	const _cleaner = state => {
 		return Object.entries(state).reduce((acc, [key, value]) => {
 			if (value != false) acc[key] = value;
 
@@ -14,7 +14,7 @@ export const urlSearchTools = (() => {
 	const _set = state => {
 		_clear();
 
-		state = _filter(state);
+		state = _cleaner(state);
 		Object.entries(state).forEach(([key, value]) => {
 			value && urlSearchParams.set(key, value);
 		});
@@ -24,9 +24,18 @@ export const urlSearchTools = (() => {
 
 		window.history.pushState('', '', url);
 	};
-	const _get = () => {
-		return [...urlSearchParams.entries()].reduce((acc, [key, value]) => {
+	const _get = searchKey => {
+		const params = [...urlSearchParams.entries()];
+
+		if (searchKey) {
+			const searchParam = params.find(([param]) => param === searchKey);
+
+			return searchParam ? searchParam[1] : null;
+		}
+
+		return params.reduce((acc, [key, value]) => {
 			acc[key] = value;
+
 			return acc;
 		}, {});
 	};
@@ -36,7 +45,8 @@ export const urlSearchTools = (() => {
 			_set(state);
 			this._handler && this._handler(_get());
 		};
-		get = () => _get();
+		getAll = () => _get();
+		get = searchKey => _get(searchKey);
 		update = state => {
 			this.set({ ..._get(), ...state });
 		};

@@ -1,0 +1,27 @@
+@import '../../../services/sass/variables'
+
+.dropdown-target
+    position: absolute
+    z-index: 1
+    width: 100%
+
+section.dropdown
+    cursor: pointer
+    
+    input        
+        cursor: pointer
+
+    .dropdown-button  
+        button
+            &::before
+                content: $icon_arrowDown
+                color: $color_dark50
+
+    &_open
+        input
+            border-color: $color_dark50
+        .dropdown-button      
+            button
+                &::before
+                    content: $icon_arrowUp
+                    color: $color_dark50
