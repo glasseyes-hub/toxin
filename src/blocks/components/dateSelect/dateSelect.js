@@ -25,7 +25,6 @@ export class DateSelect extends Component {
 				return {
 					single: new Dropdown({
 						open: this.state.open,
-						open: true,
 						type: 'input',
 						className: 'dateSelect-dropdown dateSelect-dropdown_single',
 						title: 'Даты пребывания в отеле',
@@ -85,11 +84,14 @@ export class DateSelect extends Component {
 		const arrivalInput = this.node.querySelector('.dateSelect-arrival');
 		const leaveInput = this.node.querySelector('.dateSelect-leave');
 
-		this.calendar.addObserver(() => {
+		this.calendar.addObserver((state) => {
+			const [arrivalDate, leaveDate] = state.values;
 			this.setDropdownsText();
 			arrivalInput.value = arrivalDate;
 			leaveInput.value = leaveDate;
 			Object.values(this.dropdowns).forEach((dropdown) => dropdown.close());
+
+			this.state = { arrival: arrivalDate, leave: leaveDate };
 		});
 
 		this.setDropdownsText();
@@ -101,9 +103,8 @@ export class DateSelect extends Component {
 	setDropdownsText() {
 		if (this.state.single) {
 			this.dropdowns.single.text = this.calendar.state.values
+				.filter((date) => date)
 				.map((date) => {
-					if (!date) return;
-
 					return date
 						.toLocaleDateString('ru-RU', {
 							day: 'numeric',

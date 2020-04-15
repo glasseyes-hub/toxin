@@ -1,0 +1,18 @@
+section.checkbox(class=className)
+    h3.checkbox-title #{title}
+    .checkbox-list
+        each element in list
+            .checkbox-element
+            
+                if element.check
+                    input.checkbox-input(type='checkbox' checked)
+                    button.checkbox-button.checkbox-button_checked
+                else
+                    input.checkbox-input(type='checkbox')
+                    button.checkbox-button
+
+                if element.subtext
+                    p.checkbox-text.checkbox-text_title #{element.text}
+                    p.checkbox-subtext #{element.subtext}
+                else
+                    p.checkbox-text #{element.text}

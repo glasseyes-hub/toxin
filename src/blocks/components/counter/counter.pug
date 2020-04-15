@@ -3,5 +3,5 @@ section.counter(class=className)
         .counter-element
             p.counter-text #{element.text}
             button.counter-button.counter-button_minus -
-            input.counter-input(type='text' name=element.name value=element.value)
+            input.counter-input(type='text' name=element.name value=element.value ? element.value : 0)
             button.counter-button.counter-button_plus +

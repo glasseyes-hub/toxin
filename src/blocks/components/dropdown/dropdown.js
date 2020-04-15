@@ -1,6 +1,7 @@
 import { Component } from '../../../services/js/Component';
 import { Input } from '../input/input';
 import { Title } from '../../_lib/title/title';
+import { Button } from '../button/button';
 
 export class Dropdown extends Component {
 	_targetNode = undefined;
@@ -52,9 +53,21 @@ export class Dropdown extends Component {
 		this.node.appendChild(this.input.node);
 	}
 	renderTitle() {
-		this.title = new Title();
+		const title = document.createElement('div');
+		title.classList.add('dropdown-title');
 
-		this.node.appendChild(this.title.node);
+		const header = document.createElement('h3');
+		header.classList.add('dropdown-header');
+		header.innerHTML = this.state.title;
+
+		const button = new Button({
+			className: 'dropdown-button',
+		});
+
+		title.appendChild(header);
+		title.appendChild(button.node);
+
+		this.node.appendChild(title);
 	}
 	handlers() {
 		this.node.addEventListener('click', (event) => {

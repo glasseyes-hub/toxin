@@ -2,12 +2,12 @@ import { Component } from '../../../services/js/Component';
 import { Dropdown } from '../dropdown/dropdown';
 import { Counter } from '../counter/counter';
 
-export class GuestsSelect extends Component {
+export class Facilities extends Component {
 	constructor(state) {
-		require('./guestsSelect.sass');
+		require('./facilities.sass');
 
 		state = {
-			template: require('./guestsSelect.pug'),
+			template: require('./facilities.pug'),
 			...state,
 		};
 
@@ -22,28 +22,31 @@ export class GuestsSelect extends Component {
 	renderDropdown() {
 		this.dropdown = new Dropdown({
 			open: this.state.open,
-			className: 'guestsSelect-dropdown',
+			className: 'facilities-dropdown',
 			type: 'input',
-			title: 'Гости',
-			placeholder: 'Сколько гостей',
+			title: 'Удобства номера',
+			placeholder: 'Выберите удобства',
 		});
 
 		this.node.appendChild(this.dropdown.node);
 	}
 	renderCounter() {
 		this.counter = new Counter({
-			className: 'guestsSelect-counter',
+			className: 'facilities-counter',
 			list: [
-				{ text: 'Взрослые', name: 'adult', value: this.state.adult || 0 },
-				{ text: 'Дети', name: 'children', value: this.state.children || 0 },
-				{ text: 'Младенцы', name: 'baby', value: this.state.baby || 0 },
+				{ text: 'Спальни', name: 'bedrooms', value: this.state.bedrooms || 0 },
+				{ text: 'Кровати', name: 'beds', value: this.state.beds || 0 },
+				{
+					text: 'Ванные комнаты',
+					name: 'bathrooms',
+					value: this.state.bathrooms || 0,
+				},
 			],
-			controls: true,
 		});
 
 		this.counter.addObserver((state) => {
 			this.setDropdownText();
-			this.counter.controls && this.dropdown.close();
+			this.controls && this.dropdown.close();
 
 			const values = state.list.reduce((acc, elem) => {
 				acc[elem.name] = elem.value;
@@ -62,13 +65,18 @@ export class GuestsSelect extends Component {
 	setDropdownText() {
 		let groups = [
 			{
-				declension: ['гость', 'гостя', 'гостей'],
-				text: ['Взрослые', 'Дети'],
+				declension: ['спальня', 'спальни', 'спален'],
+				text: ['Спальни'],
 				value: 0,
 			},
 			{
-				declension: ['младенец', 'младенца', 'младенцев'],
-				text: ['Младенцы'],
+				declension: ['кровать', 'кровати', 'кроватей'],
+				text: ['Кровати'],
+				value: 0,
+			},
+			{
+				declension: ['ванная комната', 'ванные комнаты', 'ванных комнат'],
+				text: ['Ванные комнаты'],
 				value: 0,
 			},
 		];

@@ -1,0 +1,55 @@
+@import '../../../services/sass/variables'
+    
+section.checkbox
+    .checkbox-title
+        margin-bottom: 15px
+
+    .checkbox-list
+        display: grid
+        grid-auto-flow: row
+        grid-gap: 10px
+
+        .checkbox-element
+            display: grid
+            grid-template-areas: 'button text' 'button subtext'
+            grid-template-columns: 20px 1fr
+            grid-column-gap: 10px
+            cursor: pointer
+
+            .checkbox-input
+                display: none
+
+            .checkbox-button
+                grid-area: button
+                width: 20px
+                height: 20px
+                border: 1px solid $color_dark25
+                border-radius: 4px
+                background-color: transparent
+
+                &_checked
+                    border-color: $color_purple
+                    &::before
+                        font-family: Material Icons
+                        content: '\e5ca'
+                        font-weight: bold
+                        background: linear-gradient(45deg, #8BA4F9 0%, $color_purple 100%)
+                        -webkit-background-clip: text
+                        -webkit-text-fill-color: transparent
+                        width: 20px
+                        height: 20px
+                        line-height: 20px
+
+            .checkbox-text
+                grid-area: text
+                height: 20px
+                line-height: 18px
+                margin-top: 1px
+                &_title
+                    font-weight: bold
+            .checkbox-subtext
+                grid-area: subtext
+                font-size: 12px
+                line-height: 14px
+                margin-top: 4px
+            

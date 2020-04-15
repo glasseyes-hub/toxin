@@ -1,0 +1,44 @@
+@import '../../../services/sass/variables'
+    
+section.priceRange
+    display: grid
+    grid-template-areas: 'title info' 'slider slider' 'text text'
+    margin-top: 10px
+
+    .priceRange-title
+        grid-area: title
+
+    .priceRange-info
+        grid-area: info
+        font-size: 11px
+        line-height: 15px
+        text-align: right
+
+    .priceRange-slider
+        grid-area: slider
+        margin: 22px 0 14px
+        height: 6px       
+        border: 1px solid $color_dark25
+        border-radius: 5px
+
+        .ui-slider-handle
+            background: linear-gradient(45deg, #66D2EA 0%, $color_green 100%)
+            width: 16px
+            height: 16px
+            border: 2px solid #ffffff
+            border-radius: 14px
+            cursor: pointer
+            margin-top: -2px
+
+        .ui-state-focus
+            outline: none
+
+        .ui-slider-range
+            height: 6px   
+            background: linear-gradient(45deg, #66D2EA 0%, $color_green 100%)
+            margin-top: -1px
+        
+    .priceRange-text
+        grid-area: text
+        font-size: 12px
+        line-height: 14px

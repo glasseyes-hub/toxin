@@ -2,11 +2,23 @@
 
 .dropdown-target
     position: absolute
-    z-index: 1
+    z-index: 4
     width: 100%
 
 section.dropdown
     cursor: pointer
+
+    .dropdown-title
+        display: flex
+        justify-content: space-between
+        width: 100%
+
+        .dropdown-button  
+            margin-right: 10px
+            button
+                &::before
+                    line-height: 14px
+                    font-size: 24px
     
     input        
         cursor: pointer
