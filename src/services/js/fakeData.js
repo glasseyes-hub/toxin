@@ -55,6 +55,7 @@ export const fakeData = {
 		priceRange: {
 			max: 15000,
 		},
+		resultsAmount: 86,
 		results: [
 			{
 				id: 1,
@@ -93,7 +94,7 @@ export const fakeData = {
 				reviews: 35,
 				images: [
 					'img/rooms/image-2.png',
-					'img/rooms/image-22.png',
+					'img/rooms/image-5.png',
 					'img/rooms/image-3.png',
 					'img/rooms/image-4.png',
 				],
@@ -108,7 +109,7 @@ export const fakeData = {
 				images: [
 					'img/rooms/image-3.png',
 					'img/rooms/image-2.png',
-					'img/rooms/image-3.png',
+					'img/rooms/image-5.png',
 					'img/rooms/image-4.png',
 				],
 			},
@@ -123,7 +124,7 @@ export const fakeData = {
 					'img/rooms/image-4.png',
 					'img/rooms/image-2.png',
 					'img/rooms/image-3.png',
-					'img/rooms/image-4.png',
+					'img/rooms/image-5.png',
 				],
 			},
 			{
@@ -210,10 +211,11 @@ export const fakeData = {
 					'img/rooms/image-4.png',
 				],
 			},
+			,
 			{
 				id: 12,
 				number: 352,
-				isLuxury: false,
+				isLuxury: true,
 				price: 5000,
 				rating: 3,
 				reviews: 55,

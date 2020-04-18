@@ -1,0 +1,33 @@
+section.imageSlider
+    position: relative
+    cursor: pointer
+
+    .imageSlider-list
+        overflow: hidden
+        width: 270px
+        height: 100%
+        display: flex
+        flex-direction: row
+        
+        .imageSlider-element
+            width: 100%
+            object-fit: cover
+
+    .imageSlider-controls
+        position: absolute
+        bottom: 15px
+        right: 15px
+        display: grid
+        grid-auto-flow: column
+        grid-gap: 3.75px
+
+        .imageSlider-button
+            background-color: transparent
+            width: 7px
+            height: 7px
+            border: 1px solid #fff
+            border-radius: 5px
+            cursor: pointer
+
+            &_selected
+                background-color: #fff

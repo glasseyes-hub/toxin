@@ -1,14 +1,15 @@
-@import '../../services/sass/variables'
+@import '../../../services/sass/variables'
     
 .paginator
     margin: 0 auto
 
-    .paginator-buttons,
+    .paginator-buttons
         display: flex
         justify-content: center
-        margin-bottom: 10px
+        margin-bottom: 7px
 
-        .paginator-button
+        .paginator-button,
+        .paginator-dots
             background: none
             border: none
             outline: none
@@ -18,33 +19,34 @@
             color: $color_dark50
             cursor: pointer
 
+        .paginator-button
             &:hover
                 background-color: $color_dark5
 
-            &.dots
-                cursor: auto
-
-            &.previuos,
-            &.next,
-            &.current
+            &_previous,
+            &_next,
+            &_current
                 color: #fff
 
-            &.previuos,
-            &.next
+            &_previous,
+            &_next
                 background: $color_green_gradient
                 &::before
                     font-family: 'Material Icons'
                     font-size: 24px
                     line-height: 40px
 
-            &.previuos::before
+            &_previous::before
                 content: $paginator-button_previous
-            &.next::before
+            &_next::before
                 content: $paginator-button_next
 
-            &.current
+            &_current
                 font-weight: bold
-                background: $color_purple_gradient
+                background: $color_purple_gradient        
+
+        .paginator-dots
+            cursor: auto
 
     .paginator-info
         text-align: center

@@ -42,8 +42,8 @@ export class PriceRange extends Component {
 			? this.info
 			: this.node.querySelector('.priceRange-info');
 
-		this.info.innerHTML = `${this.state.start || this.state.min}Р - ${
+		this.info.innerHTML = `${this.state.start || this.state.min}₽ - ${
 			this.state.end || this.state.max
-		}Р`;
+		}₽`;
 	}
 }

@@ -1,0 +1,10 @@
+section.imageSlider(class=className)
+    .imageSlider-list
+        each src in list
+            img.imageSlider-element(src=src)
+    .imageSlider-controls
+        each button, index in list
+            if index
+                button.imageSlider-button
+            else 
+                button.imageSlider-button.imageSlider-button_selected

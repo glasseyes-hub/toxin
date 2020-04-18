@@ -9,6 +9,8 @@ import { AdditionalFacilities } from '../../blocks/components/additionalFaciliti
 import { Availabilities } from '../../blocks/components/availabilities/availabilities';
 import { CheckboxButtons } from '../../blocks/components/checkboxButtons/checkboxButtons';
 import { fakeData } from '../../services/js/fakeData';
+import { Room } from '../../blocks/components/room/room';
+import { Paginator } from '../../blocks/components/paginator/paginator';
 
 const tools = new Tools();
 
@@ -19,7 +21,7 @@ class Search extends Component {
 		const state = {
 			template: require('./search.pug'),
 			filterTimeout: null,
-			filterTimeoutInterval: 2000,
+			filterTimeoutInterval: 4000,
 			filters: {
 				arrival: tools.url.search.get('arrival')
 					? new Date(tools.url.search.get('arrival'))
@@ -56,6 +58,7 @@ class Search extends Component {
 	render() {
 		super.render();
 		this.renderFilter();
+		this.renderPaginator();
 		this.renderResults();
 	}
 	renderFilter() {
@@ -194,11 +197,38 @@ class Search extends Component {
 		filter.appendChild(facilities.node);
 		filter.appendChild(additionalFacilities.node);
 	}
-	renderResults() {
-		const results = this.node.querySelector('search-results');
-		const resultsData = fakeData.search.results;
+	renderPaginator() {
+		const searchPaginator = this.node.querySelector('.search-paginator');
+		this.paginator = new Paginator({
+			className: 'search-paginator',
+			results: fakeData.search.resultsAmount,
+		});
 
-		console.log('Results rendered', resultsData);
+		this.paginator.addObserver(() => {
+			this.renderResults();
+		});
+
+		searchPaginator.replaceWith(this.paginator.node);
+	}
+	renderResults() {
+		const results = this.node.querySelector('.search-results');
+		const resultsData = this.getResultsData();
+
+		results.innerHTML = '';
+
+		resultsData.forEach((roomData) => {
+			const room = new Room(roomData);
+
+			results.appendChild(room.node);
+		});
+	}
+	getResultsData() {
+		const filters = this.state.filters;
+		const page = this.paginator.state.page;
+
+		console.log(filters, page);
+
+		return fakeData.search.results;
 	}
 }
 
@@ -209,6 +239,7 @@ search.addObserver((state) => {
 
 	state.filterTimeout = setTimeout(() => {
 		tools.url.search.set(state.filters);
+		search.renderPaginator();
 		search.renderResults();
 	}, state.filterTimeoutInterval);
 });
