@@ -1,116 +1,107 @@
-import './room.sass';
-
 import { template } from '../../templates/main';
-import { urlSearchTools, state } from '../../services/js/Page';
-import { cmd } from '../../services/js/pageTools';
-import { RoomInfo } from '../../blocks/roomInfo/roomInfo';
-import { RoomReviewes } from '../../blocks/roomReviewes/roomReviewes';
-import { RoomAdditionals } from '../../blocks/roomAdditionals/roomAdditionals';
+import { RoomInfo } from '../../blocks/components/roomInfo/roomInfo';
+import { RoomReviewes } from '../../blocks/components/roomReviewes/roomReviewes';
+import { RoomAdditionals } from '../../blocks/components/roomAdditionals/roomAdditionals';
 import { RoomSummury } from '../../blocks/roomSummury/roomSummury';
-import { RoomPhotos } from '../../blocks/roomPhotos/roomPhotos';
 import { RoomDiagram } from '../../blocks/components/roomDiagram/roomDiagram';
+import { Component } from '../../services/js/Component';
+import { fakeData } from '../../services/js/fakeData';
+import { Tools } from '../../services/js/Tools';
 
-let room = cmd.createBlock({
-	template: require('./room.pug'),
+const tools = new Tools();
+
+class Room extends Component {
+	constructor(state) {
+		require('./room.sass');
+
+		state = {
+			template: require('./room.pug'),
+			...state,
+		};
+
+		super(state);
+	}
+	render() {
+		super.render();
+		this.renderAbout();
+		this.renderReviews();
+		this.renderAdditionals();
+		this.renderSidebar();
+	}
+	renderAbout() {
+		const roomAbout = this.node.querySelector('.room-about');
+
+		const roomInfo = new RoomInfo(this.state.info);
+
+		const roomDiagram = new RoomDiagram(this.state.diagram);
+
+		roomAbout.appendChild(roomInfo.node);
+		roomAbout.appendChild(roomDiagram.node);
+	}
+	renderReviews() {
+		const roomReviewes = this.node.querySelector('.room-reviewes');
+
+		const reviewes = new RoomReviewes(this.state.reviewes);
+
+		roomReviewes.replaceWith(reviewes.node);
+	}
+	renderAdditionals() {
+		const roomAdditionals = this.node.querySelector('.room-additional');
+
+		const additionals = new RoomAdditionals(this.state.additionals);
+
+		roomAdditionals.replaceWith(additionals.node);
+	}
+	renderSidebar() {
+		const roomSidebar = this.node.querySelector('.room-sidebar');
+
+		const roomSummury = new RoomSummury(this.state.summury);
+
+		roomSummury.addObserver((state) => {
+			const { guests, dates } = state;
+			tools.url.search.set({ ...dates, ...guests });
+		});
+
+		roomSidebar.appendChild(roomSummury.node);
+	}
+}
+
+const room = new Room({
+	images: fakeData.room.images,
+	info: {
+		comfort: fakeData.room.comfort,
+		convenience: fakeData.room.convenience,
+		cosiness: fakeData.room.cosiness,
+	},
+	diagram: {
+		data: fakeData.room.diagram,
+	},
+	reviewes: {
+		list: fakeData.room.reviewes,
+	},
+	additionals: {
+		noPets: fakeData.room.noPets,
+		noParty: fakeData.room.noParty,
+		arrivalTime: fakeData.room.arrivalTime,
+		leaveTime: fakeData.room.leaveTime,
+		cancelable: fakeData.room.cancelable,
+	},
+	summury: {
+		number: fakeData.room.number,
+		isLuxury: fakeData.room.isLuxury,
+		price: fakeData.room.price,
+		serviceFee: fakeData.room.serviceFee,
+		serviceFeeDiscount: fakeData.room.serviceFeeDiscount,
+		dates: {
+			arrival: tools.url.search.get('arrival'),
+			leave: tools.url.search.get('leave'),
+		},
+		guests: {
+			adult: tools.url.search.get('adult'),
+			children: tools.url.search.get('children'),
+			baby: tools.url.search.get('baby'),
+		},
+	},
 });
-room = {
-	...room,
-	header: room.node.querySelector('.room-header'),
-	about: room.node.querySelector('.room-about'),
-	reviewes: room.node.querySelector('.room-reviewes'),
-	additional: room.node.querySelector('.room-additional'),
-	sidebar: room.node.querySelector('.room-sidebar'),
-};
 
 template.main.node.appendChild(room.node);
-
-const roomPhotos = new RoomPhotos({
-	list: ['./img/room1.png', './img/room2.png', './img/room3.png'],
-});
-
-const roomInfo = new RoomInfo({
-	title: 'Сведения о номере',
-	list: [
-		{
-			iconClass: 'icon_comfort',
-			name: 'Комфорт',
-			info: 'Шумопоглощающие стены',
-		},
-		{
-			iconClass: 'icon_convenience',
-			name: 'Удобство',
-			info: 'Окно в каждой из спален',
-		},
-		{
-			iconClass: 'icon_cosiness',
-			name: 'Уют',
-			info: 'Номер оснащён камином',
-		},
-	],
-});
-
-const roomDiagram = new RoomDiagram({
-	data: [130, 65, 65, 90],
-});
-
-const roomReviewes = new RoomReviewes({
-	title: 'Отзывы посетителей номера',
-	list: [
-		{
-			name: 'Мурад Сарафанов',
-			icon: './img/foto1.png',
-			date: '5 дней назад',
-			likes: 12,
-			isLiked: true,
-			text:
-				'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',
-		},
-		{
-			name: 'Патрисия Стёклышкова',
-			icon: './img/foto2.png',
-			date: 'Неделю назад',
-			likes: 2,
-			text:
-				'Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент',
-		},
-	],
-});
-
-const roomAdditionals = new RoomAdditionals({
-	roolsList: [
-		'Нельзя с питомцами',
-		'Без вечеринок и мероприятий',
-		'Время прибытия — после 13:00, а выезд до 12:00',
-	],
-	isCancelable: true,
-});
-
-const roomSummury = new RoomSummury({
-	number: 888,
-	isLuxury: true,
-	price: 9900,
-	isServiceFeeFree: true,
-	dates: {
-		arrival: state.urlSearch.arrival,
-		leave: state.urlSearch.leave,
-	},
-	guests: {
-		adult: state.urlSearch.adult,
-		children: state.urlSearch.children,
-		baby: state.urlSearch.baby,
-	},
-});
-
-roomSummury.watcher(_this => {
-	const { arrival, leave } = _this.state.dates;
-	const { adult, children, baby } = _this.state.guests;
-
-	urlSearchTools.update({ arrival, leave, adult, children, baby });
-});
-
-room.header.appendChild(roomPhotos.node);
-room.about.appendChild(roomInfo.node);
-room.about.appendChild(roomDiagram.node);
-room.reviewes.replaceWith(roomReviewes.node);
-room.additional.replaceWith(roomAdditionals.node);
-room.sidebar.appendChild(roomSummury.node);

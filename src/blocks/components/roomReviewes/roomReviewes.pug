@@ -1,0 +1,11 @@
+section.roomReviewes
+    h2.roomReviewes-title Отзывы посетителей номера
+    p.roomReviewes-amount #{list.length} отзыва
+    ul.roomReviewes-list
+        each element in list
+            li.roomReviewes-element
+                img.roomReviewes-icon(src=element.icon)
+                .roomReviewes-sidebar
+                h3.roomReviewes-name #{element.name}
+                p.roomReviewes-date #{element.date}
+                p.roomReviewes-text #{element.text}

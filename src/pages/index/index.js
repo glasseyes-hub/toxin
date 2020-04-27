@@ -34,7 +34,7 @@ class Index extends Component {
 		});
 
 		const button = new Button({
-			className: 'index-button button_bordered button_filled button_arrow',
+			className: 'index-button button_filled button_arrow button_big',
 			text: 'Подобрать номер',
 		});
 

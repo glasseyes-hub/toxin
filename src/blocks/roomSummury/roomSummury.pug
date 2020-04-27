@@ -1,14 +1,25 @@
 section.roomSummury
-    .header
-        .number № #{number}            
+    .roomSummury-header
+        .roomSummury-number № #{number}            
             if isLuxury
-                p.luxury Люкс
-        
-        .price #{price}₽
-            p.pricePeriod В сутки
-    .body
-        .dates
-        .guests
-        .summuryPrice
-    .footer
-        button.button Забронировать
+                p.roomSummury-luxury Люкс        
+        .roomSummury-price #{price}₽
+            p.roomSummury-pricePeriod В сутки
+    .roomSummury-body
+        .roomSummury-dateSelect
+        .roomSummury-guestsSelect
+        .roomSummury-summuryPrice
+            .roomSummury-element
+                p.roomSummury-name.roomSummury-name_rent
+                p.roomSummury-value.roomSummury-value_rent
+            .roomSummury-element
+                p.roomSummury-name Сбор за услуги#{serviceFeeDiscount > 0 ? `: скидка ${serviceFeeDiscount}₽`:''}
+                p.roomSummury-info
+                p.roomSummury-value.roomSummury-value_service
+            .roomSummury-element
+                p.roomSummury-name Сбор за дополнительные услуги
+                p.roomSummury-info
+                p.roomSummury-value.roomSummury-value_additional
+            .roomSummury-total.roomSummury-element_total
+                p.roomSummury-name Итого
+                p.roomSummury-value.roomSummury-value_total

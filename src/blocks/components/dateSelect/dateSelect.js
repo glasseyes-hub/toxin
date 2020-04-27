@@ -18,6 +18,7 @@ export class DateSelect extends Component {
 
 		this.renderDropdowns();
 		this.renderCalendar();
+		this.setDropdownsText();
 	}
 	renderDropdowns() {
 		const getDropdowns = () => {
@@ -85,24 +86,27 @@ export class DateSelect extends Component {
 		const leaveInput = this.node.querySelector('.dateSelect-leave');
 
 		this.calendar.addObserver((state) => {
-			const [arrivalDate, leaveDate] = state.values;
-			this.setDropdownsText();
-			arrivalInput.value = arrivalDate;
-			leaveInput.value = leaveDate;
+			const [arrival, leave] = state.values;
+
 			Object.values(this.dropdowns).forEach((dropdown) => dropdown.close());
 
-			this.state = { arrival: arrivalDate, leave: leaveDate };
+			this.state = { arrival, leave };
+
+			this.setDropdownsText();
+			arrivalInput.value = arrival;
+			leaveInput.value = leave;
 		});
 
-		this.setDropdownsText();
 		arrivalInput.value = arrivalDate;
 		leaveInput.value = leaveDate;
 
 		this.node.appendChild(this.calendar.node);
 	}
 	setDropdownsText() {
-		if (this.state.single) {
-			this.dropdowns.single.text = this.calendar.state.values
+		const { arrival, leave, single } = this.state;
+
+		if (single) {
+			this.dropdowns.single.text = [arrival, leave]
 				.filter((date) => date)
 				.map((date) => {
 					return date
@@ -114,13 +118,11 @@ export class DateSelect extends Component {
 				})
 				.join(' - ');
 		} else {
-			let [arrivalDate = null, leaveDate = null] = this.calendar.state.values;
-
-			this.dropdowns.arrival.text = arrivalDate
-				? arrivalDate.toLocaleDateString()
+			this.dropdowns.arrival.text = arrival
+				? new Date(arrival).toLocaleDateString()
 				: '';
-			this.dropdowns.leave.text = leaveDate
-				? leaveDate.toLocaleDateString()
+			this.dropdowns.leave.text = leave
+				? new Date(leave).toLocaleDateString()
 				: '';
 		}
 	}

@@ -22,6 +22,7 @@ export class Calendar extends Component {
 	}
 	renderDatepicker() {
 		const container = this.node.querySelector('.calendar-datepicker');
+		const [arrival, leave] = this.state.values;
 
 		this.datepicker = $(container)
 			.datepicker({
@@ -34,7 +35,8 @@ export class Calendar extends Component {
 			})
 			.data('datepicker');
 
-		this.state.values && this.datepicker.selectDate(this.state.values);
+		this.state.values &&
+			this.datepicker.selectDate([new Date(arrival), new Date(leave)]);
 	}
 	renderButtons() {
 		const container = this.node.querySelector('.calendar-buttons');

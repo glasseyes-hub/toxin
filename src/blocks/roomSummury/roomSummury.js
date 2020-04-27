@@ -1,112 +1,121 @@
-import { Block2 } from '../../services/js/block2';
-import { FormDateSelect } from '../formDateSelect/formDateSelect';
-import { DropdownQuantity } from '../DropdownQuantity/DropdownQuantity';
-import { SummuryPrice } from './summuryPrice';
+import { Component } from '../../services/js/Component';
+import { DateSelect } from '../components/dateSelect/dateSelect';
+import { GuestsSelect } from '../components/guestsSelect/guestsSelect';
+import { Button } from '../components/button/button';
 
-export class RoomSummury extends Block2 {
+export class RoomSummury extends Component {
 	constructor(state) {
-		super({ template: require('./roomSummury.pug') });
-
 		require('./roomSummury.sass');
 
-		const serviceFee = 2179;
-		const additionalFeePerPerson = 100;
-
-		this.dates = this.getDates(state.dates);
-		this.guests = this.getGuests(state.guests);
-		this.summuryPrice = this.getSummuryPrice({
-			days: this.calcDays(state.dates),
-			persons: this.calcPersons(state.guests),
-			serviceFee,
-			additionalFeePerPerson,
-			...state,
-		});
-
-		this.state = {
-			serviceFee,
-			additionalFeePerPerson,
+		state = {
+			template: require('./roomSummury.pug'),
+			additionalFeePerGuest: 100,
 			...state,
 		};
+
+		super(state);
 	}
 	render() {
 		super.render();
+		this.renderDateSelect();
+		this.renderGuestsSelect();
+		this.renderSummury();
+		this.renderButton();
+	}
+	renderDateSelect() {
+		const dateSelectNode = this.node.querySelector('.roomSummury-dateSelect');
+		const dateSelect = new DateSelect({
+			arrival: this.state.dates.arrival,
+			leave: this.state.dates.leave,
+		});
 
-		this.node.querySelector('.dates').replaceWith(this.dates.node);
-		this.node.querySelector('.guests').replaceWith(this.guests.node);
-		this.node
-			.querySelector('.summuryPrice')
-			.replaceWith(this.summuryPrice.node);
-	}
-	getDates(state) {
-		return new FormDateSelect({
-			dates: {
-				arrival: this.prepareCalendarDates(state.arrival),
-				leave: this.prepareCalendarDates(state.leave),
-			},
-			onValuesChange: values => {
-				this.state = { dates: values };
-				this.summuryPrice.state = { days: this.calcDays(values) };
-			},
-		});
-	}
-	getGuests(state) {
-		return new DropdownQuantity({
-			title: 'Гости',
-			placeholder: 'Выберите гостей',
-			elements: [
-				{
-					group: [
-						{
-							content: 'Взрослые',
-							name: 'adult',
-							value: state.adult,
-						},
-						{
-							content: 'Дети',
-							name: 'children',
-							value: state.children,
-						},
-					],
-					declensions: ['гость', 'гостя', 'гостей'],
-				},
-				{
-					content: 'Младенцы',
-					name: 'baby',
-					value: state.baby,
-					declensions: ['младенец', 'младенца', 'младенцев'],
-				},
-			],
-			onValuesChange: values => {
-				this.state = { guests: values };
-				this.summuryPrice.state = { persons: this.calcPersons(values) };
-			},
-		});
-	}
-	getSummuryPrice(state) {
-		return new SummuryPrice({
-			days: state.days,
-			persons: state.persons,
-			price: state.price,
-			serviceFee: state.serviceFee,
-			isServiceFeeFree: state.isServiceFeeFree,
-			additionalFeePerPerson: state.additionalFeePerPerson,
-		});
-	}
-	prepareCalendarDates = date => {
-		if (!date) return null;
+		dateSelect.addObserver((state) => {
+			const { arrival, leave } = state;
 
-		return new Date(date.replace(/(\d+).(\d+).(\d+)/, '$3/$2/$1'));
-	};
+			this.state = {
+				dates: {
+					arrival: arrival,
+					leave: leave,
+				},
+			};
+
+			this.renderSummury();
+		});
+
+		dateSelectNode.replaceWith(dateSelect.node);
+	}
+	renderGuestsSelect() {
+		const guestsSelectNode = this.node.querySelector(
+			'.roomSummury-guestsSelect'
+		);
+
+		const guestsSelect = new GuestsSelect({
+			adult: this.state.guests.adult,
+			children: this.state.guests.children,
+			baby: this.state.guests.baby,
+		});
+
+		guestsSelect.addObserver((state) => {
+			const { adult, children, baby } = state;
+
+			this.state = {
+				guests: {
+					adult,
+					children,
+					baby,
+				},
+			};
+
+			this.renderSummury();
+		});
+
+		guestsSelectNode.replaceWith(guestsSelect.node);
+	}
+	renderSummury() {
+		const summuryNodes = summuryNodes
+			? summuryNodes
+			: {
+					rent: {
+						name: this.node.querySelector('.roomSummury-name_rent'),
+						value: this.node.querySelector('.roomSummury-value_rent'),
+					},
+					serviceValue: this.node.querySelector('.roomSummury-value_service'),
+					additionalValue: this.node.querySelector(
+						'.roomSummury-value_additional'
+					),
+					totalValue: this.node.querySelector('.roomSummury-value_total'),
+			  };
+
+		const days = this.calcDays(this.state.dates) || 0;
+		const guests = this.calcGuests(this.state.guests) || 0;
+
+		const rentPrice = this.state.price * days;
+		const serviceFee = this.state.serviceFee - this.state.serviceFeeDiscount;
+		const additionalFee = this.state.additionalFeePerGuest * guests;
+		const totalPrice = rentPrice + serviceFee + additionalFee;
+
+		summuryNodes.rent.name.innerHTML = `${this.state.price}₽ x ${days} суток`;
+		summuryNodes.rent.value.innerHTML = `${rentPrice}₽`;
+		summuryNodes.serviceValue.innerHTML = `${serviceFee}₽`;
+		summuryNodes.additionalValue.innerHTML = `${additionalFee}₽`;
+		summuryNodes.totalValue.innerHTML = `${!days || !guests ? 0 : totalPrice}₽`;
+	}
 	calcDays({ arrival, leave }) {
-		arrival = this.prepareCalendarDates(arrival);
-		leave = this.prepareCalendarDates(leave);
-
-		return Math.round((leave - arrival) / (1000 * 60 * 60 * 24));
+		const msPerDay = 1000 * 60 * 60 * 24;
+		return Math.round((new Date(leave) - new Date(arrival)) / msPerDay);
 	}
-	calcPersons(guests = {}) {
+	calcGuests(guests = {}) {
 		return Object.entries(guests).reduce((acc, [key, value]) => {
 			if (value && key != 'baby') acc += +value;
 			return acc;
 		}, 0);
+	}
+	renderButton() {
+		const button = new Button({
+			className: 'roomSummury-button button_arrow button_filled button_big',
+			text: 'Забронировать',
+		});
+
+		this.node.appendChild(button.node);
 	}
 }

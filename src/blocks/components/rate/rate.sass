@@ -3,7 +3,8 @@
 section.rate
     display: grid
     grid-template-columns: repeat(5, 24px)
-    
+
+   
     .rate-button
         background-color: transparent
         width: 24px
@@ -20,3 +21,7 @@ section.rate
         &_selected
             &::before
                 content: '\e838'
+
+    &_disabled
+        .rate-button
+            cursor: auto

@@ -51,6 +51,42 @@ export const fakeData = {
 			},
 		],
 	},
+	room: {
+		number: 888,
+		isLuxury: true,
+		price: 9990,
+		serviceFee: 2179,
+		serviceFeeDiscount: 2179,
+		images: ['./img/room1.png', './img/room2.png', './img/room3.png'],
+		comfort: true,
+		convenience: true,
+		cosiness: true,
+		diagram: [130, 65, 65, 90],
+		noPets: true,
+		noParty: true,
+		arrivalTime: '13:00',
+		leaveTime: '12:00',
+		cancelable: true,
+		reviewes: [
+			{
+				name: 'Мурад Сарафанов',
+				icon: './img/foto1.png',
+				date: '5 дней назад',
+				likes: 12,
+				isLiked: true,
+				text:
+					'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',
+			},
+			{
+				name: 'Патрисия Стёклышкова',
+				icon: './img/foto2.png',
+				date: 'Неделю назад',
+				likes: 2,
+				text:
+					'Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент',
+			},
+		],
+	},
 	search: {
 		priceRange: {
 			max: 15000,

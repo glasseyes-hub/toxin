@@ -1,11 +1,25 @@
 @import '../../services/sass/variables'
     
 section.room
-
     .room-header
         width: $width_content
         margin: 0 auto
         height: 485px
+
+        display: grid
+        grid-gap: 0px
+        grid-template-areas: 'first .' 'first .'
+        grid-template-columns: 2fr 1fr
+        grid-template-rows: 1fr 1fr
+
+        .room-image
+            object-fit: cover
+            &:first-child
+                grid-area: first
+            &:last-child
+                margin-top: -1px
+
+
 
     .room-body
         width: $width_content

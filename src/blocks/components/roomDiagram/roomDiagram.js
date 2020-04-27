@@ -18,7 +18,6 @@ export class RoomDiagram extends Component {
 			],
 			...state,
 		};
-
 		state.summury = state.data.reduce((ac, val) => {
 			return (ac += val);
 		}, 0);

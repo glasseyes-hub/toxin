@@ -12,43 +12,83 @@ section.roomSummury
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2)
     border-radius: 4px
 
-    .header
+    .roomSummury-header
         display: grid
         grid-template-columns: 1fr 1fr
         
-        .number
+        .roomSummury-number
             font-weight: bold
             font-size: 22px
 
             &::first-letter
                 font-size: 12px
 
-            .luxury
+            .roomSummury-luxury
                 display: inline-block
                 font-size: 12px
                 color: $color_purple
                 margin-left: 6px
                 text-transform: uppercase
 
-        .price
+        .roomSummury-price
             font-weight: bold
             text-align: right
             margin-top: 2px
 
-            .pricePeriod
+            .roomSummury-pricePeriod
                 display: inline-block
                 font-size: 12px
                 font-weight: normal
                 text-transform: lowercase
                 margin-left: 5px
 
-    .body
+    .roomSummury-body
         display: grid
         grid-template-columns: 1fr
-        grid-gap: 19px
+        grid-gap: 13px
 
-    .footer
-        margin-top: 7px
+        .roomSummury-summuryPrice
+            display: grid
+            grid-auto-flow: row
+            grid-gap: 16px
+            margin-top: 7px
+            .roomSummury-element
+                display: grid
+                grid-template-areas: 'name info value'
+                grid-template-columns: 1fr 20px 70px
+                line-height: 18px
+                .roomSummury-name
+                    grid-area: name
+                .roomSummury-info
+                    grid-area: info
+                .roomSummury-value
+                    grid-area: value
+                    text-align: right
+
+            .roomSummury-total
+                display: flex
+                justify-content: space-between    
+                margin-top: 15px
+                background-color: #fff               
+                font-weight: bold
+                font-size: 19px
+                height: 20px
+                line-height: 24px
+                border-bottom: 1px dotted $color_dark25
+                .roomSummury-name
+                    grid-area: name
+                    padding-right: 5px
+                .roomSummury-value
+                    grid-area: value
+                    padding-left: 5px
+                .roomSummury-name,
+                .roomSummury-value
+                    height: 24px
+                    background-color: inherit
+
+
+    .roomSummury-button
+        margin-top: 5px
         .button
             border: none
 

@@ -6,9 +6,13 @@ section.button
     align-items: center
 
     button
-        background-color: transparent  
+        display: flex
+        align-items: center
+        justify-content: center
+        background-color: transparent
+        width: 100%
+        height: 100%
         font-size: 12px
-        text-align: center
         font-weight: bold
         color: inherit      
         text-transform: uppercase
@@ -20,7 +24,6 @@ section.button
 
     &_bordered
         background: $color_purple_gradient
-        height: 44px
         border-radius: 50px
         button
             background-color: #fff
@@ -28,23 +31,23 @@ section.button
             width: calc( 100% -  4px)
             height: calc( 100% -  4px)
             line-height: calc( 100% -  4px)
-            margin: 2px
             padding: 0 26px
             border-radius: 50px
 
 
     &_filled
         background: $color_purple_gradient
+        border-radius: 50px
         button
-            background-color: transparent
             color: #fff
+    &_big        
+        height: 44px
 
     &_arrow
+        position: relative
         button
-            position: relative
             &::before
                 position: absolute
                 right: 9px
                 content: $icon_arrowRight
-                height: 100%
                 font-size: 24px

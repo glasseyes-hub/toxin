@@ -34,6 +34,7 @@ export class Room extends Component {
 		const rate = new Rate({
 			className: 'room-rate',
 			rate: this.state.rating,
+			disabled: true,
 		});
 
 		roomRate.replaceWith(rate.node);

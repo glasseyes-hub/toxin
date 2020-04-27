@@ -1,0 +1,18 @@
+section.roomInfo
+    h2.roomInfo-title Сведения о номере
+    ul.roomInfo-list
+        if comfort
+            .roomInfo-element
+                div.roomInfo-icon.roomInfo-icon_comfort
+                h3.roomInfo-name Комфорт
+                p.roomInfo-text Шумопоглощающие стены
+        if convenience
+            .roomInfo-element
+                div.roomInfo-icon.roomInfo-icon_convenience
+                h3.roomInfo-name Удобство
+                p.roomInfo-text Окно в каждой из спален
+        if cosiness
+            .roomInfo-element
+                div.roomInfo-icon.roomInfo-icon_cosiness
+                h3.roomInfo-name Уют
+                p.roomInfo-text Номер оснащён камином

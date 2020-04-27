@@ -1,0 +1,15 @@
+section.roomAdditionals
+    .roomAdditionals-rools
+        h2.roomAdditionals-title Правила
+        ul.roomAdditionals-list
+            if noPets
+                li.roomAdditionals-element Нельзя с питомцами
+            if noParty
+                li.roomAdditionals-element Без вечеринок и мероприятий
+            if arrivalTime && leaveTime
+                li.roomAdditionals-element Время прибытия — после #{arrivalTime}, а выезд до #{leaveTime}
+    if cancelable
+        .roomAdditionals-cancel
+            h2.roomAdditionals-title Отмена
+            p.roomAdditionals-text
+                | Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.

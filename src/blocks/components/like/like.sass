@@ -1,13 +1,13 @@
-@import '../../services/sass/variables'
+@import '../../../services/sass/variables'
     
-.like
+section.like
     width: 40px
     height: 20px
     background: $color_dark25  
     border-radius: 10px
     cursor: pointer
 
-    >.border
+    .like-border
         display: grid
         grid-template-columns: 20px 1fr
         background-color: #fff
@@ -16,7 +16,7 @@
         margin: 1px
         border-radius: 10px
 
-        >.icon
+        .like-icon
             display: flex
             justify-content: center
             height: 18px
@@ -30,21 +30,21 @@
                 font-size: 10px
                 line-height: 18px
 
-        >.value
+        .like-value
             height: 18px
             font-size: 10px
             line-height: 20px
             color: $color_dark25                
 
-    &.liked
+    &_liked
         background: $color_purple_gradient
-        >.border
-            >.icon
+        .like-border
+            .like-icon
                 &:before
                     content: '\e87d'
                     background: $color_purple_gradient
                     -webkit-background-clip: text
                     -webkit-text-fill-color: transparent
-            >.value
+            .like-value
                 color: $color_purple
 

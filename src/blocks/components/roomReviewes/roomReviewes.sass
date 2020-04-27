@@ -3,43 +3,43 @@
     grid-template-areas: 'title amount' 'list list'
     grid-template-columns: 1fr 1fr
 
-    >.title
+    .roomReviewes-title
         grid-area: title
         margin-bottom: 20px
-    >.amount
+    .roomReviewes-amount
         grid-area: amount
         text-align: right
 
-    >.list
+    .roomReviewes-list
         grid-area: list
         display: grid
         grid-gap: 20px
 
-        >.element
+        .roomReviewes-element
             display: grid
             grid-template-areas: 'icon name' 'icon date' 'sidebar text'
             grid-template-columns: 48px 1fr
             grid-gap: 10px
 
-            >.icon
+            .roomReviewes-icon
                 grid-area: icon
                 width: 48px
                 height: 48px
                 border-radius: 24px
 
-            >.name
+            .roomReviewes-name
                 grid-area: name
                 margin-top: 3px
                 margin-bottom: -3px
 
-            >.date
+            .roomReviewes-date
                 grid-area: date
 
-            >.sidebar
+            .roomReviewes-sidebar
                 grid-area: sidebar
                 display: flex
                 flex-direction: column
                 align-items: center
 
-            >.text
+            .roomReviewes-text
                 grid-area: text

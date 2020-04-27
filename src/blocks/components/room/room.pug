@@ -1,15 +1,23 @@
 section.room(class=className)
     .room-imageSlider
-    .room-header
-        .room-info
-            h3.room-number № #{number}
-            if isLuxury
-                p.room-luxury Люкс
-        .room-price 
-            p.room-cost #{price}₽
-            p.room-period в сутки
-    .room-footer
-        .room-rate
-        p.room-reviews 
-            b #{reviews} 
-            | Отзывов
+    form(action="room.html", method="get")
+        input.room-input(name='id' value=id)
+        input.room-input(name='arrival' value=arrival)
+        input.room-input(name='leave' value=leave)
+        input.room-input(name='adult' value=adult)
+        input.room-input(name='children' value=children)
+        input.room-input(name='baby' value=baby)
+        button.room-button
+            .room-header
+                .room-info
+                    h3.room-number № #{number}
+                    if isLuxury
+                        p.room-luxury Люкс
+                .room-price 
+                    p.room-cost #{price}₽
+                    p.room-period в сутки
+            .room-footer
+                .room-rate
+                p.room-reviews 
+                    b #{reviews} 
+                    | Отзывов

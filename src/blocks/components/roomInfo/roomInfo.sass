@@ -1,18 +1,18 @@
-@import '../../services/sass/variables'
+@import '../../../services/sass/variables'
     
 .roomInfo
 
-    >.title
+    .roomInfo-title
         margin-bottom: 20px
 
-    >.list
+    .roomInfo-list
         list-style-type: none
         display: grid
         grid-gap: 20px
     
-        >.element
+        .roomInfo-element
             display: grid
-            grid-template-areas: 'icon name' 'icon info'
+            grid-template-areas: 'icon name' 'icon text'
             grid-auto-columns: 48px 1fr
             grid-column-gap: 10px
 
@@ -23,7 +23,7 @@
             &:last-child
                 border-bottom: none
 
-            >.icon
+            .roomInfo-icon
                 grid-area: icon
                 color: $color_green_gradient
 
@@ -48,10 +48,10 @@
                     &::before
                         content: '\e80e'
 
-            >.name
+            .roomInfo-name
                 grid-area: name
                 text-transform: none
                 font-size: 14px
 
-            >.info
-                grid-area: info
+            .roomInfo-text
+                grid-area: text

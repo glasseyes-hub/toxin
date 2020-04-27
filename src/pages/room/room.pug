@@ -1,5 +1,8 @@
 section.room
     .room-header
+        each src, index in images
+            if index < 3
+                img.room-image(src=src)
     .room-body
         .room-about
         .room-reviewes

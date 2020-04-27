@@ -16,6 +16,8 @@ export class Rate extends Component {
 	render() {
 		super.render();
 		this.select(this.state.rate);
+
+		this.state.disabled && this.disableRate();
 	}
 	handlers() {
 		const buttons = this.node.querySelectorAll('.rate-button');
@@ -41,5 +43,8 @@ export class Rate extends Component {
 		});
 
 		this.state = { rate };
+	}
+	disableRate() {
+		this.node.classList.add('rate_disabled');
 	}
 }

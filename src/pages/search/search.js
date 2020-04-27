@@ -217,7 +217,14 @@ class Search extends Component {
 		results.innerHTML = '';
 
 		resultsData.forEach((roomData) => {
-			const room = new Room(roomData);
+			const room = new Room({
+				...roomData,
+				arrival: this.state.filters.arrival,
+				leave: this.state.filters.leave,
+				adult: this.state.filters.adult,
+				children: this.state.filters.children,
+				baby: this.state.filters.baby,
+			});
 
 			results.appendChild(room.node);
 		});
