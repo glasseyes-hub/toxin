@@ -1,8 +1,0 @@
-=panel($mixinClass:'')
-    @if $mixinClass != ''
-        $mixinClass: '.#{$mixinClass}'
-
-    .panel#{$mixinClass}
-        display: grid
-        grid-template-columns: 1fr
-        @content

@@ -1,0 +1,38 @@
+@import '../../services/sass/variables'
+
+section.copyright
+    width: $width_content
+    padding: 23px 140px
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin: 0 auto
+    
+    .copyright-socials
+        display: grid
+        grid-auto-flow: column
+        grid-gap: 20px
+
+        .copyright-link
+            width: 24px
+            height: 24px
+            text-decoration: none
+
+            &::before                    
+                font-family: Font Awesome
+                background: $color_purple_gradient
+                -webkit-background-clip: text
+                -webkit-text-fill-color: transparent
+                font-size: 24px
+
+            &_twitter
+                &::before                    
+                    content: '\f099'
+            
+            &_facebook
+                &::before                    
+                    content: '\f082'
+            &_instagram
+                &::before                    
+                    content: '\f16d'
+

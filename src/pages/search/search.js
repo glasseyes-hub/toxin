@@ -1,19 +1,19 @@
 import { Component } from '../../services/js/Component';
 import { fakeData } from '../../services/js/fakeData';
 import { Tools } from '../../services/js/Tools';
-import { DateSelect } from '../../blocks/components/dateSelect/dateSelect';
-import { GuestsSelect } from '../../blocks/components/guestsSelect/guestsSelect';
-import { PriceRange } from '../../blocks/components/priceRange/priceRange';
-import { Facilities } from '../../blocks/components/facilities/facilities';
-import { AdditionalFacilities } from '../../blocks/components/additionalFacilities/additionalFacilities';
-import { Availabilities } from '../../blocks/components/availabilities/availabilities';
-import { CheckboxButtons } from '../../blocks/components/checkboxButtons/checkboxButtons';
-import { Room } from '../../blocks/components/room/room';
-import { Paginator } from '../../blocks/components/paginator/paginator';
-import { Header } from '../../blocks/components/header/header';
+import { DateSelect } from '../../components/dateSelect/dateSelect';
+import { GuestsSelect } from '../../components/guestsSelect/guestsSelect';
+import { PriceRange } from '../../components/priceRange/priceRange';
+import { Facilities } from '../../components/facilities/facilities';
+import { AdditionalFacilities } from '../../components/additionalFacilities/additionalFacilities';
+import { Availabilities } from '../../components/availabilities/availabilities';
+import { CheckboxButtons } from '../../components/checkboxButtons/checkboxButtons';
+import { Room } from '../../components/room/room';
+import { Paginator } from '../../components/paginator/paginator';
+import { Header } from '../../components/header/header';
 import { Page } from '../../services/js/Page';
-import { Footer } from '../../blocks/components/footer/footer';
-import { Copyright } from '../../blocks/components/copyright/copyright';
+import { Footer } from '../../components/footer/footer';
+import { Copyright } from '../../components/copyright/copyright';
 
 const tools = new Tools();
 

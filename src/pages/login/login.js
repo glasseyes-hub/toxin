@@ -1,11 +1,11 @@
 import { Component } from '../../services/js/Component';
-import { Input } from '../../blocks/components/input/input';
-import { Button } from '../../blocks/components/button/button';
+import { Input } from '../../components/input/input';
+import { Button } from '../../components/button/button';
 import { Page } from '../../services/js/Page';
-import { Header } from '../../blocks/components/header/header';
+import { Header } from '../../components/header/header';
 import { fakeData } from '../../services/js/fakeData';
-import { Footer } from '../../blocks/components/footer/footer';
-import { Copyright } from '../../blocks/components/copyright/copyright';
+import { Footer } from '../../components/footer/footer';
+import { Copyright } from '../../components/copyright/copyright';
 
 class Login extends Component {
 	constructor() {

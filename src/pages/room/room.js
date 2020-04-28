@@ -1,15 +1,15 @@
 import { Component } from '../../services/js/Component';
 import { fakeData } from '../../services/js/fakeData';
 import { Tools } from '../../services/js/Tools';
-import { RoomInfo } from '../../blocks/components/roomInfo/roomInfo';
-import { RoomReviewes } from '../../blocks/components/roomReviewes/roomReviewes';
-import { RoomAdditionals } from '../../blocks/components/roomAdditionals/roomAdditionals';
-import { RoomDiagram } from '../../blocks/components/roomDiagram/roomDiagram';
-import { RoomSummury } from '../../blocks/components/roomSummury/roomSummury';
+import { RoomInfo } from '../../components/roomInfo/roomInfo';
+import { RoomReviewes } from '../../components/roomReviewes/roomReviewes';
+import { RoomAdditionals } from '../../components/roomAdditionals/roomAdditionals';
+import { RoomDiagram } from '../../components/roomDiagram/roomDiagram';
+import { RoomSummury } from '../../components/roomSummury/roomSummury';
 import { Page } from '../../services/js/Page';
-import { Header } from '../../blocks/components/header/header';
-import { Footer } from '../../blocks/components/footer/footer';
-import { Copyright } from '../../blocks/components/copyright/copyright';
+import { Header } from '../../components/header/header';
+import { Footer } from '../../components/footer/footer';
+import { Copyright } from '../../components/copyright/copyright';
 
 const tools = new Tools();
 

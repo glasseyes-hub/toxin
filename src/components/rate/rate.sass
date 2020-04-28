@@ -1,0 +1,27 @@
+@import '../../services/sass/variables'
+    
+section.rate
+    display: grid
+    grid-template-columns: repeat(5, 24px)
+
+   
+    .rate-button
+        background-color: transparent
+        width: 24px
+        height: 24px
+        cursor: pointer
+        &::before
+            font-family: Material Icons
+            content: '\e83a'
+            background: linear-gradient(45deg, #8BA4F9 0%, $color_purple 100%)
+            -webkit-background-clip: text
+            -webkit-text-fill-color: transparent
+            font-size: 24px
+        
+        &_selected
+            &::before
+                content: '\e838'
+
+    &_disabled
+        .rate-button
+            cursor: auto

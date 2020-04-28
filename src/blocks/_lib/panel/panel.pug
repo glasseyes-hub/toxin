@@ -1,9 +1,0 @@
-mixin panel(extData = {})
-    - var data = {attr: {class: 'panel'}}
-
-    if extData
-        +mergeData(data, extData)
-
-    section&attributes(data.attr)
-        | #{data.content}
-        block

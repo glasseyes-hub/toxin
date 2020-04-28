@@ -1,12 +1,12 @@
 import { Component } from '../../services/js/Component';
 import { Page } from '../../services/js/Page';
-import { DateSelect } from '../../blocks/components/dateSelect/dateSelect';
-import { GuestsSelect } from '../../blocks/components/guestsSelect/guestsSelect';
-import { Button } from '../../blocks/components/button/button';
-import { Header } from '../../blocks/components/header/header';
+import { DateSelect } from '../../components/dateSelect/dateSelect';
+import { GuestsSelect } from '../../components/guestsSelect/guestsSelect';
+import { Button } from '../../components/button/button';
+import { Header } from '../../components/header/header';
 import { fakeData } from '../../services/js/fakeData';
-import { Footer } from '../../blocks/components/footer/footer';
-import { Copyright } from '../../blocks/components/copyright/copyright';
+import { Footer } from '../../components/footer/footer';
+import { Copyright } from '../../components/copyright/copyright';
 
 class Index extends Component {
 	constructor(state) {

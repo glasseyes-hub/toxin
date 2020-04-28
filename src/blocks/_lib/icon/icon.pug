@@ -1,8 +1,0 @@
-mixin icon(extData = {})
-    - var data = {attr: {class: 'icon'}}
-
-    if extData
-        +mergeData(data, extData)
-
-    div&attributes(data.attr)
-        | #{data.content}

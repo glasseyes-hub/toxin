@@ -1,0 +1,113 @@
+@import '../../services/sass/variables'
+    
+section.roomSummury
+    display: grid
+    grid-template-columns: 1fr
+    grid-gap: 18px
+    padding: 44px 30px 29px
+    
+    background-color: #fff
+    border: 1px solid rgba(0, 0, 0, 0.12)
+    box-sizing: border-box
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2)
+    border-radius: 4px
+
+    .roomSummury-header
+        display: grid
+        grid-template-columns: 1fr 1fr
+        
+        .roomSummury-number
+            font-weight: bold
+            font-size: 22px
+
+            &::first-letter
+                font-size: 12px
+
+            .roomSummury-luxury
+                display: inline-block
+                font-size: 12px
+                color: $color_purple
+                text-transform: uppercase
+
+        .roomSummury-price
+            font-weight: bold
+            text-align: right
+            margin-top: 2px
+
+            .roomSummury-pricePeriod
+                display: inline-block
+                font-size: 12px
+                font-weight: normal
+                text-transform: lowercase
+                margin-left: 5px
+
+    .roomSummury-form
+        display: grid
+        grid-template-columns: 1fr
+        grid-gap: 13px
+
+        .roomSummury-summuryPrice
+            display: grid
+            grid-auto-flow: row
+            grid-gap: 16px
+            margin-top: 7px
+            .roomSummury-element
+                display: grid
+                grid-template-areas: 'name info value'
+                grid-template-columns: 1fr 20px 70px
+                line-height: 18px
+                .roomSummury-name
+                    grid-area: name
+                .roomSummury-info
+                    grid-area: info
+                .roomSummury-value
+                    grid-area: value
+                    text-align: right
+
+            .roomSummury-total
+                display: flex
+                justify-content: space-between    
+                margin-top: 15px
+                background-color: #fff               
+                font-weight: bold
+                font-size: 19px
+                height: 18px
+                line-height: 24px
+                border-bottom: 1px dotted $color_dark25
+                .roomSummury-name
+                    grid-area: name
+                    padding-right: 5px
+                .roomSummury-value
+                    grid-area: value
+                    padding-left: 5px
+                .roomSummury-name,
+                .roomSummury-value
+                    height: 24px
+                    background-color: inherit
+
+
+    .roomSummury-button
+        margin-top: 12px
+        .button
+            border: none
+            position: relative
+            background: $color_purple_gradient
+            width: 100%
+            height: 44px
+            background-color: red
+            border-radius: 22px
+            font-weight: bold
+            text-transform: uppercase
+            color: #fff
+            font-size: 12px
+
+            &::before
+                position: absolute
+                top: 10px
+                right: 10px
+                font-family: Material Icons
+                content: '\e5c8'
+                font-size: 24px
+                line-height: 24px
+                font-weight: normal
+        

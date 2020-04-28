@@ -1,0 +1,55 @@
+@import '../../services/sass/variables'
+    
+nav.headerNavigation
+    grid-area: navigation
+    display: flex
+    flex-direction: row
+    justify-content: flex-end
+    align-items: center
+
+    .headerNavigation-link
+        text-decoration: none
+        color: $color_dark50
+        padding: 0 10px
+        &:hover
+            color: $color_purple
+            transition: .2s
+
+    .headerNavigation-submenu
+        position: relative
+        padding: 15px 0  
+        padding-right: 15px  
+        margin-right: 10px    
+        &::after
+            position: absolute
+            font-family: Material Icons
+            content: '\e5cf'
+            font-size: 24px    
+            color: $color_dark50
+            right: 0
+
+        .headerNavigation-container
+            display: none
+            grid-auto-flow: row
+            position: absolute
+            background-color: #fff
+            z-index: 10
+            width: 120px
+            margin-top: 10px
+            border: 1px solid $color_dark10
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1)
+
+            .headerNavigation-link
+                border-bottom: 1px solid $color_dark10
+                text-align: center
+                padding: 3px 10px
+                &:last-child
+                    border-bottom: none
+
+        &:hover  
+            &::after
+                content: '\e5ce'
+                color: $color_purple
+
+            .headerNavigation-container
+                display: grid

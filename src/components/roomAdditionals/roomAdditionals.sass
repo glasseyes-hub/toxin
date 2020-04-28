@@ -1,0 +1,37 @@
+@import '../../services/sass/variables'
+    
+section.roomAdditionals
+    display: grid
+    grid-template-columns: 1fr 1fr
+    grid-column-gap: 12px
+    margin-top: 18px
+
+    .roomAdditionals-rools,
+    .roomAdditionals-cancel        
+        display: grid
+        grid-template-rows: 30px 1fr
+        grid-row-gap: 10px
+
+    .roomAdditionals-rools
+        .roomAdditionals-title
+            margin-left: 20px
+        .roomAdditionals-list
+            list-style: none            
+
+            .roomAdditionals-element  
+                display: grid
+                grid-template-columns: 20px 1fr   
+                padding: 5px 0
+                width: 260px
+
+                &:first-child
+                    padding-top: 0
+
+                &::before
+                    font-family: Material Icons
+                    content: '\e061'
+                    font-size: 15px
+                    color: $color_dark25
+
+
+        
