@@ -23,17 +23,16 @@ section.dropdown
     input        
         cursor: pointer
 
-    .dropdown-button  
-        button
+    .dropdown-input  
+        .input-button     
             &::before
                 content: $icon_arrowDown
                 color: $color_dark50
-
     &_open
         input
             border-color: $color_dark50
-        .dropdown-button      
-            button
+        .dropdown-input 
+            .input-button     
                 &::before
                     content: $icon_arrowUp
                     color: $color_dark50

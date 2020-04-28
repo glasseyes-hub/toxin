@@ -8,6 +8,8 @@ import { RoomDiagram } from '../../blocks/components/roomDiagram/roomDiagram';
 import { RoomSummury } from '../../blocks/components/roomSummury/roomSummury';
 import { Page } from '../../services/js/Page';
 import { Header } from '../../blocks/components/header/header';
+import { Footer } from '../../blocks/components/footer/footer';
+import { Copyright } from '../../blocks/components/copyright/copyright';
 
 const tools = new Tools();
 
@@ -49,7 +51,10 @@ class Room extends Component {
 	renderAdditionals() {
 		const roomAdditionals = this.node.querySelector('.room-additional');
 
-		const additionals = new RoomAdditionals(this.state.additionals);
+		const additionals = new RoomAdditionals({
+			className: 'room-additional',
+			...this.state.additionals,
+		});
 
 		roomAdditionals.replaceWith(additionals.node);
 	}
@@ -109,6 +114,12 @@ const page = new Page();
 const header = new Header({
 	menu: fakeData.header.menu,
 });
+const footer = new Footer({
+	menu: fakeData.footer.menu,
+});
+const copyright = new Copyright();
 
 page.header.appendChild(header.node);
 page.main.appendChild(room.node);
+page.footer.appendChild(footer.node);
+page.body.appendChild(copyright.node);

@@ -23,6 +23,7 @@ export class RoomReviewes extends Component {
 			const like = new Like({
 				value: this.state.list[index].likes,
 				disabled: true,
+				isLiked: this.state.list[index].isLiked,
 			});
 
 			sidebar.appendChild(like.node);

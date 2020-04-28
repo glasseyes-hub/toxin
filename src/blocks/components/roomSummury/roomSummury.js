@@ -111,11 +111,12 @@ export class RoomSummury extends Component {
 		}, 0);
 	}
 	renderButton() {
+		const form = this.node.querySelector('.roomSummury-form');
 		const button = new Button({
 			className: 'roomSummury-button button_arrow button_filled button_big',
 			text: 'Забронировать',
 		});
 
-		this.node.appendChild(button.node);
+		form.appendChild(button.node);
 	}
 }
