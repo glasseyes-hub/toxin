@@ -1,21 +1,35 @@
 @import '../../../services/sass/variables'
 
-@import header-logo
-@import header-navigation
-@import header-authorization
-
 section.header
     width: $width_content
     margin: 0 auto
 
     display: grid
-    grid-template-areas: 'logo navigation authorization'
+    grid-template-areas: 'link navigation .'
     grid-template-columns: 120px 1fr 303px
     grid-template-rows: 40px
     grid-gap: 10px
     padding: 15px 140px
+    align-items: center
 
-    @include header-logo
-    @include header-navigation  
-    @include header-authorization
-      
+    .header-link
+        grid-area: link
+        display: flex
+        align-items: center
+    .header-navigation
+        grid-area: navigation
+
+    .header-authorization
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+
+        .header-button
+            height: 34px
+
+            &_login
+                width: 87px
+
+            &_registration
+                width: 196px
+

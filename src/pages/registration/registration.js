@@ -1,10 +1,14 @@
 import { Component } from '../../services/js/Component';
-import { template } from '../../templates/main';
 import { Input } from '../../blocks/components/input/input';
 import { Button } from '../../blocks/components/button/button';
 import { Radio } from '../../blocks/components/radio/radio';
 import { Toggle } from '../../blocks/components/toggle/toggle';
-import { urlSearchTools } from '../../services/js/Page';
+import { Tools } from '../../services/js/Tools';
+import { Page } from '../../services/js/Page';
+import { Header } from '../../blocks/components/header/header';
+import { fakeData } from '../../services/js/fakeData';
+
+const tools = new Tools();
 
 class Registration extends Component {
 	constructor(state = {}) {
@@ -49,7 +53,7 @@ class Registration extends Component {
 			title: 'Данные для входа в сервис',
 			name: 'email',
 			placeholder: 'Email',
-			value: urlSearchTools.get('email'),
+			value: tools.url.search.get('email'),
 		});
 		const password = new Input({
 			name: 'password',
@@ -61,8 +65,7 @@ class Registration extends Component {
 			text: 'Получать спецпредложения',
 		});
 		const paymentButton = new Button({
-			className: 'registration-payment',
-			mod: ['filled', 'big', 'arrow'],
+			className: 'registration-payment button_big button_filled button_arrow',
 			text: 'Перейти к оплате',
 		});
 
@@ -79,7 +82,7 @@ class Registration extends Component {
 		const footer = this.node.querySelector('.registration-footer');
 
 		const loginButton = new Button({
-			mod: 'bordered',
+			className: 'button_big button_bordered',
 			text: 'Войти',
 		});
 
@@ -88,7 +91,10 @@ class Registration extends Component {
 }
 
 const registration = new Registration();
+const page = new Page();
+const header = new Header({
+	menu: fakeData.header.menu,
+});
 
-template.main.node.appendChild(registration.node);
-
-console.log(registration);
+page.header.appendChild(header.node);
+page.main.appendChild(registration.node);

@@ -1,9 +1,9 @@
 import { Component } from '../../services/js/Component';
-import { template } from '../../templates/main';
 import { Input } from '../../blocks/components/input/input';
 import { Button } from '../../blocks/components/button/button';
-import { Radio } from '../../blocks/components/radio/radio';
-import { Toggle } from '../../blocks/components/toggle/toggle';
+import { Page } from '../../services/js/Page';
+import { Header } from '../../blocks/components/header/header';
+import { fakeData } from '../../services/js/fakeData';
 
 class Login extends Component {
 	constructor() {
@@ -32,8 +32,7 @@ class Login extends Component {
 			placeholder: 'Пароль',
 		});
 		const loginButton = new Button({
-			className: 'login-button',
-			mod: ['filled', 'big', 'arrow'],
+			className: 'login-button button_big button_filled button_arrow',
 			text: 'Войти',
 		});
 
@@ -45,8 +44,7 @@ class Login extends Component {
 		const footer = this.node.querySelector('.login-footer');
 
 		const registrationButton = new Button({
-			className: 'login-registration',
-			mod: 'bordered',
+			className: 'login-registration button_big button_bordered',
 			text: 'Создать',
 		});
 
@@ -55,7 +53,10 @@ class Login extends Component {
 }
 
 const login = new Login();
+const page = new Page();
+const header = new Header({
+	menu: fakeData.header.menu,
+});
 
-template.main.node.appendChild(login.node);
-
-console.log(login);
+page.header.appendChild(header.node);
+page.main.appendChild(login.node);

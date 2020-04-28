@@ -7,55 +7,40 @@ const CopyWebpackPlugin = require('copy-webpack-plugin'); // Копирует ф
 function getEntires(pages) {
 	return Object.assign(
 		{},
+		...pages.map(({ template }) => {
+			return {
+				[template]: [`./src/templates/${template}/${template}.js`],
+			};
+		}),
 		...pages.map(({ name }) => {
-			return { [name]: ['@babel/polyfill', `./src/pages/${name}/${name}.js`] };
+			return {
+				[name]: ['@babel/polyfill', `./src/pages/${name}/${name}.js`],
+			};
 		})
 	);
 }
 const pages = [
 	{
 		name: 'index',
-		HtmlWebpackPlugin: new HtmlWebpackPlugin({
-			template: './src/templates/main.pug',
-			chunks: ['vendors', 'index'],
-			filename: 'index.html',
-		}),
+		template: 'main',
 	},
 	{
 		name: 'search',
-		HtmlWebpackPlugin: new HtmlWebpackPlugin({
-			template: './src/templates/main.pug',
-			chunks: ['vendors', 'search'],
-			filename: 'search.html',
-		}),
+		template: 'main',
 	},
 	{
 		name: 'room',
-		HtmlWebpackPlugin: new HtmlWebpackPlugin({
-			template: './src/templates/main.pug',
-			chunks: ['vendors', 'room'],
-			filename: 'room.html',
-		}),
-	},
-	{
-		name: 'registration',
-		HtmlWebpackPlugin: new HtmlWebpackPlugin({
-			template: './src/templates/main.pug',
-			chunks: ['vendors', 'registration'],
-			filename: 'registration.html',
-		}),
+		template: 'main',
 	},
 	{
 		name: 'login',
-		HtmlWebpackPlugin: new HtmlWebpackPlugin({
-			template: './src/templates/main.pug',
-			chunks: ['vendors', 'login'],
-			filename: 'login.html',
-		}),
+		template: 'main',
+	},
+	{
+		name: 'registration',
+		template: 'main',
 	},
 ];
-
-console.log(path.resolve(__dirname, 'src/blocks'));
 
 module.exports = {
 	entry: getEntires(pages),
@@ -178,9 +163,13 @@ module.exports = {
 		],
 	},
 	plugins: [
-		...pages
-			.filter(({ HtmlWebpackPlugin }) => HtmlWebpackPlugin)
-			.map(({ HtmlWebpackPlugin }) => HtmlWebpackPlugin),
+		...pages.map(({ name, template }) => {
+			return new HtmlWebpackPlugin({
+				template: `./src/templates/${template}/${template}.pug`,
+				chunks: ['vendors', template, name],
+				filename: `${name}.html`,
+			});
+		}),
 		new MiniCssExtractPlugin({
 			filename: `css/[name].css`, // [hash] для добавления хеша к имени файла
 		}),

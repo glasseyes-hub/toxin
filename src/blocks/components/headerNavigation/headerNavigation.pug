@@ -1,0 +1,12 @@
+nav.headerNavigation(class=className)
+    each link in menu
+        - const [name, href, submenu] = link
+        if !submenu
+            a.headerNavigation-link(href=href) #{name}
+        else 
+            .headerNavigation-submenu
+                a.headerNavigation-link(href=href) #{name}
+                .headerNavigation-container
+                    each sublink in submenu
+                        - const [subname, subhref] = sublink
+                        a.headerNavigation-link(href=subhref) #{subname}

@@ -15,19 +15,20 @@ export class Footer extends Component {
 	render() {
 		super.render();
 
-		this.renderInput();
+		this.renderForm();
 	}
-	renderInput() {
+	renderForm() {
+		const form = this.node.querySelector('.footer-form');
 		this.input = new Input({
-			value: '12312321',
-			button: {
-				className: 'input-button_send',
-			},
+			className: 'input_send',
+			name: 'email',
+			placeholder: 'Email',
+			button: true,
 		});
 
-		this.node.querySelector('.footer-input').replaceWith(this.input.node);
+		form.appendChild(this.input.node);
 
-		this.input.addObserver(state => {
+		this.input.addObserver((state) => {
 			this.state = { subscriberEmail: { value: state.value } };
 		});
 	}

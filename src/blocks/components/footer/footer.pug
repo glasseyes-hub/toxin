@@ -4,15 +4,16 @@ section.footer
         p.footer-text
             | Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
     nav.footer-nav
-        each group in menuList
+        each group in menu
+            - const [title, href, links] = group
             .footer-group
-                h3.footer-title #{group[0].name}
-                each link, index in group
-                    if index > 0 
-                        a.footer-link(href=link.src) #{link.name}
+                h3.footer-title #{title}
+                each link in links
+                    - const [name, href] = link
+                    a.footer-link(href=href) #{name}
+                        
     .footer-subscribe
         h3.footer-title Подписка
         p.footer-text
             | Получайте специальные предложения и новости сервиса
-        form.footer-form
-            section.footer-input
+        form.footer-form(action='./subscribe.html' method='post')

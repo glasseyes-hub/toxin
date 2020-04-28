@@ -4,51 +4,51 @@ export const fakeData = {
 	// },
 	header: {
 		menu: [
-			{ button: 'О нас' },
-			{
-				dropdown: {
-					title: 'Услуги',
-					content: [{ button: 'Трансфер' }, { button: 'Экскурсии' }],
-				},
-			},
-			{ button: 'Вакансии' },
-			{ button: 'Новости' },
-			{
-				dropdown: {
-					title: 'Соглашения',
-					content: [{ button: 'Договор' }],
-				},
-			},
+			['О нас', './about.html'],
+			[
+				'Услуги',
+				'./services.html',
+				[
+					['Трансфер', './transfer.html'],
+					['Завтрак', './dinner.html'],
+				],
+			],
+			['Вакансии', './vacancies.html'],
+			['Новости', './news.html'],
+			['Соглашения', './agreement.html', [['Договор', './contract.html']]],
 		],
 	},
 	footer: {
 		menu: [
-			{
-				content: [
-					{ title: 'Навигация' },
-					{ button: 'О нас' },
-					{ button: 'Новости' },
-					{ button: 'Служба поддержки' },
-					{ button: 'Услуги' },
+			[
+				'Навигация',
+				'./navigation.html',
+				[
+					['О нас', './about.html'],
+					['Новости', './news.html'],
+					['Служба поддержки', './support.html'],
+					['Услуги', './services.html'],
 				],
-			},
-			{
-				content: [
-					{ title: 'О нас' },
-					{ button: 'О сервисе' },
-					{ button: 'Наша команда' },
-					{ button: 'Вакансии' },
-					{ button: 'Инвесторы' },
+			],
+			[
+				'О нас',
+				'./about.html',
+				[
+					['О сервисе', './aboutService.html'],
+					['Наша команда', './team.html'],
+					['Вакансии', './vacancies.html'],
+					['Инвесторы', './investors.html'],
 				],
-			},
-			{
-				content: [
-					{ title: 'Служба поддержки' },
-					{ button: 'Соглашения' },
-					{ button: 'Сообщества' },
-					{ button: 'Связь с нами' },
+			],
+			[
+				'Служба поддержки',
+				'./support.html',
+				[
+					['Соглашения', './agreement.html'],
+					['Сообщества', './social.html'],
+					['Связь с нами', './feedback.html'],
 				],
-			},
+			],
 		],
 	},
 	room: {

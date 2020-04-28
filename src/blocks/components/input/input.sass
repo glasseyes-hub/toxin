@@ -30,6 +30,7 @@ section.input
         position: absolute
         right: 0
         bottom: 0
+        background-color: transparent
         padding: 0 10px
         height: 44px
         width: 44px
@@ -37,24 +38,14 @@ section.input
         display: flex
         align-items: center
         justify-content: center
+        cursor: pointer
+        &::before     
+            font-family: Material Icons           
+            font-size: 24px
+            line-height: 44px
 
-        button
-            &::before                
-                font-size: 24px
-                line-height: 44px
-
-        &_send
-            button
-                &::before
-                    content: $icon_arrowRight
-                    color: $color_purple
-
-
-
-section.input
-    // фиксы легаси кода
-    border: none
-    height: auto
-    padding: 0
-
-    
+    &_send    
+        .input-button        
+            &::before
+                content: $icon_arrowRight
+                color: $color_purple

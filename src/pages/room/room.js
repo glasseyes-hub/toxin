@@ -1,12 +1,13 @@
-import { template } from '../../templates/main';
-import { RoomInfo } from '../../blocks/components/roomInfo/roomInfo';
-import { RoomReviewes } from '../../blocks/components/roomReviewes/roomReviewes';
-import { RoomAdditionals } from '../../blocks/components/roomAdditionals/roomAdditionals';
-import { RoomSummury } from '../../blocks/roomSummury/roomSummury';
-import { RoomDiagram } from '../../blocks/components/roomDiagram/roomDiagram';
 import { Component } from '../../services/js/Component';
 import { fakeData } from '../../services/js/fakeData';
 import { Tools } from '../../services/js/Tools';
+import { RoomInfo } from '../../blocks/components/roomInfo/roomInfo';
+import { RoomReviewes } from '../../blocks/components/roomReviewes/roomReviewes';
+import { RoomAdditionals } from '../../blocks/components/roomAdditionals/roomAdditionals';
+import { RoomDiagram } from '../../blocks/components/roomDiagram/roomDiagram';
+import { RoomSummury } from '../../blocks/components/roomSummury/roomSummury';
+import { Page } from '../../services/js/Page';
+import { Header } from '../../blocks/components/header/header';
 
 const tools = new Tools();
 
@@ -104,4 +105,10 @@ const room = new Room({
 	},
 });
 
-template.main.node.appendChild(room.node);
+const page = new Page();
+const header = new Header({
+	menu: fakeData.header.menu,
+});
+
+page.header.appendChild(header.node);
+page.main.appendChild(room.node);

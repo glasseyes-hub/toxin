@@ -1,37 +1,53 @@
-import { Block2 } from '../../../services/js/block2';
-import { Button2 } from '../../_lib/button2/button2';
+import { Component } from '../../../services/js/Component';
+import { HeaderNavigation } from '../headerNavigation/headerNavigation';
+import { Button } from '../button/button';
 
-export class Header extends Block2 {
+export class Header extends Component {
 	constructor(state) {
-		super({ template: require('./header.pug') });
-
 		require('./header.sass');
 
-		this.loginButton = new Button2({
-			type: 'bordered',
-			text: 'Войти',
-			width: 87,
-			height: 34,
-			border: 2,
-		});
+		state = {
+			template: require('./header.pug'),
+			...state,
+		};
 
-		this.registrationButton = new Button2({
-			type: 'filled',
-			text: 'Зарегистрироваться',
-			width: 196,
-			height: 34,
-		});
-
-		this.state = state;
+		super(state);
 	}
 	render() {
 		super.render();
 
-		this.node
-			.querySelector('.header-button_login')
-			.appendChild(this.loginButton.node);
-		this.node
-			.querySelector('.header-button_registration')
-			.appendChild(this.registrationButton.node);
+		this.renderNavigation();
+		this.state.authorized ? this.renderUserMenu() : this.renderAuthorization();
+	}
+	renderNavigation() {
+		const navigationNode = this.node.querySelector('.header-navigation');
+
+		const headerNavigation = new HeaderNavigation({
+			menu: this.state.menu,
+		});
+
+		navigationNode.appendChild(headerNavigation.node);
+	}
+	renderUserMenu() {}
+	renderAuthorization() {
+		const athorizationNode = document.createElement('div');
+		athorizationNode.classList.add('header-authorization');
+
+		const loginButton = new Button({
+			className: 'header-button header-button_login button_big button_bordered',
+			text: 'Войти',
+			link: './login.html',
+		});
+		const registrationButton = new Button({
+			className:
+				'header-button header-button_registration button_big button_filled',
+			text: 'Зарегистрироваться',
+			link: './registration.html',
+		});
+
+		athorizationNode.appendChild(loginButton.node);
+		athorizationNode.appendChild(registrationButton.node);
+
+		this.node.appendChild(athorizationNode);
 	}
 }

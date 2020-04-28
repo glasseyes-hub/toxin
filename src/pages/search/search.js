@@ -1,16 +1,17 @@
 import { Component } from '../../services/js/Component';
-import { template } from '../../templates/main';
-import { DateSelect } from '../../blocks/components/dateSelect/dateSelect';
+import { fakeData } from '../../services/js/fakeData';
 import { Tools } from '../../services/js/Tools';
+import { DateSelect } from '../../blocks/components/dateSelect/dateSelect';
 import { GuestsSelect } from '../../blocks/components/guestsSelect/guestsSelect';
 import { PriceRange } from '../../blocks/components/priceRange/priceRange';
 import { Facilities } from '../../blocks/components/facilities/facilities';
 import { AdditionalFacilities } from '../../blocks/components/additionalFacilities/additionalFacilities';
 import { Availabilities } from '../../blocks/components/availabilities/availabilities';
 import { CheckboxButtons } from '../../blocks/components/checkboxButtons/checkboxButtons';
-import { fakeData } from '../../services/js/fakeData';
 import { Room } from '../../blocks/components/room/room';
 import { Paginator } from '../../blocks/components/paginator/paginator';
+import { Header } from '../../blocks/components/header/header';
+import { Page } from '../../services/js/Page';
 
 const tools = new Tools();
 
@@ -251,4 +252,10 @@ search.addObserver((state) => {
 	}, state.filterTimeoutInterval);
 });
 
-template.main.node.appendChild(search.node);
+const page = new Page();
+const header = new Header({
+	menu: fakeData.header.menu,
+});
+
+page.header.appendChild(header.node);
+page.main.appendChild(search.node);
