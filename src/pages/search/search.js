@@ -12,6 +12,8 @@ import { Room } from '../../blocks/components/room/room';
 import { Paginator } from '../../blocks/components/paginator/paginator';
 import { Header } from '../../blocks/components/header/header';
 import { Page } from '../../services/js/Page';
+import { Footer } from '../../blocks/components/footer/footer';
+import { Copyright } from '../../blocks/components/copyright/copyright';
 
 const tools = new Tools();
 
@@ -256,6 +258,12 @@ const page = new Page();
 const header = new Header({
 	menu: fakeData.header.menu,
 });
+const footer = new Footer({
+	menu: fakeData.footer.menu,
+});
+const copyright = new Copyright();
 
 page.header.appendChild(header.node);
 page.main.appendChild(search.node);
+page.footer.appendChild(footer.node);
+page.body.appendChild(copyright.node);
