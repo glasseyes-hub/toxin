@@ -1,5 +1,6 @@
 import { Component } from '../../services/js/Component';
 import { Input } from '../input/input';
+import { Subscribe } from '../subscribe/subscribe';
 
 export class Footer extends Component {
 	constructor(state) {
@@ -18,18 +19,12 @@ export class Footer extends Component {
 		this.renderForm();
 	}
 	renderForm() {
-		const form = this.node.querySelector('.footer-form');
-		this.input = new Input({
-			className: 'input_send',
-			name: 'email',
-			placeholder: 'Email',
-			button: true,
+		const container = this.node.querySelector('.footer-subscribe');
+
+		const subscribe = new Subscribe({
+			className: 'footer-subscribe',
 		});
 
-		form.appendChild(this.input.node);
-
-		this.input.addObserver((state) => {
-			this.state = { subscriberEmail: { value: state.value } };
-		});
+		container.replaceWith(subscribe.node);
 	}
 }

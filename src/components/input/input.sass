@@ -2,9 +2,23 @@
     
 section.input
     position: relative
+    display: grid
+    grid-template-areas: 'title title' 'input input'
+    grid-gap: 5px
+    justify-content: space-between
+    align-items: center
 
     .input-title
-        margin-bottom: 4px
+        grid-area: title        
+        font-size: 12px
+        line-height: 15px
+    .input-subtitle
+        grid-area: title
+        text-align: right     
+        font-size: 12px
+        line-height: 15px
+        text-transform: uppercase;
+        color: $color_dark50
 
     &:hover,
     &:focus,
@@ -13,12 +27,14 @@ section.input
             border-color: $color_dark50
         
     input
+        grid-area: input
         width: 100%
         height: 44px
         padding: 0 15px
         border: 1px solid $color_dark25
         border-radius: 4px
         outline: none
+        font-size: 14px;
 
         &::placeholder
             color: $color_dark25
@@ -43,9 +59,3 @@ section.input
             font-family: Material Icons           
             font-size: 24px
             line-height: 44px
-
-    &_send    
-        .input-button        
-            &::before
-                content: $icon_arrowRight
-                color: $color_purple

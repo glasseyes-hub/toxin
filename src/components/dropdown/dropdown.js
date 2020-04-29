@@ -41,7 +41,8 @@ export class Dropdown extends Component {
 		this.input = new Input({
 			className: 'dropdown-input',
 			title: this.state.title,
-			value: this.state.text,
+			subtitle: this.state.subtitle,
+			value: this.state.value,
 			placeholder: this.state.placeholder,
 			disabled: true,
 			button: {

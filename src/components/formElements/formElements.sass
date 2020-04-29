@@ -1,0 +1,36 @@
+section.formElements
+    display: grid
+    grid-auto-flow: row
+    padding: 143px 140px
+    background-color: #fff
+    grid-row-gap: 20px
+
+
+    .formElements-group
+        display: grid
+        grid-template-columns: 1fr 1fr 1fr
+        grid-column-gap: 100px
+        grid-row-gap: 20px
+
+        &:nth-child(3n-1)
+            margin-left: 25px
+            margin-right: -25px        
+        
+        .formElements-column
+            display: grid
+            grid-row-gap: 20px
+
+            .formElements-input
+                &_masked
+                    margin-top: 3px
+            
+            .formElements-dateDropdown                
+                margin-top: 20px
+                
+            .formElements-filterDateDropdown,
+            .formElements-subscribe
+                width: 266px
+                margin-top: 21px
+                
+
+                

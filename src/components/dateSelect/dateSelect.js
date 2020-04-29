@@ -28,7 +28,9 @@ export class DateSelect extends Component {
 						open: this.state.open,
 						type: 'input',
 						className: 'dateSelect-dropdown dateSelect-dropdown_single',
-						title: 'Даты пребывания в отеле',
+						title: this.state.title
+							? this.state.title
+							: 'Даты пребывания в отеле',
 						placeholder: 'Даты пребывания',
 					}),
 				};
@@ -38,14 +40,16 @@ export class DateSelect extends Component {
 						open: this.state.open,
 						type: 'input',
 						className: 'dateSelect-dropdown dateSelect-dropdown_arrival',
-						title: 'Прибытие',
+						title: this.state.arrivalTitle
+							? this.state.arrivalTitle
+							: 'Прибытие',
 						placeholder: 'ДД.ММ.ГГГГ',
 					}),
 					leave: new Dropdown({
 						open: this.state.open,
 						type: 'input',
 						className: 'dateSelect-dropdown dateSelect-dropdown_leave',
-						title: 'Выезд',
+						title: this.state.leaveTitle ? this.state.leaveTitle : 'Выезд',
 						placeholder: 'ДД.ММ.ГГГГ',
 					}),
 				};

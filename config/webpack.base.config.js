@@ -52,11 +52,9 @@ module.exports = {
 		filename: 'js/[name].[hash].js', // Точка выхода
 	},
 	resolve: {
-		extensions: ['.js'],
+		extensions: ['.js', '.ts'],
 		alias: {
-			nodeModules: path.resolve(__dirname, 'node_modules'),
-			'@': path.resolve(__dirname, 'src'),
-			'@blocks': path.resolve(__dirname, 'src/blocks'),
+			'@components': path.resolve(__dirname, 'src/components'),
 			'@services': path.resolve(__dirname, 'src/services'),
 		},
 	},

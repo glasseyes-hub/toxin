@@ -1,6 +1,7 @@
 import { Component } from '../../services/js/Component';
 import { Page } from '../../services/js/Page';
 import { ColorsAndTypes } from '../../components/colorsAndTypes/colorsAndTypes';
+import { FormElements } from '../../components/formElements/formElements';
 
 class UIKit extends Component {
 	constructor(state) {
@@ -16,13 +17,25 @@ class UIKit extends Component {
 	render() {
 		super.render();
 		this.renderColorsAndTypes();
+		this.renderFormElements();
 	}
 	renderColorsAndTypes() {
-		const container = this.node.querySelector('.colorsAndTypes');
+		const container = this.node.querySelector('.uikit-colorsAndTypes');
 
-		const colorsAndTypes = new ColorsAndTypes();
+		const colorsAndTypes = new ColorsAndTypes({
+			className: 'uikit-colorsAndTypes',
+		});
 
-		container.appendChild(colorsAndTypes.node);
+		container.replaceWith(colorsAndTypes.node);
+	}
+	renderFormElements() {
+		const container = this.node.querySelector('.uikit-formElements');
+
+		const formElements = new FormElements({
+			className: 'uikit-formElements',
+		});
+
+		container.replaceWith(formElements.node);
 	}
 }
 
