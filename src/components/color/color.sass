@@ -1,0 +1,55 @@
+@import '../../services/sass/variables'
+
+    
+section.color
+    font-family: 'Quiсksand'
+    display: grid
+    grid-template-areas: 'block title' 'block subtitle'
+    grid-column-gap: 40px
+    align-items: center
+    justify-content: start
+    .color-block
+        grid-area: block
+        background-color: #fff
+        width: 70px
+        height: 70px
+        border-radius: 6px
+    .color-title
+        grid-area: title
+        display: flex
+        line-height: 29px
+        font-size: 19px
+        text-transform: none
+        align-self: flex-end
+    .color-subtitle
+        grid-area: subtitle
+        display: flex
+        line-height: 29px
+        font-size: 19px
+        align-self: flex-start
+        letter-spacing: -1px
+
+    &_dark100
+        .color-block
+            background-color: $color_dark
+    &_dark75
+        .color-block
+            background-color: $color_dark75
+    &_dark50
+        .color-block
+            background-color: $color_dark50
+    &_dark25
+        .color-block
+            background-color: $color_dark25
+    &_dark10
+        .color-block
+            background-color: $color_dark10
+    &_dark5
+        .color-block
+            background-color: $color_dark5
+    &_green
+        .color-block
+            background-color: $color_green
+    &_purple
+        .color-block
+            background-color: $color_purple

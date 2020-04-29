@@ -21,6 +21,10 @@ function getEntires(pages) {
 }
 const pages = [
 	{
+		name: 'uikit',
+		template: 'main',
+	},
+	{
 		name: 'index',
 		template: 'main',
 	},
