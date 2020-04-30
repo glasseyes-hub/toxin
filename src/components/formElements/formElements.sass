@@ -11,26 +11,40 @@ section.formElements
         grid-template-columns: 1fr 1fr 1fr
         grid-column-gap: 100px
         grid-row-gap: 20px
-
-        &:nth-child(3n-1)
-            margin-left: 25px
-            margin-right: -25px        
+    
         
         .formElements-column
             display: grid
             grid-row-gap: 20px
+            align-content: start
 
+            &_central
+                margin-left: 26px
+                margin-right: -26px  
+                grid-row-gap: 12px 
+
+                .formElements-radioButtons
+                    margin-top: 29px
+
+                .formElements-toggleButtons
+                    margin-top: 30px
+                .formElements-likeButtons
+                    margin-top: 32px
+                .formElements-rateButtons
+                    margin-top: 28px
+
+                    
+                
             .formElements-input
                 &_masked
                     margin-top: 3px
             
             .formElements-dateDropdown                
                 margin-top: 20px
-                
+
             .formElements-filterDateDropdown,
             .formElements-subscribe
                 width: 266px
                 margin-top: 21px
-                
 
                 

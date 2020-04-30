@@ -1,0 +1,17 @@
+@import '../../services/sass/variables'
+    
+section.title
+    display: grid
+    grid-template-areas: 'title subtitle'
+
+    .title-text
+        grid-area: title  
+        font-size: 12px
+        line-height: 15px
+    .title-subtext
+        grid-area: subtitle
+        text-align: right     
+        font-size: 12px
+        line-height: 15px
+        text-transform: uppercase;
+        color: $color_dark50

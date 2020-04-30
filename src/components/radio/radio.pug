@@ -1,6 +1,7 @@
-section.radio
-    each text, value in list
-        .radio-element
-            input.radio-input(type='radio' name=name value=value)
-            .radio-button
-            p.radio-text #{text}
+section.radio(class=className)
+    .radio-list
+        each text, value in list
+            .radio-element
+                input.radio-input(type='radio' name=name value=value)
+                .radio-button
+                p.radio-text #{text}

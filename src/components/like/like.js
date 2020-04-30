@@ -8,6 +8,7 @@ export class Like extends Component {
 			template: require('./like.pug'),
 			disabled: false,
 			isLikes: false,
+			value: 0,
 			...state,
 		};
 

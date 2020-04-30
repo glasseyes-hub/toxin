@@ -1,5 +1,6 @@
 import { Component } from '../../services/js/Component';
 import { Checkbox } from '../checkbox/checkbox';
+import { Title } from '../title/title';
 
 export class CheckboxButtons extends Component {
 	constructor(state) {
@@ -14,11 +15,18 @@ export class CheckboxButtons extends Component {
 	}
 	render() {
 		super.render();
+		this.renderTitle();
 		this.renderCheckbox();
+	}
+	renderTitle() {
+		const title = new Title({
+			title: 'Checkbox buttons',
+		});
+
+		this.node.appendChild(title.node);
 	}
 	renderCheckbox() {
 		const checkbox = new Checkbox({
-			title: 'Checkbox buttons',
 			list: [
 				{
 					text: 'Можно курить',

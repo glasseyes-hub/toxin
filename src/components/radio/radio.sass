@@ -1,37 +1,40 @@
 @import '../../services/sass/variables'
     
 section.radio
-    display: flex
-    .radio-element
+
+    .radio-list
         display: flex
-        margin-left: 20px
-        cursor: pointer
-
-        &:first-child
-            margin-left: 0
-
-        .radio-input
-            display: none
-
-        .radio-button
-            border: 1px solid $color_dark25
-            width: 20px
-            height: 20px
-            border-radius: 10px
+        .radio-element
             display: flex
-            justify-content: center
+            margin-left: 20px
+            cursor: pointer
             align-items: center
 
-            &_checked
-                border-color: $color_purple
-                &::before
-                    display: block
-                    content: '\00a0'
-                    background: linear-gradient(45deg, #8BA4F9 0%, $color_purple 100%)
-                    width: 12px
-                    height: 12px
-                    border-radius: 6px
+            &:first-child
+                margin-left: 0
 
-        .radio-text
-            margin-top: -2px
-            margin-left: 10px
+            .radio-input
+                display: none
+
+            .radio-button
+                border: 1px solid $color_dark25
+                width: 20px
+                height: 20px
+                border-radius: 10px
+                display: flex
+                justify-content: center
+                align-items: center
+
+                &_checked
+                    border-color: $color_purple
+                    &::before
+                        display: block
+                        content: '\00a0'
+                        background: linear-gradient(45deg, #8BA4F9 0%, $color_purple 100%)
+                        width: 12px
+                        height: 12px
+                        border-radius: 6px
+
+            .radio-text
+                margin-left: 10px
+                line-height: 20px

@@ -1,5 +1,6 @@
 import { Component } from '../../services/js/Component';
 import { Button } from '../button/button';
+import { Title } from '../title/title';
 
 export class Input extends Component {
 	constructor(state) {
@@ -24,9 +25,20 @@ export class Input extends Component {
 	render() {
 		super.render();
 
+		this.state.title && this.renderTitle();
+
 		this.inputNode = this.node.querySelector('input');
 
 		this.state.mask && this.setMask();
+	}
+	renderTitle() {
+		const title = new Title({
+			className: 'input-title',
+			title: this.state.title,
+			subtitle: this.state.subtitle,
+		});
+
+		this.node.prepend(title.node);
 	}
 	handlers() {
 		this.inputNode.addEventListener('change', (event) => {

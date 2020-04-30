@@ -1,10 +1,14 @@
 @import '../../services/sass/variables'
     
 section.toggle
-    display: flex
+    display: grid
     cursor: pointer
-    
+    grid-template-areas: 'button text'
+    grid-template-columns: 40px 1fr
+    align-items: center
+        
     .toggle-button
+        grid-area: button
         width: 40px
         height: 20px
         padding: 0 3px
@@ -28,10 +32,12 @@ section.toggle
             &::before
                background: $color_purple_gradient
 
+
     .toggle-input
         display: none
 
     .toggle-text
+        grid-area: text
         margin-top: -2px
         margin-left: 10px
         font-size: 14px
