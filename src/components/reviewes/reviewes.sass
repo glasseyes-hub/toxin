@@ -1,0 +1,41 @@
+@import '../../services/sass/variables'
+    
+section.reviewes
+    grid-area: list
+    display: grid
+    grid-gap: 22px
+
+    .reviewes-element
+        display: grid
+        grid-template-areas: 'img name' 'img date' 'sidebar text'
+        grid-template-columns: 48px 1fr
+        grid-column-gap: 10px
+        grid-row-gap: 6px
+
+        .reviewes-img
+            grid-area: img
+            width: 48px
+            height: 48px
+            border-radius: 24px
+            object-fit: cover
+
+        .reviewes-name
+            grid-area: name
+            margin-top: 6px
+            margin-bottom: -3px
+            text-transform: none
+            font-size: 14px
+
+        .reviewes-date
+            grid-area: date
+
+        .reviewes-sidebar
+            grid-area: sidebar
+            display: flex
+            flex-direction: column
+            align-items: center
+            margin-top: 5px
+
+        .reviewes-text
+            grid-area: text
+            margin-top: 3px

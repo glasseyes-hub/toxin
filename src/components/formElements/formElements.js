@@ -18,6 +18,8 @@ import { AdditionalFacilities } from '../additionalFacilities/additionalFaciliti
 import { Checkbox } from '../checkbox/checkbox';
 import { Availabilities } from '../availabilities/availabilities';
 import { BulletList } from '../bulletList/bulletList';
+import { Info } from '../info/info';
+import { Reviewes } from '../reviewes/reviewes';
 
 export class FormElements extends Component {
 	constructor(state) {
@@ -35,6 +37,7 @@ export class FormElements extends Component {
 		this.renderFirstGroup();
 		this.renderSecondGroup();
 		this.renderThirdGroup();
+		this.renderFourthGroup();
 	}
 	renderFirstGroup() {
 		const group = this.node.querySelector('.formElements-group_first');
@@ -205,5 +208,29 @@ export class FormElements extends Component {
 		firstColumn.appendChild(additionalFacilitiesOpen.node);
 		centralColumn.appendChild(richCheckbox.node);
 		lastColumn.appendChild(bulletList.node);
+	}
+	renderFourthGroup() {
+		const group = this.node.querySelector('.formElements-group_fourth');
+
+		const firstColumn = group.querySelector('.formElements-column_first');
+		const centralColumn = group.querySelector('.formElements-column_central');
+
+		const info = new Info({ comfort: true, convenience: true });
+		const reviewes = new Reviewes({
+			list: [
+				{
+					name: 'Мурад Сарафанов',
+					img: './img/foto1.png',
+					date: '5 дней назад',
+					likes: 12,
+					isLiked: true,
+					text:
+						'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',
+				},
+			],
+		});
+
+		firstColumn.appendChild(info.node);
+		centralColumn.appendChild(reviewes.node);
 	}
 }
