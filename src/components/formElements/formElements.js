@@ -3,15 +3,15 @@ import { Input } from '../input/input';
 import { Dropdown } from '../dropdown/dropdown';
 import { DateSelect } from '../dateSelect/dateSelect';
 import { Subscribe } from '../subscribe/subscribe';
-import { Checkbox } from '../checkbox/checkbox';
-import { Radio } from '../radio/radio';
-import { Toggle } from '../toggle/toggle';
-import { Title } from '../title/title';
 import { CheckboxButtons } from '../checkboxButtons/checkboxButtons';
 import { RadioButtons } from '../radioButtons/radioButtons';
 import { ToggleButtons } from '../toggleButtons/toggleButtons';
 import { LikeButtons } from '../likeButtons/likeButtons';
 import { RateButtons } from '../rateButtons/rateButtons';
+import { Slider } from '../slider/slider';
+import { RangeSlider } from '../rangeSlider/rangeSlider';
+import { Buttons } from '../buttons/buttons';
+import { PaginationButtons } from '../paginationButtons/paginationButtons';
 
 export class FormElements extends Component {
 	constructor(state) {
@@ -34,6 +34,9 @@ export class FormElements extends Component {
 		);
 		const centralColumn = this.node.querySelector(
 			'.formElements-group_first .formElements-column_central'
+		);
+		const lastColumn = this.node.querySelector(
+			'.formElements-group_first .formElements-column_last'
 		);
 		const defaultInput = new Input({
 			title: 'Text field',
@@ -94,6 +97,18 @@ export class FormElements extends Component {
 		const rateButtons = new RateButtons({
 			className: 'formElements-rateButtons',
 		});
+		const rangeSlider = new RangeSlider({
+			className: 'formElements-rangeSlider',
+			max: 15000,
+			start: 5000,
+			end: 10000,
+		});
+		const buttons = new Buttons({
+			className: 'formElements-buttons',
+		});
+		const paginationButtons = new PaginationButtons({
+			className: 'formElements-paginationButtons',
+		});
 
 		firstColumn.appendChild(defaultInput.node);
 		firstColumn.appendChild(hoverInput.node);
@@ -107,5 +122,8 @@ export class FormElements extends Component {
 		centralColumn.appendChild(toggleButtons.node);
 		centralColumn.appendChild(likeButtons.node);
 		centralColumn.appendChild(rateButtons.node);
+		lastColumn.appendChild(rangeSlider.node);
+		lastColumn.appendChild(buttons.node);
+		lastColumn.appendChild(paginationButtons.node);
 	}
 }

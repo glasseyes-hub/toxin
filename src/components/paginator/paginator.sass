@@ -1,12 +1,14 @@
 @import '../../services/sass/variables'
     
 .paginator
-    margin: 0 auto
-
+    display: grid
+    grid-auto-flow: row
+    grid-row-gap: 8px
+    justify-content: start
     .paginator-buttons
         display: flex
         justify-content: center
-        margin-bottom: 8px
+        align-items: center
 
         .paginator-button,
         .paginator-dots
@@ -49,5 +51,6 @@
             cursor: auto
 
     .paginator-info
-        text-align: center
+        display: flex
+        justify-content: center
 

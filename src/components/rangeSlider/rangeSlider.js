@@ -1,17 +1,14 @@
-import { Component } from '../../../services/js/Component';
+import { Component } from '../../services/js/Component';
+import { Title } from '../title/title';
+import { Slider } from '../slider/slider';
 
 export class RangeSlider extends Component {
 	constructor(state) {
 		require('./rangeSlider.sass');
-		require('webpack-jquery-ui');
-		require('webpack-jquery-ui/css');
 
 		state = {
 			template: require('./rangeSlider.pug'),
 			min: 0,
-			max: 100000,
-			start: 0,
-			end: 100000,
 			...state,
 		};
 
@@ -19,17 +16,41 @@ export class RangeSlider extends Component {
 	}
 	render() {
 		super.render();
+
+		this.renderTitle();
 		this.renderSlider();
 	}
+	renderTitle() {
+		const title = new Title({
+			className: 'rangeSlider-title',
+			title: 'Range slider',
+			subtitle: this.getSubtitle(),
+		});
+
+		this.subtitle = title.node.querySelector('.title-subtext');
+
+		this.node.appendChild(title.node);
+	}
 	renderSlider() {
-		$(this.node).slider({
-			range: true,
+		const slider = new Slider({
 			min: this.state.min,
 			max: this.state.max,
-			values: [this.state.start, this.state.end],
-			slide: (event, obj) => {
-				this.state = { start: obj.values[0], end: obj.values[1] };
-			},
+			start: this.state.start || this.state.min,
+			end: this.state.end || this.state.max,
 		});
+
+		slider.addObserver((state) => {
+			const { start, end } = state;
+			this.state = { start, end };
+
+			this.subtitle.innerHTML = this.getSubtitle();
+		});
+
+		this.node.appendChild(slider.node);
+	}
+	getSubtitle() {
+		return `${this.state.start || this.state.min}₽ - ${
+			this.state.end || this.state.max
+		}₽`;
 	}
 }

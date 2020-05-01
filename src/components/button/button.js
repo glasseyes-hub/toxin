@@ -12,17 +12,4 @@ export class Button extends Component {
 
 		super(state);
 	}
-	render() {
-		super.render();
-		this.setMods();
-	}
-	setMods() {
-		this.state.mod = Array.isArray(this.state.mod)
-			? this.state.mod
-			: [this.state.mod];
-
-		this.state.mod.forEach((mod) => {
-			this.node.classList.add(`button_${mod}`);
-		});
-	}
 }

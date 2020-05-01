@@ -2,10 +2,9 @@
 
 a.button,
 section.button
-    display: flex
-    justify-content: center
-    align-items: center
+    display: inline-block
     text-decoration: none
+    cursor: pointer
 
     button
         display: flex
@@ -15,11 +14,10 @@ section.button
         width: 100%
         height: 100%
         font-size: 12px
-        font-weight: bold
-        color: inherit      
+        font-weight: bold 
+        color: $color_purple
         text-transform: uppercase
         cursor: pointer    
-
         &::before
             font-family: Material Icons
             font-weight: normal
@@ -27,26 +25,34 @@ section.button
     &_bordered
         background: $color_purple_gradient
         border-radius: 50px
+        padding: 2px
+
         button
             background-color: #fff
-            color: $color_purple
-            width: calc( 100% -  4px)
-            height: calc( 100% -  4px)
-            line-height: calc( 100% -  4px)
-            padding: 0 26px
+            padding: 13px 18px
             border-radius: 50px
 
+    &_disabled
+        opacity: 0.5
 
     &_filled
         background: $color_purple_gradient
         border-radius: 50px
+        padding: 15px 20px
+
         button
             color: #fff
-    &_big        
-        height: 44px
+
+    &_big       
+        width: 100%
+
+    &_grey
+        button
+            color: $color_dark50
 
     &_arrow
         position: relative
+
         button
             &::before
                 position: absolute
