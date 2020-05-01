@@ -20,6 +20,7 @@ export class CheckboxButtons extends Component {
 	}
 	renderTitle() {
 		const title = new Title({
+			className: 'checkboxButtons-title',
 			title: 'Checkbox buttons',
 		});
 

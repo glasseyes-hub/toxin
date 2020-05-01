@@ -14,6 +14,10 @@ import { Buttons } from '../buttons/buttons';
 import { PaginationButtons } from '../paginationButtons/paginationButtons';
 import { GuestsSelect } from '../guestsSelect/guestsSelect';
 import { Facilities } from '../facilities/facilities';
+import { AdditionalFacilities } from '../additionalFacilities/additionalFacilities';
+import { Checkbox } from '../checkbox/checkbox';
+import { Availabilities } from '../availabilities/availabilities';
+import { BulletList } from '../bulletList/bulletList';
 
 export class FormElements extends Component {
 	constructor(state) {
@@ -171,5 +175,35 @@ export class FormElements extends Component {
 		const firstColumn = group.querySelector('.formElements-column_first');
 		const centralColumn = group.querySelector('.formElements-column_central');
 		const lastColumn = group.querySelector('.formElements-column_last');
+
+		const additionalFacilities = new AdditionalFacilities({
+			title: 'Expandable checkbox list',
+			desk: true,
+			feedingchair: true,
+			crib: true,
+		});
+		const additionalFacilitiesOpen = new AdditionalFacilities({
+			title: 'Expandable checkbox list',
+			desk: true,
+			feedingchair: true,
+			crib: true,
+			open: true,
+		});
+		const richCheckbox = new Availabilities({
+			title: 'Rich Checkbox Buttons',
+		});
+		const bulletList = new BulletList({
+			title: 'Bullet list',
+			list: [
+				'Нельзя с питомцами',
+				'Без вечеринок и мероприятий',
+				'Время прибытия — после 13:00, а выезд до 12:00',
+			],
+		});
+
+		firstColumn.appendChild(additionalFacilities.node);
+		firstColumn.appendChild(additionalFacilitiesOpen.node);
+		centralColumn.appendChild(richCheckbox.node);
+		lastColumn.appendChild(bulletList.node);
 	}
 }

@@ -7,6 +7,9 @@ export class Availabilities extends Component {
 
 		state = {
 			template: require('./availabilities.pug'),
+			title: 'Доступность',
+			widecorridor: false,
+			assistant: false,
 			...state,
 		};
 
@@ -18,19 +21,20 @@ export class Availabilities extends Component {
 	}
 	renderCheckbox() {
 		const checkbox = new Checkbox({
-			title: 'Доступность',
+			title: this.state.title,
+			subtitle: this.state.subtitle,
 			list: [
 				{
 					text: 'Широкий коридор',
 					subtext: 'Ширина коридоров в номере не менее 91 см.',
 					name: 'widecorridor',
-					check: this.state.widecorridor || false,
+					check: this.state.widecorridor,
 				},
 				{
 					text: 'Помощник для инвалидов',
 					subtext: 'На 1 этаже вас встретит специалист и проводит до номера.',
 					name: 'assistant',
-					check: this.state.assistant || false,
+					check: this.state.assistant,
 				},
 			],
 		});

@@ -8,6 +8,13 @@ export class AdditionalFacilities extends Component {
 
 		state = {
 			template: require('./additionalFacilities.pug'),
+			title: 'Дополнительные удобства',
+			dinner: false,
+			desk: false,
+			feedingchair: false,
+			crib: false,
+			tv: false,
+			shampoo: false,
 			...state,
 		};
 
@@ -20,7 +27,9 @@ export class AdditionalFacilities extends Component {
 	}
 	renderDropdown() {
 		this.dropdown = new Dropdown({
-			title: 'Дополнительные удобства',
+			title: this.state.title,
+			subtitle: this.state.subtitle,
+			open: this.state.open,
 		});
 
 		this.node.appendChild(this.dropdown.node);
@@ -32,42 +41,32 @@ export class AdditionalFacilities extends Component {
 				{
 					text: 'Завтрак',
 					name: 'dinner',
-					check: this.state.dinner || false,
+					check: this.state.dinner,
 				},
 				{
 					text: 'Письменный стол',
 					name: 'desk',
-					check: this.state.desk || false,
+					check: this.state.desk,
 				},
 				{
 					text: 'Стул для кормления',
 					name: 'feedingchair',
-					check: this.state.feedingchair || false,
+					check: this.state.feedingchair,
 				},
 				{
 					text: 'Кроватка',
 					name: 'crib',
-					check: this.state.crib || false,
+					check: this.state.crib,
 				},
 				{
 					text: 'Телевизор',
 					name: 'tv',
-					check: this.state.tv || false,
+					check: this.state.tv,
 				},
 				{
 					text: 'Шампунь',
 					name: 'shampoo',
-					check: this.state.shampoo || false,
-				},
-				{
-					text: 'Телевизор',
-					name: 'tv2',
-					check: this.state.tv2 || false,
-				},
-				{
-					text: 'Шампунь',
-					name: 'shampoo2',
-					check: this.state.shampoo2 || false,
+					check: this.state.shampoo,
 				},
 			],
 		});

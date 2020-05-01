@@ -1,0 +1,21 @@
+@import '../../services/sass/variables'
+    
+section.bulletList
+    .bulletList-title
+        margin-bottom: 14px
+    .bulletList-list
+        list-style: none    
+        display: grid        
+        grid-row-gap: 10px
+
+        .bulletList-element  
+            display: grid
+            grid-template-columns: 20px 1fr  
+            line-height: 24px
+
+            &::before
+                font-family: Material Icons
+                content: '\e061'
+                font-size: 15px
+                color: $color_dark25
+                margin-left: -3px

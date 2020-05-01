@@ -11,12 +11,13 @@ section.dropdown
     .dropdown-title
         display: flex
         justify-content: space-between
-        width: 100%
 
         .dropdown-button  
             margin-right: 10px
             button
                 &::before
+                    content: $icon_arrowDown
+                    color: $color_dark50
                     line-height: 14px
                     font-size: 24px
     
@@ -29,6 +30,11 @@ section.dropdown
                 content: $icon_arrowDown
                 color: $color_dark50
     &_open
+        .dropdown-title
+            .dropdown-button 
+                button
+                    &::before
+                        content: $icon_arrowUp
         input
             border-color: $color_dark50
         .dropdown-input 

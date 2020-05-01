@@ -1,9 +1,7 @@
 section.checkbox(class=className)
-    h3.checkbox-title #{title}
     .checkbox-list
         each element in list
-            .checkbox-element
-            
+            .checkbox-element            
                 if element.check
                     input.checkbox-input(type='checkbox' checked)
                     button.checkbox-button.checkbox-button_checked
