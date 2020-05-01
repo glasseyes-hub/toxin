@@ -8,6 +8,10 @@ export class Facilities extends Component {
 
 		state = {
 			template: require('./facilities.pug'),
+			title: 'Удобства номера',
+			bedrooms: 0,
+			beds: 0,
+			bathrooms: 0,
 			...state,
 		};
 
@@ -24,7 +28,8 @@ export class Facilities extends Component {
 			open: this.state.open,
 			className: 'facilities-dropdown',
 			type: 'input',
-			title: 'Удобства номера',
+			title: this.state.title,
+			subtitle: this.state.subtitle,
 			placeholder: 'Выберите удобства',
 		});
 
@@ -34,12 +39,12 @@ export class Facilities extends Component {
 		this.counter = new Counter({
 			className: 'facilities-counter',
 			list: [
-				{ text: 'Спальни', name: 'bedrooms', value: this.state.bedrooms || 0 },
-				{ text: 'Кровати', name: 'beds', value: this.state.beds || 0 },
+				{ text: 'Спальни', name: 'bedrooms', value: this.state.bedrooms },
+				{ text: 'Кровати', name: 'beds', value: this.state.beds },
 				{
 					text: 'Ванные комнаты',
 					name: 'bathrooms',
-					value: this.state.bathrooms || 0,
+					value: this.state.bathrooms,
 				},
 			],
 		});

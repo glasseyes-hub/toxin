@@ -8,6 +8,10 @@ export class GuestsSelect extends Component {
 
 		state = {
 			template: require('./guestsSelect.pug'),
+			title: 'Гости',
+			adult: 0,
+			children: 0,
+			baby: 0,
 			...state,
 		};
 
@@ -24,7 +28,8 @@ export class GuestsSelect extends Component {
 			open: this.state.open,
 			className: 'guestsSelect-dropdown',
 			type: 'input',
-			title: 'Гости',
+			title: this.state.title,
+			subtitle: this.state.subtitle,
 			placeholder: 'Сколько гостей',
 		});
 
@@ -34,9 +39,9 @@ export class GuestsSelect extends Component {
 		this.counter = new Counter({
 			className: 'guestsSelect-counter',
 			list: [
-				{ text: 'Взрослые', name: 'adult', value: this.state.adult || 0 },
-				{ text: 'Дети', name: 'children', value: this.state.children || 0 },
-				{ text: 'Младенцы', name: 'baby', value: this.state.baby || 0 },
+				{ text: 'Взрослые', name: 'adult', value: this.state.adult },
+				{ text: 'Дети', name: 'children', value: this.state.children },
+				{ text: 'Младенцы', name: 'baby', value: this.state.baby },
 			],
 			controls: true,
 		});

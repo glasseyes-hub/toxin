@@ -12,6 +12,8 @@ import { Slider } from '../slider/slider';
 import { RangeSlider } from '../rangeSlider/rangeSlider';
 import { Buttons } from '../buttons/buttons';
 import { PaginationButtons } from '../paginationButtons/paginationButtons';
+import { GuestsSelect } from '../guestsSelect/guestsSelect';
+import { Facilities } from '../facilities/facilities';
 
 export class FormElements extends Component {
 	constructor(state) {
@@ -27,17 +29,16 @@ export class FormElements extends Component {
 	render() {
 		super.render();
 		this.renderFirstGroup();
+		this.renderSecondGroup();
+		this.renderThirdGroup();
 	}
 	renderFirstGroup() {
-		const firstColumn = this.node.querySelector(
-			'.formElements-group_first .formElements-column_first'
-		);
-		const centralColumn = this.node.querySelector(
-			'.formElements-group_first .formElements-column_central'
-		);
-		const lastColumn = this.node.querySelector(
-			'.formElements-group_first .formElements-column_last'
-		);
+		const group = this.node.querySelector('.formElements-group_first');
+
+		const firstColumn = group.querySelector('.formElements-column_first');
+		const centralColumn = group.querySelector('.formElements-column_central');
+		const lastColumn = group.querySelector('.formElements-column_last');
+
 		const defaultInput = new Input({
 			title: 'Text field',
 			subtitle: 'Default',
@@ -125,5 +126,50 @@ export class FormElements extends Component {
 		lastColumn.appendChild(rangeSlider.node);
 		lastColumn.appendChild(buttons.node);
 		lastColumn.appendChild(paginationButtons.node);
+	}
+	renderSecondGroup() {
+		const group = this.node.querySelector('.formElements-group_second');
+
+		const firstColumn = group.querySelector('.formElements-column_first');
+		const centralColumn = group.querySelector('.formElements-column_central');
+		const lastColumn = group.querySelector('.formElements-column_last');
+
+		const facilities = new Facilities({
+			title: 'Dropdown',
+			subtitle: 'Default',
+			bedrooms: 2,
+			beds: 2,
+		});
+
+		const facilitiesOpen = new Facilities({
+			title: 'Dropdown',
+			subtitle: 'Expanded',
+			bedrooms: 2,
+			beds: 2,
+			open: true,
+		});
+
+		const guestsSelect = new GuestsSelect({
+			title: 'Dropdown',
+			open: true,
+		});
+		const guestsSelectFilled = new GuestsSelect({
+			title: 'Dropdown',
+			adult: 2,
+			children: 1,
+			open: true,
+		});
+
+		firstColumn.appendChild(facilities.node);
+		firstColumn.appendChild(facilitiesOpen.node);
+		centralColumn.appendChild(guestsSelect.node);
+		lastColumn.appendChild(guestsSelectFilled.node);
+	}
+	renderThirdGroup() {
+		const group = this.node.querySelector('.formElements-group_third');
+
+		const firstColumn = group.querySelector('.formElements-column_first');
+		const centralColumn = group.querySelector('.formElements-column_central');
+		const lastColumn = group.querySelector('.formElements-column_last');
 	}
 }

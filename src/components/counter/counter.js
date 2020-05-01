@@ -21,7 +21,7 @@ export class Counter extends Component {
 		this.controls = {
 			node: document.createElement('div'),
 			clear: new Button({
-				className: 'counter-clear',
+				className: 'counter-clear button_grey',
 				text: 'Очистить',
 			}),
 			apply: new Button({

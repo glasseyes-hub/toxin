@@ -3,57 +3,55 @@ section.formElements
     grid-auto-flow: row
     padding: 143px 140px
     background-color: #fff
-    grid-row-gap: 20px
-
+    grid-row-gap: 100px
 
     .formElements-group
         display: grid
         grid-template-columns: 1fr 1fr 1fr
         grid-column-gap: 100px
-        grid-row-gap: 20px
-    
+        grid-row-gap: 20px    
         
         .formElements-column
             display: grid
             grid-row-gap: 20px
             align-content: start
 
+            .formElements-input
+                &_masked
+                    margin-top: 3px            
+            .formElements-dateDropdown                
+                margin-top: 20px
+            .formElements-filterDateDropdown,
+            .formElements-subscribe
+                width: 266px
+                margin-top: 21px
+            .formElements-rangeSlider
+                width: 266px
+            .formElements-buttons
+                margin-top: 24px            
+            .formElements-paginationButtons
+                margin-top: 19px
+            .formElements-radioButtons
+                margin-top: 29px
+            .formElements-toggleButtons
+                margin-top: 30px
+            .formElements-likeButtons
+                margin-top: 32px
+            .formElements-rateButtons
+                margin-top: 28px
+
             &_central
                 margin-left: 26px
                 margin-right: -26px  
                 grid-row-gap: 12px 
 
-                .formElements-radioButtons
-                    margin-top: 29px
-
-                .formElements-toggleButtons
-                    margin-top: 30px
-                .formElements-likeButtons
-                    margin-top: 32px
-                .formElements-rateButtons
-                    margin-top: 28px
             &_last
-                margin-left: -1px
-                .formElements-rangeSlider
-                    width: 266px
-                .formElements-buttons
-                    margin-top: 24px
-                
-                .formElements-paginationButtons
-                    margin-top: 19px
+                margin-left: -1px 
+                margin-right: 2px    
 
-                    
-                
-            .formElements-input
-                &_masked
-                    margin-top: 3px
-            
-            .formElements-dateDropdown                
-                margin-top: 20px
-
-            .formElements-filterDateDropdown,
-            .formElements-subscribe
-                width: 266px
-                margin-top: 21px
-
+        &_second
+            .formElements-column
+                &_first
+                    & > *
+                        width: 266px
                 
