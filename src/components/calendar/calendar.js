@@ -9,6 +9,8 @@ export class Calendar extends Component {
 
 		state = {
 			template: require('./calendar.pug'),
+			arrival: undefined,
+			leave: undefined,
 			...state,
 		};
 
@@ -22,7 +24,6 @@ export class Calendar extends Component {
 	}
 	renderDatepicker() {
 		const container = this.node.querySelector('.calendar-datepicker');
-		const [arrival, leave] = this.state.values;
 
 		this.datepicker = $(container)
 			.datepicker({
@@ -35,14 +36,13 @@ export class Calendar extends Component {
 			})
 			.data('datepicker');
 
-		this.state.values &&
-			this.datepicker.selectDate([new Date(arrival), new Date(leave)]);
+		this.datepicker.selectDate([this.state.arrival, this.state.leave]);
 	}
 	renderButtons() {
 		const container = this.node.querySelector('.calendar-buttons');
 
 		this.clearButton = new Button({
-			className: 'calendar-button_clear',
+			className: 'calendar-button_clear button_grey',
 			text: 'Очистить',
 		});
 		this.applyButton = new Button({
@@ -56,12 +56,14 @@ export class Calendar extends Component {
 	handlers() {
 		this.clearButton.node.addEventListener('click', (event) => {
 			event.preventDefault();
-			this.state = { values: [] };
+			this.state = { arrival: undefined, leave: undefined };
 			this.datepicker.clear();
 		});
 		this.applyButton.node.addEventListener('click', (event) => {
 			event.preventDefault();
-			this.state = { values: this.datepicker.selectedDates };
+			const [arrival, leave] = this.datepicker.selectedDates;
+
+			this.state = { arrival, leave };
 		});
 	}
 	hide() {

@@ -1,8 +1,9 @@
 import { Component } from '../../services/js/Component';
-import { Color } from '../color/color';
-import { Type } from '../type/type';
+import { Color } from '../../components/color/color';
+import { Type } from '../../components/type/type';
+import { Page } from '../../services/js/Page';
 
-export class ColorsAndTypes extends Component {
+class ColorsAndTypes extends Component {
 	constructor(state) {
 		require('./colorsAndTypes.sass');
 
@@ -106,3 +107,8 @@ export class ColorsAndTypes extends Component {
 		container.appendChild(body.node);
 	}
 }
+
+const colorsAndTypes = new ColorsAndTypes();
+const page = new Page();
+
+page.main.appendChild(colorsAndTypes.node);

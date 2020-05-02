@@ -10,6 +10,8 @@ export class RoomSummury extends Component {
 		state = {
 			template: require('./roomSummury.pug'),
 			additionalFeePerGuest: 100,
+			dates: {},
+			guests: {},
 			...state,
 		};
 

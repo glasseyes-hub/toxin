@@ -21,7 +21,15 @@ function getEntires(pages) {
 }
 const pages = [
 	{
-		name: 'uikit',
+		name: 'colorsAndTypes',
+		template: 'main',
+	},
+	{
+		name: 'formElements',
+		template: 'main',
+	},
+	{
+		name: 'cards',
 		template: 'main',
 	},
 	{

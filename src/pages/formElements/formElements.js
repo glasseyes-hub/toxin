@@ -1,27 +1,26 @@
 import { Component } from '../../services/js/Component';
-import { Input } from '../input/input';
-import { Dropdown } from '../dropdown/dropdown';
-import { DateSelect } from '../dateSelect/dateSelect';
-import { Subscribe } from '../subscribe/subscribe';
-import { CheckboxButtons } from '../checkboxButtons/checkboxButtons';
-import { RadioButtons } from '../radioButtons/radioButtons';
-import { ToggleButtons } from '../toggleButtons/toggleButtons';
-import { LikeButtons } from '../likeButtons/likeButtons';
-import { RateButtons } from '../rateButtons/rateButtons';
-import { Slider } from '../slider/slider';
-import { RangeSlider } from '../rangeSlider/rangeSlider';
-import { Buttons } from '../buttons/buttons';
-import { PaginationButtons } from '../paginationButtons/paginationButtons';
-import { GuestsSelect } from '../guestsSelect/guestsSelect';
-import { Facilities } from '../facilities/facilities';
-import { AdditionalFacilities } from '../additionalFacilities/additionalFacilities';
-import { Checkbox } from '../checkbox/checkbox';
-import { Availabilities } from '../availabilities/availabilities';
-import { BulletList } from '../bulletList/bulletList';
-import { Info } from '../info/info';
-import { Reviewes } from '../reviewes/reviewes';
+import { Input } from '../../components/input/input';
+import { Dropdown } from '../../components/dropdown/dropdown';
+import { DateSelect } from '../../components/dateSelect/dateSelect';
+import { Subscribe } from '../../components/subscribe/subscribe';
+import { CheckboxButtons } from '../../components/checkboxButtons/checkboxButtons';
+import { RadioButtons } from '../../components/radioButtons/radioButtons';
+import { ToggleButtons } from '../../components/toggleButtons/toggleButtons';
+import { LikeButtons } from '../../components/likeButtons/likeButtons';
+import { RateButtons } from '../../components/rateButtons/rateButtons';
+import { RangeSlider } from '../../components/rangeSlider/rangeSlider';
+import { Buttons } from '../../components/buttons/buttons';
+import { PaginationButtons } from '../../components/paginationButtons/paginationButtons';
+import { GuestsSelect } from '../../components/guestsSelect/guestsSelect';
+import { Facilities } from '../../components/facilities/facilities';
+import { AdditionalFacilities } from '../../components/additionalFacilities/additionalFacilities';
+import { Availabilities } from '../../components/availabilities/availabilities';
+import { BulletList } from '../../components/bulletList/bulletList';
+import { Info } from '../../components/info/info';
+import { Reviewes } from '../../components/reviewes/reviewes';
+import { Page } from '../../services/js/Page';
 
-export class FormElements extends Component {
+class FormElements extends Component {
 	constructor(state) {
 		require('./formElements.sass');
 
@@ -234,3 +233,8 @@ export class FormElements extends Component {
 		centralColumn.appendChild(reviewes.node);
 	}
 }
+
+const formElements = new FormElements();
+const page = new Page();
+
+page.main.appendChild(formElements.node);

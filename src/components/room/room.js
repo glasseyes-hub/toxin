@@ -8,6 +8,7 @@ export class Room extends Component {
 
 		state = {
 			template: require('./room.pug'),
+			images: [],
 			...state,
 		};
 

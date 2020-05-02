@@ -78,7 +78,8 @@ export class DateSelect extends Component {
 	renderCalendar() {
 		this.calendar = new Calendar({
 			className: 'dateSelect-calendar',
-			values: [this.state.arrival, this.state.leave],
+			arrival: this.state.arrival,
+			leave: this.state.leave,
 		});
 
 		Object.values(this.dropdowns).forEach((dropdown) =>
@@ -90,7 +91,7 @@ export class DateSelect extends Component {
 		const leaveInput = this.node.querySelector('.dateSelect-leave');
 
 		this.calendar.addObserver((state) => {
-			const [arrival, leave] = state.values;
+			const { arrival, leave } = state;
 
 			Object.values(this.dropdowns).forEach((dropdown) => dropdown.close());
 
