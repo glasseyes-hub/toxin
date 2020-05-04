@@ -33,6 +33,10 @@ const pages = [
 		template: 'main',
 	},
 	{
+		name: 'headersAndFooters',
+		template: 'main',
+	},
+	{
 		name: 'index',
 		template: 'main',
 	},

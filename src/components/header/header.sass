@@ -1,33 +1,31 @@
 @import '../../services/sass/variables'
 
 section.header
-    width: $width_content
-    margin: 0 auto
-
+    width: 100%
     display: grid
-    grid-template-areas: 'link navigation .'
-    grid-template-columns: 120px 1fr 303px
+    grid-template-areas: 'logo navigation .'
+    grid-template-columns: 120px 1fr auto
     grid-template-rows: 40px
     grid-gap: 10px
-    padding: 15px 140px
     align-items: center
     box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05)
+    padding: 15px 20px
+    background-color: #fff
 
-    .header-link
-        grid-area: link
+    .header-logo
+        grid-area: logo
         display: flex
         align-items: center
     .header-navigation
         grid-area: navigation
 
     .header-authorization
-        display: flex
-        flex-direction: row
-        justify-content: space-between
+        display: grid
+        grid-auto-flow: column
+        grid-gap: 20px
 
         .header-button
             height: 34px
-
             &_login
                 width: 87px
 

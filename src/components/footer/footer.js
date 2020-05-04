@@ -22,9 +22,9 @@ export class Footer extends Component {
 		const container = this.node.querySelector('.footer-subscribe');
 
 		const subscribe = new Subscribe({
-			className: 'footer-subscribe',
+			className: 'footer-subscribeForm',
 		});
 
-		container.replaceWith(subscribe.node);
+		container.appendChild(subscribe.node);
 	}
 }

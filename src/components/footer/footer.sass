@@ -1,55 +1,152 @@
 @import '../../services/sass/variables'
     
 section.footer
-    width: $width_content
-    margin: 0 auto
-    display: grid
-    grid-template-areas: 'about menu subscribe'
-    grid-template-columns: 260px 1fr 260px  
-    grid-gap: 40px
-    padding: 100px 140px 90px
-    border-top: 1px solid #E5E5E5      
-    border-bottom: 1px solid #E5E5E5     
+    display: flex
+    flex-direction: column
+    justify-content: center
+    background-color: #fff
 
-    .footer-title
-        margin: 4px 0 11px
-        font-weight: bold
-        font-size: 12px
-        line-height: 15px
-        text-transform: uppercase
+    .footer-container
+        display: flex
+        justify-content: center
+        border-top: 1px solid #E5E5E5   
 
-    .footer-text
-        margin-top: 10px
+        &_main
+            align-items: center
+            height: 372px
 
-    .footer-about
-        grid-area: about
+            .footer-main
+                width: $contentMaxWidth
+                padding: $contentPadding
 
-    .footer-nav
-        grid-area: menu
+                display: grid
+                grid-template-areas: 'about navigation subscribe'
+                grid-template-columns: 260px 1fr 260px  
+                grid-column-gap: 40px
 
-        display: grid
-        grid-auto-flow: column
-        grid-auto-columns: 1fr
-        grid-gap: 40px
+                .footer-about
+                    grid-area: about
+                    display: grid
+                    grid-auto-flow: row 
+                    align-content: start
+                    grid-gap: 16px
 
-        .footer-group
-            display: flex
-            flex-direction: column
+                .footer-navigation
+                    grid-area: navigation
+                    display: grid
+                    grid-auto-flow: column
+                    grid-auto-columns: 1fr
+                    grid-gap: 40px
+                    padding-top: 4px
+                    margin-top: 5px
 
-            .footer-link
-                text-decoration: none
-                color: $color_dark50
-                padding: 7px 0
-                &:hover
-                    color: $color_purple
-                    transition: .2s
+                    .footer-title
+                        margin-bottom: 11px
 
+                    .footer-group
+                        display: flex
+                        flex-direction: column
 
-    .footer-right
-        grid-area: subscribe
+                        .footer-link
+                            text-decoration: none
+                            color: $color_dark50
+                            padding: 7px 0
+                            &:hover
+                                color: $color_purple
+                                transition: .2s
 
-        .footer-text
-            margin-top: 18px
+                .footer-subscribe
+                    grid-area: subscribe
+                    display: grid
+                    grid-auto-flow: row
+                    align-content: start
+                    grid-gap: 17px
+                    padding-top: 4px
+                    margin-top: 5px
 
-        .footer-subscribe
-            margin-top: 23px
+                    .footer-text
+                        margin-bottom: 6px
+
+        &_copyright
+            .footer-copyright
+                width: $contentMaxWidth
+                padding: $contentPadding
+
+                display: grid
+                grid-template-areas: 'text socials'
+                height: 70px
+                justify-content: space-between
+                align-items: center
+
+                .footer-text            
+                    grid-area: text 
+
+                .footer-socials
+                    grid-area: socials
+                    display: grid
+                    grid-auto-flow: column
+                    grid-column-gap: 20px
+
+                    .footer-social
+                        width: 24px
+                        height: 24px
+                        text-decoration: none
+                        &::before                    
+                            font-family: Font Awesome
+                            background: $color_purple_gradient
+                            -webkit-background-clip: text
+                            -webkit-text-fill-color: transparent
+                            font-size: 24px
+
+                        &_twitter
+                            &::before                    
+                                content: '\f099'                        
+                        &_facebook
+                            &::before                    
+                                content: '\f082'
+                        &_instagram
+                            &::before                    
+                                content: '\f16d'
+
+    @media (max-width: $contentMaxWidth)
+        .footer-container
+            &_main .footer-main,
+            &_copyright .footer-copyright
+                width: 100%
+
+    @media (max-width: 1040px)
+        .footer-container
+            &_main .footer-main
+                grid-template-areas: 'about subscribe'
+                grid-template-columns: 300px 300px
+                justify-content: space-around
+                .footer-navigation
+                    display: none
+        
+    @media (max-width: 700px)
+        .footer-container
+            &_main                 
+                height: auto
+
+                .footer-main
+                    display: flex
+                    padding: 100px 20px 0
+                    .footer-about   
+                        justify-items: center
+                        text-align: center
+                    .footer-subscribe
+                        display: none
+
+            &_copyright
+                width: 100%
+                border-top: none
+                padding: 5px 0 87px
+
+                .footer-copyright
+                    width: 100%
+                    border-top: none
+                    grid-template-areas: 'socials'
+                    justify-content: center
+
+                    .footer-text
+                        display: none

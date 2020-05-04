@@ -1,19 +1,25 @@
-section.footer
-    .footer-about
-        img.logo(src='./img/logo.svg')
-        p.footer-text
-            | Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
-    nav.footer-nav
-        each group in menu
-            - const [title, href, links] = group
-            .footer-group
-                h3.footer-title #{title}
-                each link in links
-                    - const [name, href] = link
-                    a.footer-link(href=href) #{name}
-                        
-    .footer-right
-        h3.footer-title Подписка
-        p.footer-text
-            | Получайте специальные предложения и новости сервиса
-        form.footer-subscribe(action='./subscribe.html' method='post')
+section.footer(class=className)
+    .footer-container.footer-container_main
+        .footer-main
+            .footer-about
+                img.footer-logo(src='./img/logo.svg')
+                p.footer-text Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
+            nav.footer-navigation
+                each group in menu
+                    - const [title, href, links] = group
+                    .footer-group
+                        h3.footer-title #{title}
+                        each link in links
+                            - const [name, href] = link
+                            a.footer-link(href=href) #{name}
+                                
+            .footer-subscribe
+                h3.footer-title Подписка
+                p.footer-text Получайте специальные предложения и новости сервиса
+    .footer-container.footer-container_copyright
+        .footer-copyright 
+            p.footer-text Copyright © 2018 Toxin отель. Все права зачищены.
+            .footer-socials
+                a.footer-social.footer-social_twitter(href='https://twitter.com', target='_blank')
+                a.footer-social.footer-social_facebook(href='https://facebook.com', target='_blank')
+                a.footer-social.footer-social_instagram(href='https://instagram.com', target='_blank')

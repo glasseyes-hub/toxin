@@ -1,6 +1,7 @@
 import { Component } from '../../services/js/Component';
 import { HeaderNavigation } from '../headerNavigation/headerNavigation';
 import { Button } from '../button/button';
+import { UserMenu } from '../userMenu/userMenu';
 
 export class Header extends Component {
 	constructor(state) {
@@ -8,6 +9,7 @@ export class Header extends Component {
 
 		state = {
 			template: require('./header.pug'),
+			menu: [],
 			...state,
 		};
 
@@ -17,7 +19,7 @@ export class Header extends Component {
 		super.render();
 
 		this.renderNavigation();
-		this.state.authorized ? this.renderUserMenu() : this.renderAuthorization();
+		this.state.user ? this.renderUserMenu() : this.renderAuthorization();
 	}
 	renderNavigation() {
 		const navigationNode = this.node.querySelector('.header-navigation');
@@ -28,7 +30,11 @@ export class Header extends Component {
 
 		navigationNode.appendChild(headerNavigation.node);
 	}
-	renderUserMenu() {}
+	renderUserMenu() {
+		const userMenu = new UserMenu(this.state.user);
+
+		this.node.appendChild(userMenu.node);
+	}
 	renderAuthorization() {
 		const athorizationNode = document.createElement('div');
 		athorizationNode.classList.add('header-authorization');

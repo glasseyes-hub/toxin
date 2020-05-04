@@ -1,7 +1,8 @@
 export const fakeData = {
-	// user: {
-	// 	name: 'Cosmin Negoita',
-	// },
+	user: {
+		id: 1,
+		username: 'Cosmin Negoita',
+	},
 	header: {
 		menu: [
 			['О нас', './about.html'],
