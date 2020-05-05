@@ -1,34 +1,201 @@
 @import '../../services/sass/variables'
 
 section.header
-    width: 100%
-    display: grid
-    grid-template-areas: 'logo navigation .'
-    grid-template-columns: 120px 1fr auto
-    grid-template-rows: 40px
-    grid-gap: 10px
-    align-items: center
-    box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05)
-    padding: 15px 20px
+    display: flex
+    justify-content: center
     background-color: #fff
+    box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05)
 
-    .header-logo
-        grid-area: logo
+    .header-container
+        width: $contentMaxWidth
+        padding: $contentPadding
+        height: 70px
         display: flex
+        flex-direction: row
+        justify-content: space-between
         align-items: center
-    .header-navigation
-        grid-area: navigation
 
-    .header-authorization
-        display: grid
-        grid-auto-flow: column
-        grid-gap: 20px
+        .header-logo
+            grid-area: logo
+            display: flex
+            align-items: center
 
-        .header-button
-            height: 34px
-            &_login
-                width: 87px
+        .header-navigation     
+            display: grid
+            grid-auto-flow: column
+            align-items: center
+            justify-content: end
+            grid-gap: 20px
+            background-color: #fff
 
-            &_registration
-                width: 196px
+            .header-menu     
+                display: grid
+                grid-auto-flow: column
+                align-items: center
+                grid-column-gap: 20px
 
+                .header-link,
+                .header-submenu
+                    align-items: center
+
+                .header-link
+                    text-decoration: none
+                    display: flex
+                    color: $color_dark50
+                    &:hover
+                        color: $color_purple
+                        transition: .2s
+
+                .header-submenu
+                    position: relative
+                    height: 30px
+                    display: grid
+                    grid-template-areas: 'link icon'
+                    grid-template-columns: 1fr 24px
+                    &::after
+                        grid-area: icon
+                        font-family: Material Icons
+                        content: '\e5cf'
+                        font-size: 24px    
+                        color: $color_dark50
+                    
+                    .header-link
+                        grid-area: link
+
+                    .header-dropdown
+                        position: absolute
+                        display: none
+                        top: 30px
+                        z-index: 10
+                        background-color: #fff
+                        border: 1px solid $color_dark10
+                        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1)
+
+                        .header-link
+                            border-bottom: 1px solid $color_dark10
+                            text-align: center
+                            padding: 5px 20px
+                            &:last-child
+                                border-bottom: none
+
+                    &:hover  
+                        &::after
+                            content: '\e5ce'
+                            color: $color_purple
+
+                        .header-dropdown
+                            display: block
+            .header-userMenu                
+                padding-left: 30px
+                border-left: 1px solid $color_dark10
+            .header-auth
+                display: grid
+                grid-auto-flow: column
+                align-items: center
+                grid-gap: 20px
+                .header-button
+                    height: 34px
+                    &_login
+                        width: 87px
+
+                    &_registration
+                        width: 196px
+        .header-hideNavigation,
+        .header-showNavigation
+            display: none
+            justify-content: center
+            align-items: center
+            width: 40px
+            height: 40px  
+            &::after               
+                font-family: Material Icons
+                content: '\e5d2'
+                font-size: 24px
+
+        .header-hideNavigation
+            &::after 
+                content: '\e5cd'
+
+                
+
+    @media (max-width: $contentMaxWidth)
+        .header-container
+            width: 100%
+
+    @media (max-width: 1023px)
+        .header-container
+            position: relative
+            padding: 0 20px
+
+            .header-navigation
+                position: fixed
+                z-index: 100
+                grid-auto-flow: row
+                align-content: start
+                top: 0
+                bottom: 0
+                right: -320px
+                border-left: 1px solid $color_dark10
+                box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1)
+                overflow-y: auto
+                transition: .2s
+
+                .header-menu
+                    grid-auto-flow: row
+                    order: 2
+                    border-top: 1px solid $color_dark10
+                    margin-top: 20px
+
+                    .header-link,
+                        padding: 5px 20px
+                        border-bottom: 1px solid $color_dark10
+
+                    .header-submenu
+                        grid-template-areas: 'link'
+                        grid-template-columns: 1fr
+                        height: auto
+                        &::after
+                            display: none
+
+                        .header-dropdown
+                            position: static
+                            display: block
+                            background-color: transparent
+                            border: none
+                            box-shadow: none
+
+                            .header-link
+                                display: grid
+                                grid-template-areas: 'icon .'
+                                grid-template-columns: 24px 1fr
+                                text-align: left
+                                &:last-child                                    
+                                    border-bottom: 1px solid $color_dark10
+
+                                &::after
+                                    grid-area: icon
+                                    content: '\2517'
+                                    font-size: 14px    
+                                    color: $color_dark50
+                                &:hover
+                                    &::after
+                                        color: $color_purple                                    
+                                    
+
+                .header-userMenu                
+                    padding-left: 0px
+                    border-left: none
+
+                .header-auth
+                    order: 1
+                    display: grid
+                    grid-auto-flow: row
+                    justify-items: center
+                    padding: 0 20px
+
+            .header-hideNavigation,
+            .header-showNavigation
+                display: flex
+                transition: .2s
+                &:hover
+                    color: $color_purple

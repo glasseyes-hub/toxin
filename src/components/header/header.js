@@ -17,28 +17,21 @@ export class Header extends Component {
 	}
 	render() {
 		super.render();
-
-		this.renderNavigation();
+		this.renderAuth();
+	}
+	renderAuth() {
+		this.auth = this.node.querySelector('.header-auth');
 		this.state.user ? this.renderUserMenu() : this.renderAuthorization();
 	}
-	renderNavigation() {
-		const navigationNode = this.node.querySelector('.header-navigation');
-
-		const headerNavigation = new HeaderNavigation({
-			menu: this.state.menu,
+	renderUserMenu() {
+		const userMenu = new UserMenu({
+			className: 'header-userMenu',
+			...this.state.user,
 		});
 
-		navigationNode.appendChild(headerNavigation.node);
-	}
-	renderUserMenu() {
-		const userMenu = new UserMenu(this.state.user);
-
-		this.node.appendChild(userMenu.node);
+		this.auth.appendChild(userMenu.node);
 	}
 	renderAuthorization() {
-		const athorizationNode = document.createElement('div');
-		athorizationNode.classList.add('header-authorization');
-
 		const loginButton = new Button({
 			className: 'header-button header-button_login button_big button_bordered',
 			text: 'Войти',
@@ -51,9 +44,26 @@ export class Header extends Component {
 			link: './registration.html',
 		});
 
-		athorizationNode.appendChild(loginButton.node);
-		athorizationNode.appendChild(registrationButton.node);
+		this.auth.appendChild(loginButton.node);
+		this.auth.appendChild(registrationButton.node);
+	}
+	handlers() {
+		const navigation = this.node.querySelector('.header-navigation');
 
-		this.node.appendChild(athorizationNode);
+		const showNavigationButton = this.node.querySelector(
+			'.header-showNavigation'
+		);
+		const hideNavigationButton = this.node.querySelector(
+			'.header-hideNavigation'
+		);
+
+		showNavigationButton.addEventListener('click', (event) => {
+			event.preventDefault();
+			navigation.style.right = '0px';
+		});
+		hideNavigationButton.addEventListener('click', (event) => {
+			event.preventDefault();
+			navigation.style.right = '-320px';
+		});
 	}
 }

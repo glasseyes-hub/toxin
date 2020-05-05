@@ -23,6 +23,7 @@ section.footer
                 grid-template-areas: 'about navigation subscribe'
                 grid-template-columns: 260px 1fr 260px  
                 grid-column-gap: 40px
+                margin-top: 8px
 
                 .footer-about
                     grid-area: about
@@ -38,7 +39,6 @@ section.footer
                     grid-auto-columns: 1fr
                     grid-gap: 40px
                     padding-top: 4px
-                    margin-top: 5px
 
                     .footer-title
                         margin-bottom: 11px
@@ -62,7 +62,6 @@ section.footer
                     align-content: start
                     grid-gap: 17px
                     padding-top: 4px
-                    margin-top: 5px
 
                     .footer-text
                         margin-bottom: 6px
@@ -107,6 +106,40 @@ section.footer
                         &_instagram
                             &::before                    
                                 content: '\f16d'
+            
+    &_light
+        .footer-container
+            &_main                 
+                height: auto
+
+                .footer-main
+                    display: flex
+                    width: 100%
+                    padding-top: 100px
+                    justify-content: center
+                    margin-top: 0px
+                    .footer-about   
+                        width: 600px
+                        justify-items: center
+                        text-align: center
+                    .footer-navigation
+                        display: none
+                    .footer-subscribe
+                        display: none
+
+            &_copyright
+                border-top: none
+                padding: 5px 20px 87px
+
+                .footer-copyright
+                    width: 100%
+                    border-top: none
+                    grid-template-areas: 'socials'
+                    justify-content: center
+
+                    .footer-text
+                        display: none
+
 
     @media (max-width: $contentMaxWidth)
         .footer-container
@@ -114,23 +147,25 @@ section.footer
             &_copyright .footer-copyright
                 width: 100%
 
-    @media (max-width: 1040px)
+    @media (max-width: 1023px)
         .footer-container
             &_main .footer-main
                 grid-template-areas: 'about subscribe'
                 grid-template-columns: 300px 300px
                 justify-content: space-around
+                padding: 0 20px
+                margin-top: 0px
                 .footer-navigation
                     display: none
         
-    @media (max-width: 700px)
+    @media (max-width: 740px)
         .footer-container
             &_main                 
                 height: auto
 
                 .footer-main
                     display: flex
-                    padding: 100px 20px 0
+                    padding-top: 100px
                     .footer-about   
                         justify-items: center
                         text-align: center
@@ -138,9 +173,8 @@ section.footer
                         display: none
 
             &_copyright
-                width: 100%
                 border-top: none
-                padding: 5px 0 87px
+                padding: 5px 20px 87px
 
                 .footer-copyright
                     width: 100%

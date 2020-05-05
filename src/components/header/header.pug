@@ -1,7 +1,22 @@
 section.header
-    a.header-logo(href='./index.html')
-        img.header-img(src='./img/logo.svg')
-    .header-navigation
+    .header-container
+        a.header-logo(href='./index.html')
+            img.header-img(src='./img/logo.svg')
+        .header-navigation 
+            button.header-hideNavigation
+            .header-menu
+                each link in menu
+                    - const [name, href, submenu] = link
+                    if !submenu
+                        a.header-link(href=href) #{name}
+                    else 
+                        .header-submenu
+                            a.header-link(href=href) #{name}
+                            .header-dropdown
+                                each sublink in submenu
+                                    - const [subname, subhref] = sublink
+                                    a.header-link(href=subhref) #{subname}
+            .header-auth
+        button.header-showNavigation
 
-
-            
+                        
