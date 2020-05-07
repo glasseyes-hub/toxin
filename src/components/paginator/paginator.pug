@@ -1,22 +1,22 @@
 section.paginator(class=className)
     .paginator-buttons
         if page >= 2
-            button.paginator-button.paginator-button_previous
+            button.paginator-button.paginator-button_small.paginator-button_previous
         if page > 3             
-            button.paginator-button 1
+            button.paginator-button.paginator-button_small 1
         if page > 5
             button.paginator-dots ...
         if page === 5 
             button.paginator-button 2
         if page > 2
-            button.paginator-button #{page - 2}
+            button.paginator-button.paginator-button_small #{page - 2}
         if page > 1
-            button.paginator-button #{page - 1}
+            button.paginator-button.paginator-button_small #{page - 1}
 
-        button.paginator-button.paginator-button_current #{page}
+        button.paginator-button.paginator-button_small.paginator-button_current #{page}
 
         if pages - page > 0
-            button.paginator-button #{page + 1}   
+            button.paginator-button.paginator-button_small #{page + 1}   
         if pages - page > 1
             button.paginator-button #{page + 2}
         if pages - page === 4 
@@ -26,7 +26,7 @@ section.paginator(class=className)
         if pages - page > 2
             button.paginator-button #{pages}
         if pages - page >= 1
-            button.paginator-button.paginator-button_next
+            button.paginator-button.paginator-button_small.paginator-button_next
 
     - const startRange = (page - 1) * capacity + 1
     - const endRange = page * capacity > results ? results : page * capacity

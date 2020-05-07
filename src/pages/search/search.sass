@@ -1,47 +1,124 @@
 @import '../../services/sass/variables'
     
 section.search
-    display: grid
-    grid-template-areas: 'filter title' 'filter results' 'filter paginator'
-    grid-template-columns: 266px 1fr
-    grid-column-gap: 60px
-    grid-row-gap: 20px
-    width: $width_content
-    padding: 26px 140px
-    margin: 0 auto 46px
+    display: flex
+    justify-content: center
+    margin: 30px 0 73px
 
-    .search-title
-        grid-area: title
-        margin-top: 5px
-    .search-filter
-        grid-area: filter
+    .search-container
+        width: $contentMaxWidth
+        padding: $contentPadding
         display: grid
-        align-content: start
+        grid-template-areas: 'filter content'
+        grid-template-columns: 266px 1fr
+        grid-column-gap: 60px   
 
-        .search-dateSelect
-            .dateSelect-calendar
-                width: 320px
+        .search-button
+            &_showFilter,
+            &_hideFilter
+                display: none
+                font-size: 16px
+                transition: .2s
+                &::before 
+                    font-family: Material Icons
+                    content: '\e152'
+                    font-size: 24px             
+                &:hover
+                    color: $color_purple
 
-        .search-guestsSelect,
-            margin-top: 15px
+            &_showFilter
+                width: 100px
+                align-items: center
+                &::before 
+                    margin-right: 5px
+                
+            &_hideFilter
+                &::before 
+                    content: '\e5cd'
 
-        .search-priceRange
-            margin-top: 32px
+        .search-filter
+            grid-area: filter
+            display: grid
+            align-content: start
+            grid-row-gap: 20px
+            background-color: #fff
 
-        .search-availabilities
-            margin-top: 47px
-        .search-checkboxes,        
-        .search-facilities,
-        .search-additionalFacilities
-            margin-top: 30px
+            .search-dateSelect
+                .dateSelect-calendar
+                    width: 320px
 
-    .search-results
-        grid-area: results
-        display: grid
-        grid-template-columns: repeat( 3 , 1fr )
-        grid-gap: 20px 12px
-        align-content: start
+            .search-priceRange
+                margin-top: 10px
 
-    .search-paginator
-        grid-area: paginator
-        margin-top: 19px
+            .search-availabilities
+                margin-top: 10px
+            .search-checkboxes 
+                margin-top: 10px  
+
+            .search-facilities,
+            .search-additionalFacilities
+                margin-top: 11px
+
+        .search-content    
+            grid-area: content   
+            display: grid
+            grid-template-areas: 'title' 'results' 'paginator'
+            grid-row-gap: 20px                          
+
+            .search-title
+                grid-area: title
+            .search-results
+                grid-area: results
+                display: grid
+                grid-template-columns: repeat(3, 1fr)
+                grid-gap: 20px 12px
+                align-content: start
+
+            .search-paginator
+                grid-area: paginator
+                justify-self: center
+                margin-top: 19px
+
+
+        @media (max-width: $contentMaxWidth)
+            width: 100%
+            grid-template-areas: 'content'
+            grid-template-columns: 1fr
+
+            .search-button
+                &_showFilter,
+                &_hideFilter
+                    display: flex
+                &_hideFilter
+                    justify-self: self-end
+
+            .search-filter
+                position: fixed
+                z-index: 100
+                top: 0
+                bottom: 0
+                left: -340px
+                width: 340px
+                padding: 10px 20px
+                border-right: 1px solid $color_dark10
+                box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1)
+                overflow-y: auto
+                transition: .2s
+            .search-content
+                grid-template-areas: 'showFilter' 'title' 'results' 'paginator'
+
+                .search-title
+                    text-align: center
+                .search-results
+                    justify-items: center
+
+        @media (max-width: 900px)
+            justify-items: stretch
+            .search-content
+                .search-results
+                    grid-template-columns: repeat(2, 1fr)
+        
+        @media (max-width: 600px)
+            .search-content
+                .search-results
+                    grid-template-columns: repeat(1, 1fr)

@@ -107,14 +107,19 @@ section.header
             align-items: center
             width: 40px
             height: 40px  
+            transition: .2s
             &::after               
                 font-family: Material Icons
                 content: '\e5d2'
                 font-size: 24px
+                
+            &:hover
+                color: $color_purple 
 
         .header-hideNavigation
             &::after 
                 content: '\e5cd'
+                
 
                 
 
@@ -196,6 +201,3 @@ section.header
             .header-hideNavigation,
             .header-showNavigation
                 display: flex
-                transition: .2s
-                &:hover
-                    color: $color_purple

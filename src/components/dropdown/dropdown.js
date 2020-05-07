@@ -60,12 +60,11 @@ export class Dropdown extends Component {
 		header.classList.add('dropdown-header');
 		header.innerHTML = this.state.title;
 
-		const button = new Button({
-			className: 'dropdown-button',
-		});
+		const button = document.createElement('button');
+		button.classList.add('dropdown-button');
 
 		title.appendChild(header);
-		title.appendChild(button.node);
+		title.appendChild(button);
 
 		this.node.appendChild(title);
 	}

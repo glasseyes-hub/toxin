@@ -1,4 +1,5 @@
 import { Component } from '../../services/js/Component';
+import { RangeSlider } from '../rangeSlider/rangeSlider';
 
 export class PriceRange extends Component {
 	constructor(state) {
@@ -19,31 +20,21 @@ export class PriceRange extends Component {
 		this.renderSlider();
 	}
 	renderSlider() {
-		const slider = this.node.querySelector('.priceRange-slider');
+		const slider = this.node.querySelector('.priceRange-rangeSlider');
 
-		$(slider).slider({
-			range: true,
+		const rangeSlider = new RangeSlider({
+			className: 'priceRange-rangeSlider',
+			title: 'Диапазон цены',
+			start: this.state.start,
 			min: this.state.min,
-			max: this.state.max || this.state.min,
-			values: [
-				this.state.start || this.state.min,
-				this.state.end || this.state.max,
-			],
-			slide: (event, obj) => {
-				this.state = { start: obj.values[0], end: obj.values[1] };
-				this.updateInfo();
-			},
+			end: this.state.end,
+			max: this.state.max,
 		});
 
-		this.updateInfo();
-	}
-	updateInfo() {
-		this.info = this.info
-			? this.info
-			: this.node.querySelector('.priceRange-info');
+		rangeSlider.addObserver((state) => {
+			this.state = { ...state };
+		});
 
-		this.info.innerHTML = `${this.state.start || this.state.min}₽ - ${
-			this.state.end || this.state.max
-		}₽`;
+		slider.replaceWith(rangeSlider.node);
 	}
 }

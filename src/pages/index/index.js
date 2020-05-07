@@ -1,12 +1,9 @@
 import { Component } from '../../services/js/Component';
 import { Page } from '../../services/js/Page';
-import { DateSelect } from '../../components/dateSelect/dateSelect';
-import { GuestsSelect } from '../../components/guestsSelect/guestsSelect';
-import { Button } from '../../components/button/button';
 import { Header } from '../../components/header/header';
 import { fakeData } from '../../services/js/fakeData';
 import { Footer } from '../../components/footer/footer';
-import { Copyright } from '../../components/copyright/copyright';
+import { FindRooms } from '../../components/findRooms/findRooms';
 
 class Index extends Component {
 	constructor(state) {
@@ -21,24 +18,18 @@ class Index extends Component {
 	}
 	render() {
 		super.render();
-		this.renderForm();
+		this.renderFindRooms();
 	}
-	renderForm() {
-		const form = this.node.querySelector('.index-form');
-		form.action = 'search.html';
+	renderFindRooms() {
+		const container = this.node.querySelector('.index-container');
 
-		const dateSelect = new DateSelect(this.state.dates);
-
-		const guestsSelect = new GuestsSelect(this.state.guests);
-
-		const button = new Button({
-			className: 'index-button button_filled button_arrow button_big',
-			text: 'Подобрать номер',
+		const findRooms = new FindRooms({
+			className: 'index-findRoom',
+			dates: this.state.dates,
+			guests: this.state.guests,
 		});
 
-		form.appendChild(dateSelect.node);
-		form.appendChild(guestsSelect.node);
-		form.appendChild(button.node);
+		container.prepend(findRooms.node);
 	}
 }
 
@@ -61,9 +52,7 @@ const header = new Header({
 const footer = new Footer({
 	menu: fakeData.footer.menu,
 });
-const copyright = new Copyright();
 
 page.header.appendChild(header.node);
 page.main.appendChild(index.node);
 page.footer.appendChild(footer.node);
-page.body.appendChild(copyright.node);

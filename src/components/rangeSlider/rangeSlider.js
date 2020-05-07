@@ -8,6 +8,7 @@ export class RangeSlider extends Component {
 
 		state = {
 			template: require('./rangeSlider.pug'),
+			title: 'Range slider',
 			min: 0,
 			...state,
 		};
@@ -23,7 +24,7 @@ export class RangeSlider extends Component {
 	renderTitle() {
 		const title = new Title({
 			className: 'rangeSlider-title',
-			title: 'Range slider',
+			title: this.state.title,
 			subtitle: this.getSubtitle(),
 		});
 

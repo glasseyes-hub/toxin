@@ -14,6 +14,7 @@ import { Header } from '../../components/header/header';
 import { Page } from '../../services/js/Page';
 import { Footer } from '../../components/footer/footer';
 import { Copyright } from '../../components/copyright/copyright';
+import { RangeSlider } from '../../components/rangeSlider/rangeSlider';
 
 const tools = new Tools();
 
@@ -102,6 +103,7 @@ class Search extends Component {
 
 		const priceRange = new PriceRange({
 			className: 'search-priceRange',
+			title: 'Диапазон цены',
 			start: this.state.filters.start,
 			end: this.state.filters.end,
 			max: fakeData.search.priceRange.max,
@@ -240,6 +242,27 @@ class Search extends Component {
 
 		return fakeData.search.results;
 	}
+	handlers() {
+		const filter = this.node.querySelector('.search-filter');
+		const showFilterButton = this.node.querySelector(
+			'.search-button_showFilter'
+		);
+		const hideFilterButton = this.node.querySelector(
+			'.search-button_hideFilter'
+		);
+
+		showFilterButton.addEventListener('click', (event) => {
+			event.preventDefault();
+
+			filter.style.left = '0px';
+		});
+
+		hideFilterButton.addEventListener('click', (event) => {
+			event.preventDefault();
+
+			filter.style.left = '-340px';
+		});
+	}
 }
 
 const search = new Search();
@@ -248,6 +271,7 @@ search.addObserver((state) => {
 	clearTimeout(state.filterTimeout);
 
 	state.filterTimeout = setTimeout(() => {
+		console.log(2);
 		tools.url.search.set(state.filters);
 		search.renderPaginator();
 		search.renderResults();
@@ -261,9 +285,7 @@ const header = new Header({
 const footer = new Footer({
 	menu: fakeData.footer.menu,
 });
-const copyright = new Copyright();
 
 page.header.appendChild(header.node);
 page.main.appendChild(search.node);
 page.footer.appendChild(footer.node);
-page.body.appendChild(copyright.node);

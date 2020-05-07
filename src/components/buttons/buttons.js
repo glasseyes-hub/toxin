@@ -47,11 +47,12 @@ export class Buttons extends Component {
 			className: 'button_bordered button_disabled',
 			text: 'Click me',
 		});
-		const button = new Button({
+		const buttonSimple = new Button({
+			className: 'button_simple',
 			text: 'Click me',
 		});
-		const buttonDisabled = new Button({
-			className: 'button_grey button_disabled',
+		const buttonSimpleDisabled = new Button({
+			className: 'button_simple button_grey button_disabled',
 			text: 'Click me',
 		});
 		const buttonBig = new Button({
@@ -63,8 +64,8 @@ export class Buttons extends Component {
 		filledRow.appendChild(buttonFilledDisabled.node);
 		borderedRow.appendChild(buttonBordered.node);
 		borderedRow.appendChild(buttonBorderedDisabled.node);
-		defaultRow.appendChild(button.node);
-		defaultRow.appendChild(buttonDisabled.node);
+		defaultRow.appendChild(buttonSimple.node);
+		defaultRow.appendChild(buttonSimpleDisabled.node);
 		bigRow.appendChild(buttonBig.node);
 	}
 }

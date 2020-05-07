@@ -9,17 +9,24 @@ section.dropdown
     cursor: pointer
 
     .dropdown-title
-        display: flex
-        justify-content: space-between
+        display: grid
+        grid-template-areas: 'header button'
+        grid-template-columns: 1fr 44px
+        align-items: center
+
+        .dropdown-header
+            grid-area: header
 
         .dropdown-button  
-            margin-right: 10px
-            button
-                &::before
-                    content: $icon_arrowDown
-                    color: $color_dark50
-                    line-height: 14px
-                    font-size: 24px
+            grid-area: button
+            display: flex
+            justify-content: center
+            &::before
+                font-family: Material Icons
+                content: $icon_arrowDown
+                color: $color_dark50
+                line-height: 14px
+                font-size: 24px
     
     input        
         cursor: pointer

@@ -42,11 +42,11 @@ export class Calendar extends Component {
 		const container = this.node.querySelector('.calendar-buttons');
 
 		this.clearButton = new Button({
-			className: 'calendar-button_clear button_grey',
+			className: 'calendar-button_clear button_simple button_grey',
 			text: 'Очистить',
 		});
 		this.applyButton = new Button({
-			className: 'calendar-button_apply',
+			className: 'calendar-button_apply button_simple',
 			text: 'Применить',
 		});
 
