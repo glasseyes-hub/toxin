@@ -9,7 +9,6 @@ import { RoomSummury } from '../../components/roomSummury/roomSummury';
 import { Page } from '../../services/js/Page';
 import { Header } from '../../components/header/header';
 import { Footer } from '../../components/footer/footer';
-import { Copyright } from '../../components/copyright/copyright';
 
 const tools = new Tools();
 
@@ -36,7 +35,10 @@ class Room extends Component {
 
 		const roomInfo = new RoomInfo(this.state.info);
 
-		const roomDiagram = new RoomDiagram(this.state.diagram);
+		const roomDiagram = new RoomDiagram({
+			className: 'room-roomDiagram',
+			...this.state.diagram,
+		});
 
 		roomAbout.appendChild(roomInfo.node);
 		roomAbout.appendChild(roomDiagram.node);
@@ -44,7 +46,10 @@ class Room extends Component {
 	renderReviews() {
 		const roomReviewes = this.node.querySelector('.room-reviewes');
 
-		const reviewes = new RoomReviewes(this.state.reviewes);
+		const reviewes = new RoomReviewes({
+			className: 'room-reviewes',
+			...this.state.reviewes,
+		});
 
 		roomReviewes.replaceWith(reviewes.node);
 	}
@@ -61,7 +66,10 @@ class Room extends Component {
 	renderSidebar() {
 		const roomSidebar = this.node.querySelector('.room-sidebar');
 
-		const roomSummury = new RoomSummury(this.state.summury);
+		const roomSummury = new RoomSummury({
+			className: 'room-roomSummury',
+			...this.state.summury,
+		});
 
 		roomSummury.addObserver((state) => {
 			const { guests, dates } = state;
@@ -117,9 +125,7 @@ const header = new Header({
 const footer = new Footer({
 	menu: fakeData.footer.menu,
 });
-const copyright = new Copyright();
 
 page.header.appendChild(header.node);
 page.main.appendChild(room.node);
 page.footer.appendChild(footer.node);
-page.body.appendChild(copyright.node);

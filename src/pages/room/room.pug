@@ -1,10 +1,11 @@
 section.room
-    .room-header
-        each src, index in images
-            if index < 3
-                img.room-image(src=src)
-    .room-body
-        .room-about
-        .room-reviewes
-        .room-additional
-        .room-sidebar
+    .room-container
+        .room-header
+            each src, index in images
+                if index < 3
+                    img.room-image(src=src)
+        .room-content
+            .room-about
+            .room-reviewes
+            .room-additional
+            .room-sidebar

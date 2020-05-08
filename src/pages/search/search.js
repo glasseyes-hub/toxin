@@ -13,8 +13,6 @@ import { Paginator } from '../../components/paginator/paginator';
 import { Header } from '../../components/header/header';
 import { Page } from '../../services/js/Page';
 import { Footer } from '../../components/footer/footer';
-import { Copyright } from '../../components/copyright/copyright';
-import { RangeSlider } from '../../components/rangeSlider/rangeSlider';
 
 const tools = new Tools();
 
@@ -271,7 +269,6 @@ search.addObserver((state) => {
 	clearTimeout(state.filterTimeout);
 
 	state.filterTimeout = setTimeout(() => {
-		console.log(2);
 		tools.url.search.set(state.filters);
 		search.renderPaginator();
 		search.renderResults();
