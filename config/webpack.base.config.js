@@ -187,7 +187,10 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename: `css/[name].css`, // [hash] для добавления хеша к имени файла
 		}),
-		new CopyWebpackPlugin([{ from: './src/assets' }]),
+		new CopyWebpackPlugin([
+			{ from: './src/assets/img', to: './img' },
+			{ from: './src/assets/favicon.ico' },
+		]),
 		new webpack.ProvidePlugin({
 			$: 'jquery',
 			jQuery: 'jquery',
