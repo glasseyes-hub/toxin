@@ -1,40 +1,24 @@
 @import '../../services/sass/variables'
     
 section.login
-    background-image: url('../../assets/img/registration_login__bg.png')
-    background-position: center 702px
-    width: $width_content
-    height: 683px
-    margin: 0 auto
     display: flex
-    align-items: center
     justify-content: center
 
-    .login-container
-        display: grid
-        grid-auto-flow: row
-        grid-gap: 18px
-        width: 380px
-        padding: 40px 29px 31px
-        background-color: #fff
-        box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2)
-        border: 1px solid rgba(0, 0, 0, 0.12)
-        border-radius: 4px
+    .login-content
+        max-width: $backgroundMaxWidth
 
-        .login-form
-            display: grid
-            grid-auto-flow: row
-            grid-gap: 10px
+        display: flex
+        align-items: center
+        justify-content: center
+        background-image: url('../../assets/img/registration_login__bg.png')
+        background-position: center 702px
+        width: 100%
+        height: 683px
 
-            .login-button
-                margin-top: 10px
+@media ( max-width: 500px  )
+    section.login
+        .login-content
+            height: auto
+            padding: 20px
 
-        .login-footer
-            display: flex
-            justify-content: space-between
-            align-items: center
-            margin-top: 12px
-
-            .login-registration
-                button
-                    padding: 0 20px
+    

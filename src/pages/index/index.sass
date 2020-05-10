@@ -1,19 +1,20 @@
 @import '../../services/sass/variables'
     
 section.index
-    position: relative
-    background-image: url('../../assets/img/image3.png')
-    background-position: center bottom
-    width: $backgroundMaxWidth
-    margin: 0 auto
-    height: 829px
-    padding: 70px 140px 20px
+    display: flex
+    justify-content: center   
 
-    .index-container
+    .index-content
+        max-width: $backgroundMaxWidth
+
         display: grid
         grid-template-areas: 'findRoom .' '. text'
         justify-content: space-between
-        height: 100%
+        background-image: url('../../assets/img/image3.png')
+        background-position: center bottom
+        width: 100%
+        height: 829px
+        padding: 70px 140px 20px
 
         .index-findRoom
             grid-area: findRoom
@@ -27,32 +28,31 @@ section.index
             margin-right: -5px
 
 
-    @media (max-width: $backgroundMaxMediaWidth)
-        width: 100%
-
-    @media (max-width: 860px)
-        height: auto
-        .index-container            
+@media (max-width: 860px) 
+    section.index
+        .index-content
             grid-template-areas: 'findRoom' 'text'
             justify-content: center
             justify-items: center
             grid-gap: 40px
-            height: 100%
+            height: auto
 
             .index-text
                 text-align: center
 
-    @media (max-width: 560px)
-        padding: 50px 0
-        .index-container
+@media (max-width: 560px)
+    section.index
+        .index-content
+            padding: 50px 0
             grid-template-areas: 'findRoom'
             .index-text
                 display: none
 
-    @media (max-width: 380px)
-        padding: 0
-        .index-container
+@media (max-width: 380px)
+    section.index
+        .index-content
             grid-template-areas: 'findRoom'
+            padding: 0
             .index-findRoom
                 width: 100%
                 border: none
@@ -62,5 +62,5 @@ section.index
                 .calendar
                     width: 100%
 
-        
+            
 

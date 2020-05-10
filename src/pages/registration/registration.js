@@ -1,16 +1,9 @@
 import { Component } from '../../services/js/Component';
-import { Input } from '../../components/input/input';
-import { Button } from '../../components/button/button';
-import { Radio } from '../../components/radio/radio';
-import { Toggle } from '../../components/toggle/toggle';
-import { Tools } from '../../services/js/Tools';
 import { Page } from '../../services/js/Page';
 import { Header } from '../../components/header/header';
 import { fakeData } from '../../services/js/fakeData';
 import { Footer } from '../../components/footer/footer';
-import { Copyright } from '../../components/copyright/copyright';
-
-const tools = new Tools();
+import { RegistrationForm } from '../../components/registrationForm/registrationForm';
 
 class Registration extends Component {
 	constructor(state = {}) {
@@ -25,70 +18,16 @@ class Registration extends Component {
 	}
 	render() {
 		super.render();
-		this.renderForm();
-		this.renderFooter();
+		this.renderRegistrationForm();
 	}
-	renderForm() {
-		const form = this.node.querySelector('.registration-form');
-		const name = new Input({
-			name: 'name',
-			placeholder: 'Имя',
-		});
-		const surname = new Input({
-			name: 'surname',
-			placeholder: 'Фамилия',
-		});
-		const gender = new Radio({
-			name: 'gender',
-			list: { male: 'Мужчина', female: 'Женщина' },
-			check: 0,
-		});
-		const birthday = new Input({
-			className: 'registration-birthday',
-			title: 'Дата рождения',
-			name: 'birthday',
-			placeholder: 'ДД.ММ.ГГГГ',
-			mask: '99.99.9999',
-		});
-		const email = new Input({
-			className: 'registration-authorization',
-			title: 'Данные для входа в сервис',
-			name: 'email',
-			placeholder: 'Email',
-			value: tools.url.search.get('email'),
-		});
-		const password = new Input({
-			name: 'password',
-			type: 'password',
-			placeholder: 'Пароль',
-		});
-		const subscribe = new Toggle({
-			name: 'sibscribe',
-			text: 'Получать спецпредложения',
-		});
-		const paymentButton = new Button({
-			className: 'registration-payment button_big button_filled button_arrow',
-			text: 'Перейти к оплате',
+	renderRegistrationForm() {
+		const content = this.node.querySelector('.registration-content');
+
+		const registrationForm = new RegistrationForm({
+			className: 'registration-registrationForm',
 		});
 
-		form.appendChild(name.node);
-		form.appendChild(surname.node);
-		form.appendChild(gender.node);
-		form.appendChild(birthday.node);
-		form.appendChild(email.node);
-		form.appendChild(password.node);
-		form.appendChild(subscribe.node);
-		form.appendChild(paymentButton.node);
-	}
-	renderFooter() {
-		const footer = this.node.querySelector('.registration-footer');
-
-		const loginButton = new Button({
-			className: 'button_big button_bordered',
-			text: 'Войти',
-		});
-
-		footer.appendChild(loginButton.node);
+		content.appendChild(registrationForm.node);
 	}
 }
 
@@ -100,9 +39,7 @@ const header = new Header({
 const footer = new Footer({
 	menu: fakeData.footer.menu,
 });
-const copyright = new Copyright();
 
 page.header.appendChild(header.node);
 page.main.appendChild(registration.node);
 page.footer.appendChild(footer.node);
-page.body.appendChild(copyright.node);

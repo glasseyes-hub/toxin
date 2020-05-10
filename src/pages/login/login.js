@@ -1,11 +1,9 @@
 import { Component } from '../../services/js/Component';
-import { Input } from '../../components/input/input';
-import { Button } from '../../components/button/button';
 import { Page } from '../../services/js/Page';
 import { Header } from '../../components/header/header';
 import { fakeData } from '../../services/js/fakeData';
 import { Footer } from '../../components/footer/footer';
-import { Copyright } from '../../components/copyright/copyright';
+import { LoginForm } from '../../components/loginForm/loginForm';
 
 class Login extends Component {
 	constructor() {
@@ -19,38 +17,16 @@ class Login extends Component {
 	}
 	render() {
 		super.render();
-		this.renderForm();
-		this.renderFooter();
+		this.renderLoginForm();
 	}
-	renderForm() {
-		const form = this.node.querySelector('.login-form');
-		const email = new Input({
-			name: 'email',
-			placeholder: 'Email',
-		});
-		const password = new Input({
-			name: 'password',
-			type: 'password',
-			placeholder: 'Пароль',
-		});
-		const loginButton = new Button({
-			className: 'login-button button_big button_filled button_arrow',
-			text: 'Войти',
+	renderLoginForm() {
+		const content = this.node.querySelector('.login-content');
+
+		const loginForm = new LoginForm({
+			classList: 'login-loginForm',
 		});
 
-		form.appendChild(email.node);
-		form.appendChild(password.node);
-		form.appendChild(loginButton.node);
-	}
-	renderFooter() {
-		const footer = this.node.querySelector('.login-footer');
-
-		const registrationButton = new Button({
-			className: 'login-registration button_big button_bordered',
-			text: 'Создать',
-		});
-
-		footer.appendChild(registrationButton.node);
+		content.appendChild(loginForm.node);
 	}
 }
 
@@ -62,9 +38,7 @@ const header = new Header({
 const footer = new Footer({
 	menu: fakeData.footer.menu,
 });
-const copyright = new Copyright();
 
 page.header.appendChild(header.node);
 page.main.appendChild(login.node);
 page.footer.appendChild(footer.node);
-page.body.appendChild(copyright.node);

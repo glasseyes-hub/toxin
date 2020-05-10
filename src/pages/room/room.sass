@@ -4,8 +4,10 @@ section.room
     display: flex
     justify-content: center
     .room-container
-        width: $backgroundMaxWidth
+        max-width: $backgroundMaxWidth
+
         display: grid
+        width: 100%
         grid-template-areas: 'header' 'content'
         justify-items: center
         .room-header
@@ -23,9 +25,11 @@ section.room
                     grid-area: first
 
         .room-content
-            grid-area: content
-            width: $contentMaxWidth
+            max-width: $contentMaxWidth
             padding: $contentPadding
+
+            grid-area: content
+            width: 100%
             margin: 70px 0 67px
             
             display: grid
@@ -51,16 +55,6 @@ section.room
                 grid-area: sidebar
                 display: flex
                 align-items: start
-
-    @media ( max-width: $backgroundMaxMediaWidth )       
-        .room-container
-            width: auto
-
-    @media ( max-width: $contentMediaMaxWidth )       
-        .room-container
-            width: 100%
-            .room-content
-                width: 100%
 
     @media ( max-width: 1160px )   
         .room-container

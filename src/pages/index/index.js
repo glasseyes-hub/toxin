@@ -21,7 +21,7 @@ class Index extends Component {
 		this.renderFindRooms();
 	}
 	renderFindRooms() {
-		const container = this.node.querySelector('.index-container');
+		const content = this.node.querySelector('.index-content');
 
 		const findRooms = new FindRooms({
 			className: 'index-findRoom',
@@ -29,7 +29,7 @@ class Index extends Component {
 			guests: this.state.guests,
 		});
 
-		container.prepend(findRooms.node);
+		content.prepend(findRooms.node);
 	}
 }
 
