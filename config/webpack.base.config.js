@@ -8,11 +8,15 @@ function getEntires(pages) {
 	return Object.assign(
 		{},
 		...pages.map(({ template }) => {
+			if (!template) return {};
+
 			return {
 				[template]: [`./src/templates/${template}/${template}.js`],
 			};
 		}),
 		...pages.map(({ name }) => {
+			if (!name) return {};
+
 			return {
 				[name]: ['@babel/polyfill', `./src/pages/${name}/${name}.js`],
 			};
@@ -178,11 +182,15 @@ module.exports = {
 	},
 	plugins: [
 		...pages.map(({ name, template }) => {
-			return new HtmlWebpackPlugin({
-				template: `./src/templates/${template}/${template}.pug`,
+			const conf = {
 				chunks: ['vendors', template, name],
 				filename: `${name}.html`,
-			});
+			};
+
+			if (template)
+				conf.template = `./src/templates/${template}/${template}.pug`;
+
+			return new HtmlWebpackPlugin(conf);
 		}),
 		new MiniCssExtractPlugin({
 			filename: `css/[name].css`, // [hash] для добавления хеша к имени файла
